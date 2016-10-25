@@ -1,4 +1,4 @@
-#ifndef __POSTFIX_H__
+п»ї#ifndef __POSTFIX_H__
 #define __POSTFIX_H__
 
 #include <string>
@@ -18,7 +18,7 @@ public:
   string GetInfix() { return infix; }
   string GetPostfix() { return postfix; }
   string ToPostfix();
-  double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+  double Calculate(); // Р’РІРѕРґ РїРµСЂРµРјРµРЅРЅС‹С…, РІС‹С‡РёСЃР»РµРЅРёРµ РїРѕ РїРѕСЃС‚С„РёРєСЃРЅРѕР№ С„РѕСЂРјРµ
 };
 
 #endif
