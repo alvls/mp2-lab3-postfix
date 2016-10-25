@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include "postfix.h"
 
@@ -11,12 +11,12 @@ int main()
   double res;
 
   setlocale(LC_ALL, "Russian");
-  //cout << "Ââåäèòå àðèôìåòè÷åñêîå âûðàæåíèå: ";
+  //cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ: ";
   //cin >> expression;
   //cout << expression << endl;
-  cout << "Àðèôìåòè÷åñêîå âûðàæåíèå: " << postfix.GetInfix() << endl;
+  cout << "ÐÑ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ: " << postfix.GetInfix() << endl;
   postfix.ToPostfix();
-  cout << "Ïîñòôèêñíàÿ ôîðìà: " << postfix.GetPostfix() << endl;
+  cout << "ÐŸÐ¾ÑÑ‚Ñ„Ð¸ÐºÑÐ½Ð°Ñ Ñ„Ð¾Ñ€Ð¼Ð°: " << postfix.GetPostfix() << endl;
   res = postfix.Calculate();
   cout << res << endl;
 

@@ -1,4 +1,4 @@
-#include "postfix.h"
+﻿#include "postfix.h"
 #include "stack.h"
 
 string TPostfix::ToPostfix()
