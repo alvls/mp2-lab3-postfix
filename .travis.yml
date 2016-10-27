@@ -10,9 +10,7 @@ script:
   - cmake ../mp2-lab3-postfix/Сысоев
   - make -j
   - ls -la
-  - cd /base/
-  - ls -la
-  - cd ../../
+  - cd ../
   - ls -la
   - /build/postfix
 notifications:
