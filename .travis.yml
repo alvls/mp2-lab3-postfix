@@ -4,7 +4,6 @@ compiler:
   - gcc
   - clang
 before_script:
-  - bash ./scripts/check-whitespace.sh
   - mkdir ../build
   - cd ../build
 script:
