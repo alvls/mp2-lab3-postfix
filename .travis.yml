@@ -9,6 +9,7 @@ before_script:
 script:
   - cmake ../mp2-lab3-postfix/Сысоев
   - make -j
-  - ../Сысоев/base/postfix
+  - cd ./bin/
+  - ./postfix
 notifications:
   email: false
