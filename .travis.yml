@@ -8,7 +8,7 @@ before_script:
 script:
   - cmake ../mp2-lab3-postfix/Сысоев
   - make -j
-  - cd ./base/
+  - cd ./base_test/
   - ls -la
   - ./postfix
 notifications:
