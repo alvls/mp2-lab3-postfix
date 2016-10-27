@@ -7,7 +7,7 @@ before_script:
   - mkdir ../build
   - cd ../build
 script:
-  - cmake ../mp2_lab3_postfix
+  - cmake ../mp2-lab3-postfix
   - make -j
   - cd ./bin/
   - ./sample_postfix
