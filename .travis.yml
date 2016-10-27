@@ -10,6 +10,6 @@ script:
   - make -j
   - cd ./base_test/
   - ls -la
-  - ./postfix
+  - ./postfix_test
 notifications:
   email: false
