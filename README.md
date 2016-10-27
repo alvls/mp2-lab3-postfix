@@ -1,5 +1,7 @@
 # Методы программирования 2: Вычисление арифметических выражений
 
+[![Build Status](https://travis-ci.org/alvls/mp2-lab3-postfix.svg)][travis]
+
 <!-- TODO
   -
 -->
