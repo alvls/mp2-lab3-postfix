@@ -2,15 +2,13 @@ language: cpp
 sudo: false
 compiler:
   - gcc
-  - clang
 before_script:
   - mkdir ../build
   - cd ../build
 script:
   - cmake ../mp2-lab3-postfix/Сысоев
   - make -j
-  - ls -la
-  - cd ../build/
+   - cd /base/
   - ls -la
   - ./postfix
 notifications:
