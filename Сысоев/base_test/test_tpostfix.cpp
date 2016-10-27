@@ -3,6 +3,6 @@
 
 TEST(TPostfix, can_create_postfix)
 {
-  ADD_FAILURE();
+  ASSERT_NO_THROW(TPostfix p);
 }
 
