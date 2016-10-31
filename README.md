@@ -50,9 +50,14 @@ __Цель данной работы__  — разработка структу�
   1. Разработка классов `TStack` и `TPostfix`.
   1. Доработка консольной программы для работы с арифмитическими выражениями.
 
+## Полезные ссылки
+
+Рекомендую обратить внимание на курс "Git. Быстрый старт", доступный бесплатно на сайте  [GeekBrains](https://geekbrains.ru/) в разделе Курсы.
+  
 <!-- LINKS -->
 
 [git]:         https://git-scm.com/book/ru/v2
 [gtest]:       https://github.com/google/googletest
 [git-guide]:   https://github.com/UNN-VMK-Software/mp2-lab1-set/blob/master/docs/part1-git.md
 [gtest-guide]: https://github.com/UNN-VMK-Software/mp2-lab1-set/blob/master/docs/part2-google-test.md
+
