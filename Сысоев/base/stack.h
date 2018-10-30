@@ -22,6 +22,43 @@ public:
   {
     delete [] pMem;
   }
+  void Put(const T &elem)
+  {
+	  if (top < size)
+		  pMem[top++] = elem;
+	  else
+		  throw size;
+  }
+  T Get()
+  {
+	  if (top < 0)
+		  throw top;
+	  else
+	  {
+		  T elem;
+		  elem = pMem[top];
+		  pMem[--top];
+		  return elem;
+	  }
+  }
+  bool IsEmpty()
+  {
+	  for (int i = 0; i < size; i++)
+	  {
+		  if (pMem[i] != 0)
+			  return false;
+	  }
+	  return true;
+  }
+  bool IsFull()
+  {
+	  for (int i = 0; i < size; i++)
+	  {
+		  if (pMem[i] == 0)
+			  return false;
+	  }
+	  return true;
+  }
 };
 
 #endif
