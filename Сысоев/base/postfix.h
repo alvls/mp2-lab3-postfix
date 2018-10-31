@@ -2,23 +2,27 @@
 #define __POSTFIX_H__
 
 #include <string>
-#include "stack.h"
+#include <sstream>
 
 using namespace std;
 
 class TPostfix
 {
-  string infix;
-  string postfix;
+	string infix;
+	string postfix;
 public:
-  TPostfix()
-  {
-    infix = "a + b";
-  }
-  string GetInfix() { return infix; }
-  string GetPostfix() { return postfix; }
-  string ToPostfix();
-  double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+	TPostfix() {}
+	TPostfix(const string &_inf) {
+		infix = _inf;
+		postfix = "";
+	}
+	void Set(const string &_inf) {
+		infix = _inf;
+		postfix = "";
+	}
+	string GetInfix() { return infix; }
+	string GetPostfix();
+	double Calculate();
 };
 
 #endif
