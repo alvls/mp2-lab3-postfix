@@ -19,8 +19,8 @@ public:
 	string ToPostfix();
 	double Calculate();// Ввод переменных, вычисление по постфиксной форме
 	int Priority(char a);
-	bool Operat(char a);
-	bool IsOperand(char op);
+	bool Operand(char op);
+	int NumOperator(char op);
 };
 
 #endif

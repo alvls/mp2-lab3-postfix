@@ -31,7 +31,7 @@ public:
 	}
 	T Pop() { //берет элемент
 		if (!IsEmpty())
-			return pMem[--top];
+			return pMem[top--];
 	}
 	void Push(T v) {//положить элемент
 		if (IsFull())
@@ -41,7 +41,7 @@ public:
 
 	T GetElement()
 	{
-		return *(pMem + top);
+		return pMem[top];
 	}
 };
 

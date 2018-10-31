@@ -28,7 +28,7 @@ int TPostfix::Priority(char a)
 	}
 }*/
 
-bool TPostfix::IsOperand(char op)
+bool TPostfix::Operand(char op)
 {
 	for (char i = '0'; i <= '9'; i++)
 		if (op == i)
@@ -51,10 +51,10 @@ string TPostfix::ToPostfix()
 			}
 			// postfix += " ";
 		}*/
-		if (IsOperand(infix[i]))
+		if (Operand(infix[i]))
 		{
 			postfix += infix[i];
-			while (IsOperand(infix[i + 1]))
+			while (Operand(infix[i + 1]))
 			{
 				postfix += infix[i + 1];
 				i++;
@@ -93,5 +93,65 @@ string TPostfix::ToPostfix()
 
 double TPostfix::Calculate()
 {
-  return 0;
+	TStack<double>stack(postfix.length());
+	string tmp = "";
+	double tmp1, tmp2;
+	
+	for (int i = 0; i < postfix.length(); i++)
+	{
+		if (tmp[i] == ' ')  continue;
+		if (Operand(postfix[i]))
+		{
+			tmp = "";
+			tmp += postfix[i];
+			while (Operand(postfix[i + 1]))
+			{
+				tmp += postfix[i + 1];
+				i++;
+			}
+			stack.Push(stod(tmp));
+		}
+		else
+		{
+			switch (NumOperator(postfix[i])) {
+			case 0: {
+				throw "Unknown operation!!!"; }
+			case 1:{
+				tmp1 = stack.Pop();
+				tmp2 = stack.Pop() + tmp1;
+				stack.Push(tmp2);
+				break; }
+			case 2: {
+				tmp1 = stack.Pop();
+				tmp2 = stack.Pop() - tmp1;
+				stack.Push(tmp2);
+				break; }
+			case 3: {
+				tmp1 = stack.Pop();
+				tmp2 = stack.Pop() * tmp1;
+				stack.Push(tmp2);
+				break; }
+			case 4: {
+				tmp1 = stack.Pop();
+				if (tmp1 != 0)
+					{
+						tmp2 = stack.Pop() * tmp1;
+						stack.Push(tmp2);
+					}
+				else
+					throw "Division by zero!!!";
+				break; }
+			}
+		}
+	}
+	return stack.Pop();
+}
+
+int TPostfix::NumOperator(char op) {
+	if ((op != '+') || (op != '-') || (op != '*') || (op != '/'))
+		return 0;
+	if (op == '+') return 1;
+	if (op == '-') return 2;
+	if (op == '*') return 3;
+	if (op == '/') return 4;
 }
