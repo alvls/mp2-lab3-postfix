@@ -6,7 +6,8 @@ TEST(TPostfix, can_create_postfix) {
 }
 
 TEST(TPostfix, can_add_infix) {
-	TPostfix p("4 + 5");
+	TPostfix p;
+	p.Set("4 + 5");
 	EXPECT_EQ("4 + 5", p.GetInfix());
 }
 
