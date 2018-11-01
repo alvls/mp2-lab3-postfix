@@ -96,6 +96,11 @@ double TPostfix::Calculate() {
 	//функция пушит число в стак
 	auto push = [&stack](string &temp) {
 		if (!temp.empty()) {
+			//проверка на число
+			for (auto i : temp)
+				if (!isdigit(i) && i != '.')
+					throw "Incorrect expression";
+
 			stack.push_back(atof(temp.c_str()));
 			temp.clear();
 		}

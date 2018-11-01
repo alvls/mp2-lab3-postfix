@@ -10,11 +10,6 @@ TEST(TPostfix, can_add_infix) {
 	EXPECT_EQ("4 + 5", p.GetInfix());
 }
 
-TEST(TPostfix, can_get_infix) {
-	TPostfix p("1 + 1");
-	EXPECT_EQ("1 + 1", p.GetInfix());
-}
-
 TEST(TPostfix, can_get_postfix) {
 	TPostfix p("2 + 5");
 	EXPECT_EQ("2_5_+", p.GetPostfix());
@@ -57,6 +52,11 @@ TEST(TPostfix, can_reset_expression) {
 	p.Calculate();
 	p.Set("1 - 3");
 	EXPECT_EQ(-2, p.Calculate());
+}
+
+TEST(TPostfix, throw_if_expression_has_non_number_member) {
+	TPostfix p("5 + 4 - 3 + a");
+	ASSERT_ANY_THROW(p.Calculate());
 }
 
 TEST(TPostfix, can_calculate_double) {
