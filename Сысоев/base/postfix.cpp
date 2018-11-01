@@ -36,7 +36,6 @@ string TPostfix::ToPostfix()
 	while (!operations.IsEmpty())
 		postfix += operations.Get();
 }
-
 int TPostfix::Priority(char sym)
 {
 	if (sym == '*' || sym == '/')
