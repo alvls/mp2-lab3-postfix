@@ -18,7 +18,7 @@ TEST(TPostfix, can_get_postfix) {
 
 TEST(TPostfix, can_get_postfix_from_expression_with_two_characters_of_the_same_order) {
 	TPostfix p("1 + 2 * 3 / 4 - 5");
-	EXPECT_EQ("1_2_3_4_/_*_+_5_-", p.GetPostfix());
+	EXPECT_EQ("1_2_3_*_4_/_+_5_-", p.GetPostfix());
 }
 
 TEST(TPostfix, can_create_postfix_from_postfix) {

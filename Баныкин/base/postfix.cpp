@@ -21,7 +21,15 @@ string TPostfix::GetPostfix() {
 
 	//сравнение порядка
 	auto orderCmp = [](char a, char b) {
-		return (((a == '*' || a == '/') && (b == '+' || b == '-' || !(b >= '0' && b <= '9' ))) || b == '(');
+		return ((a == '*' || a == '/') && (b == '+' || b == '-'));
+	};
+
+	auto eqCmp = [](char a, char b) {
+		if ((a == '*' || a == '/') && (b == '*' || b == '/'))
+			return true;
+		if ((a == '-' || a == '+') && (b == '-' || b == '+'))
+			return true;
+		return false;
 	};
 
 	for (char part : infix) {
@@ -53,22 +61,26 @@ string TPostfix::GetPostfix() {
 
 		default:
 
+			split();
 			if (orderCmp(part, stack.look_top())) {
 				stack.push_back(part);
-				split();
-				++count;
+				break;
 			}
-			else {
-				split();
-				while (!stack.empty()) {
-					if (stack.look_top() == '(') break;
-					postfix += stack.pop_back();
-					split();
-					--count;
-				}
+			else if (eqCmp(part, stack.look_top())) {
+				postfix += stack.pop_back();
 				stack.push_back(part);
 				++count;
+				split();
+				break;
 			}
+			while (!stack.empty()) {
+				if (stack.look_top() == '(') break;
+				postfix += stack.pop_back();
+				split();
+				--count;
+			}
+			stack.push_back(part);
+			++count;
 			break;
 
 		}
