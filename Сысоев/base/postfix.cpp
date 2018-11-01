@@ -94,12 +94,14 @@ string TPostfix::ToPostfix()
 double TPostfix::Calculate()
 {
 	TStack<double>stack(postfix.length());
-	string tmp = "";
-	double tmp1, tmp2;
+	//double sum;
+	string tmp;
+	double tmp1 = 0.0;
+	double tmp2 = 0.0;
 	
 	for (int i = 0; i < postfix.length(); i++)
 	{
-		if (tmp[i] == ' ')  continue;
+		if (postfix[i] == ' ')  continue;
 		if (Operand(postfix[i]))
 		{
 			tmp = "";
@@ -118,8 +120,8 @@ double TPostfix::Calculate()
 				throw "Unknown operation!!!"; }
 			case 1:{
 				tmp1 = stack.Pop();
-				tmp2 = stack.Pop() + tmp1;
-				stack.Push(tmp2);
+				tmp2 = stack.Pop();
+				stack.Push(tmp1 + tmp2);
 				break; }
 			case 2: {
 				tmp1 = stack.Pop();
@@ -148,7 +150,7 @@ double TPostfix::Calculate()
 }
 
 int TPostfix::NumOperator(char op) {
-	if ((op != '+') || (op != '-') || (op != '*') || (op != '/'))
+	if ((op != '+') && (op != '-') && (op != '*') && (op != '/'))
 		return 0;
 	if (op == '+') return 1;
 	if (op == '-') return 2;
