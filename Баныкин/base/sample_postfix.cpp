@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 	TPostfix postfix;
-	postfix.Set("22 + 14.14 * (11 - 4) - 100 + (101 - (25 - 24)) + 1.6");
+	postfix.Set("1 + 2 * 3 / 4 - 5");
 
 	cout << "Infix: " << postfix.GetInfix() << endl;
 	postfix.GetPostfix();

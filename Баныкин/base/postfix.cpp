@@ -21,7 +21,7 @@ string TPostfix::GetPostfix() {
 
 	//сравнение порядка
 	auto orderCmp = [](char a, char b) {
-		return (((a == '*' || a == '/') && (b == '+' || b == '-')) || b == '(');
+		return (((a == '*' || a == '/') && (b == '+' || b == '-' || !(b >= '0' && b <= '9' ))) || b == '(');
 	};
 
 	for (char part : infix) {

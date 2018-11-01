@@ -16,6 +16,11 @@ TEST(TPostfix, can_get_postfix) {
 	EXPECT_EQ("2_5_+", p.GetPostfix());
 }
 
+TEST(TPostfix, can_get_postfix_from_expression_with_two_characters_of_the_same_order) {
+	TPostfix p("1 + 2 * 3 / 4 - 5");
+	EXPECT_EQ("1_2_3_4_/_*_+_5_-", p.GetPostfix());
+}
+
 TEST(TPostfix, can_create_postfix_from_postfix) {
 	TPostfix p1("2 + 5");
 	p1.GetPostfix();
@@ -41,6 +46,11 @@ TEST(TPostfix, can_calculate_simple_expression) {
 TEST(TPostfix, can_calculate_expression_with_brackets) {
 	TPostfix p("20 / (4 + 1)");
 	EXPECT_EQ(4, p.Calculate());
+}
+
+TEST(TPostfix, can_calculate_expression_with_two_characters_of_the_same_order) {
+	TPostfix p("1 + 2 * 3 / 4 - 5");
+	EXPECT_EQ(-2.5, p.Calculate());
 }
 
 TEST(TPostfix, can_not_divide_by_zero) {
