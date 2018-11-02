@@ -18,9 +18,7 @@ int main()
   postfix.ToPostfix();
   cout << "Postfix form: " << postfix.GetPostfix() << endl;
   res = postfix.Calculate();
-  cout << "Calculation result: " << res << endl;
-  system("pause");
- // cout << res << endl;
+  cout << res << endl;
 
 
   return 0;
