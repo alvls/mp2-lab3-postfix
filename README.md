@@ -61,3 +61,6 @@ __Цель данной работы__  — разработка структу�
 [git-guide]:   https://github.com/UNN-VMK-Software/mp2-lab1-set/blob/master/docs/part1-git.md
 [gtest-guide]: https://github.com/UNN-VMK-Software/mp2-lab1-set/blob/master/docs/part2-google-test.md
 
+## Шаблон отчета
+
+Шаблон отчета можно скачать [тут](https://drive.google.com/open?id=1CyUhaH-C_XoNI2ME7egRYC39eDEeXefj)
