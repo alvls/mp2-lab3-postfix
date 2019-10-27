@@ -10,15 +10,17 @@ class TPostfix
 {
   string infix;
   string postfix;
+  int LenInfix;
 public:
-  TPostfix()
-  {
-    infix = "a + b";
-  }
-  string GetInfix() { return infix; }
-  string GetPostfix() { return postfix; }
-  string ToPostfix();
-  double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+	TPostfix();
+	TPostfix(string s);
+	string GetInfix() { return infix; } 
+	string GetPostfix() { return postfix; } 
+	string ToPostfix(); 
+	double Calculate(double* _values);
+	int Priority(char t); 
+	int GetLen() { return infix.length(); } 
+	int CountVal(); 
 };
 
 #endif
