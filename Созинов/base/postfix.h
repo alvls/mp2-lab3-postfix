@@ -9,7 +9,7 @@
 using namespace std;
 
 const string Alphabet_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-const string Alphabet_number = "1234567890.";
+const string Alphabet_number = "1234567890,.";
 const string Alphabet_operator = "+-*/";
 
 class TPostfix
@@ -25,9 +25,12 @@ public:
 	bool CheckOnNumber(char s);
 	bool CheckOnOperator(char s);
 	bool BalanceParentheses();
+	int PriorityOpeartor(char c);
 	void DelSpace();
 	string CheckOnCorrect();
 	string ToPostfix();
+	void AddZero();
+	double ToDouble(int *i);
 	double Calculate(); // Ввод переменных, вычисление по постфиксной форме
 };
 
