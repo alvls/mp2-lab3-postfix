@@ -8,6 +8,7 @@ TPostfix::TPostfix(std::string s)
 
 string TPostfix::CheckOnCorrect()
 {
+	DelSpace();
 	//first symbol is operator * or /?
 	if ((infix[0] == '*') || (infix[0] == '/'))
 		return ("First symbol is operator");
@@ -46,42 +47,6 @@ string TPostfix::CheckOnCorrect()
 	return "All good";
 }
 
-/*int TPostfix::CheckOnCorrect()
-{
-	//first symbol is operator * or /?
-	if ((infix[0] == '*') || (infix[0] == '/'))
-		return 1;
-	//last symbol is operator?
-	if (CheckOnOperator(infix[infix.length() - 1]))
-		return 2;
-	//balance Parentheses?
-	if (!BalanceParentheses())
-		return 3;
-	//operand after close or before open parenthess (mistake 4, 5)?
-	//operator after open (if * or /) or before close parenthess (mistake 6, 7)?
-	//two operators in a row (mistake 8)?
-	if ((infix[infix.length() - 1] == ')') && (CheckOnOperator(infix[infix.length() - 2])))
-	    return 7;
-	if ((infix[0] == '(') && ((infix[1] == '*') || (infix[1] == '/')))
-		return 6;
-	for (unsigned int i = 1; i < (infix.length()- 1); i++)
-	{
-		if (infix[i] == '(')
-			if ((CheckOnSymbol(infix[i - 1])) || (CheckOnNumber(infix[i - 1])))
-				return 5;
-			else if ((infix[i + 1] == '*') || (infix[i + 1] == '/'))
-				return 6;
-		if (infix[i] == ')')
-			if ((CheckOnSymbol(infix[i + 1])) || (CheckOnNumber(infix[i + 1])))
-				return 4;
-			else if (CheckOnOperator(infix[i - 1]))
-				return 7;
-		if ((CheckOnOperator(infix[i])) && (CheckOnOperator(infix[i + 1])))
-			return 8;
-	}
-	return 0;
-}*/
-
 bool TPostfix::CheckOnSymbol(char s)
 {
 	return (Alphabet_string.find(s) == -1) ? false : true;
@@ -95,6 +60,16 @@ bool TPostfix::CheckOnNumber(char s)
 bool TPostfix::CheckOnOperator(char s)
 {
 	return (Alphabet_operator.find(s) == -1) ? false : true;
+}
+
+bool TPostfix::CheckOnNormal()
+{
+	for(char i : postfix)
+	{
+		if (CheckOnSymbol(i))
+			return true;
+	}
+	return false;
 }
 
 bool TPostfix::BalanceParentheses()
@@ -337,10 +312,16 @@ double TPostfix::Calculate()
 				tmp = Oper1 - Oper2;
 				break;
 			case '/':
-				if (Oper1 == 0)
+				if (Oper2 == 0)
+				{
 					throw "division by 0";
-				tmp = Oper1 / Oper2;
-				break;
+				}
+				else
+				{
+					tmp = Oper1 / Oper2;
+				}
+					break;
+
 			default:
 				break;
 			}

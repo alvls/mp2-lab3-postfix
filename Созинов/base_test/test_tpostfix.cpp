@@ -19,20 +19,18 @@ TEST(TPostfix, can_create_postfix_with_parameter)
 TEST(TPostfix, can_get_infix)
 {
 	const string str = "(a - b * c) + v";
-	string strAfterDelSpace = "(a-b*c)+v";
 	TPostfix tmp(str);
 
-	EXPECT_EQ(strAfterDelSpace, tmp.GetInfix());
+	EXPECT_EQ(str, tmp.GetInfix());
 }
 
 TEST(TPostfix, can_get_postfix)
 {
-	const string str = "(a - b * c) + v";
+	const string str = "a + b";
 
 	TPostfix tmp(str);
 	tmp.ToPostfix();
-	//!!!!
-	EXPECT_EQ("ab+", tmp.GetPostfix());
+	EXPECT_EQ("a b + ", tmp.GetPostfix());
 }
 
 //can check symbol, operator, number
@@ -55,7 +53,7 @@ TEST(TPostfix, can_check_operator)
 	string c = tmp.GetInfix();
 
 	EXPECT_EQ(false, tmp.CheckOnOperator(c[1]));
-	EXPECT_EQ(true, tmp.CheckOnOperator(c[2]));
+	EXPECT_EQ(true, tmp.CheckOnOperator(c[3]));
 }
 
 TEST(TPostfix, can_check_number)
@@ -226,4 +224,59 @@ TEST(TPostfix, mistake_when_two_operators_in_a_row)
 	TPostfix post(str);
 
 	EXPECT_EQ(res, post.CheckOnCorrect());
+}
+
+//Correct translate in postfix
+
+TEST(ToPostfix, can_translate_in_postfix)
+{
+	const string inf = "a + b";
+	TPostfix post(inf);
+
+	ASSERT_NO_THROW(post.ToPostfix());
+}
+
+TEST(TPostfix, correct_translate)
+{
+	const string inf = "a + b";
+	TPostfix post(inf);
+
+
+	EXPECT_EQ("a b + ", post.ToPostfix());
+}
+
+TEST(TPostfix, correct_translate_when_parentheses)
+{
+	const string inf = "1+2*(3-2)-4";
+	TPostfix post(inf);
+
+
+	EXPECT_EQ("1 2 3 2 - * + 4 - ", post.ToPostfix());
+}
+
+TEST(TPostfix, correct_translate_when_first_symbol_operator)
+{
+	const string inf = "-1-2";
+	TPostfix post(inf);
+
+
+	EXPECT_EQ("0 1 - 2 - ", post.ToPostfix());
+}
+
+TEST(TPostfix, correct_calculate)
+{
+	const string inf = "1+2*(3-2)-4";
+	TPostfix post(inf);
+	post.ToPostfix();
+	
+	EXPECT_EQ(-1, post.Calculate());
+}
+
+TEST(TPostfix, throw_when_div_0)
+{
+	const string inf = "1/0";
+	TPostfix post(inf);
+	post.ToPostfix();
+
+	ASSERT_ANY_THROW(post.Calculate());
 }

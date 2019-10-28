@@ -13,7 +13,7 @@ int main()
 	cout << "Введите арифметическое выражение: ";
 	getline(cin, expression);
 	cout << expression << endl;
-	TPostfix postfix(expression);		
+	TPostfix postfix(expression);
 	string s = postfix.CheckOnCorrect();
 	cout << s << endl;
 	if (s == "All good")
@@ -21,8 +21,15 @@ int main()
 		postfix.ToPostfix();
 		cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
 		cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
-		res = postfix.Calculate();
-		cout << res << endl;
+		if (postfix.CheckOnNormal())
+		{
+			cout << "В выражении есть невычислямые символы";
+		}
+		else
+		{
+			res = postfix.Calculate();
+			cout << res << endl;
+		}
 	}
 	return 0;
 }

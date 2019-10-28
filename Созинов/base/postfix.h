@@ -24,6 +24,7 @@ public:
 	bool CheckOnSymbol(char s);
 	bool CheckOnNumber(char s);
 	bool CheckOnOperator(char s);
+	bool CheckOnNormal();
 	bool BalanceParentheses();
 	int PriorityOpeartor(char c);
 	void DelSpace();
