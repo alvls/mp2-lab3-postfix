@@ -1,0 +1,11 @@
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base/CMakeFiles/postfix.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base/CMakeFiles/edit_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base/CMakeFiles/rebuild_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base_test/CMakeFiles/postfix_test.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base_test/CMakeFiles/edit_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base_test/CMakeFiles/rebuild_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/gtest/CMakeFiles/gtest.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/gtest/CMakeFiles/edit_cache.dir
+F:/Documents/GitHub/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/gtest/CMakeFiles/rebuild_cache.dir
