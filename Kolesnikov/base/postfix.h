@@ -40,6 +40,7 @@ class TPostfix
     {"tg",{1,3}},
     {"ctg",{1,3}},
     {"ln",{1,4}},
+    {"log",{1,4}},
     {"mdl",{1,5}}
   };
 
@@ -53,7 +54,7 @@ class TPostfix
 
 
   template<class T>
-  void MakeOperation(const string& str, TStack<T>& stack, T first, T second, bool isdouble) const;
+  void Operation(const string& str, TStack<T>& stack, T first, T second, bool isdouble) const;
 public:
   TPostfix(const string& _infix) : infix(_infix), postfix(), postfix_str(""), stacklen(0) {}
   string GetInfix() { return infix; }

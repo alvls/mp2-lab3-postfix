@@ -7,9 +7,19 @@
 
 
 template<class T>
-void TPostfix::MakeOperation(const string& str, TStack<T>& stack,
+void TPostfix::Operation(const string& str, TStack<T>& stack,
  T first, T second, bool isdouble) const 
 {
+  //Check
+  if(str == "sqrt" && first < 0)
+    throw(EqExcepion(EqExcepion::scope_of_the_function_is_broken,
+     "Negative number under the root"));
+  if((str == "ln" || str == "log") && first <= 0)
+    throw(EqExcepion(EqExcepion::scope_of_the_function_is_broken,
+     "Вomain of the logarithm definition is violated"));
+  if (str == "/" && second == 0.0)
+    throw(EqExcepion(EqExcepion::zero_division, "Division by zero"));
+  //Do
   if(isdouble){
     if (str == "+") { stack.Push(first + second); return; }
     if (str == "-") { stack.Push(first - second); return; }
@@ -23,6 +33,7 @@ void TPostfix::MakeOperation(const string& str, TStack<T>& stack,
     if (str == "tg") { stack.Push(tan(first)); return; }
     if (str == "ctg") { stack.Push(1/tan(first)); return; }
     if (str == "ln") { stack.Push(log(first)); return; }
+    if (str == "log") { stack.Push(log10(first)); return; }
     if (str == "exp") { stack.Push(exp(first)); return; }
     if (str == "sqrt") { stack.Push(sqrt(first)); return; }
     if (str == "mdl") {stack.Push(fabs(first)); return;}
@@ -159,7 +170,8 @@ int TPostfix::Operands(const string& key)
 }
 
 template<class T>
-bool TPostfix::IsInclude(const map<string, T>& map, const string& key) const
+bool TPostfix::IsInclude(const map<string, T>& map,
+ const string& key) const
 {
   for(auto pair : map) {
     if(pair.first == key)
@@ -204,9 +216,21 @@ string TPostfix::ToPostfix()
       }
     }
     else {
-      if(IfDoubleNum(string(1,tmp[0])))
-        throw EqExcepion(EqExcepion::incorrect_expression,
-        "Expression include variable started with number");
+      if(tmp.size() > 1) {
+        if(!(tmp[1]== '.' || tmp[1] == ',')) {
+          if(IfDoubleNum(string(1,tmp[0])) && !IfDoubleNum(string(1,tmp[1])))
+            throw EqExcepion(EqExcepion::incorrect_expression,
+            "Expression include variable started with number");
+        }
+        else {
+          if(tmp.size() > 2) {
+            if(!IfDoubleNum(string(1,tmp[2]))) {
+              throw EqExcepion(EqExcepion::incorrect_expression,
+              "Expression include variable started with number");
+            }
+          }
+        }
+      }
       postfix.push_back(tmp);
     }
   }
@@ -251,19 +275,17 @@ double TPostfix::Calculate()
         if(((element == "+")||(element == "-")) && (value.GetSize() == 1)){
           second = value.PopTop();                // -c +c support
           first = 0.0;
-          MakeOperation(element, value, first, second, true);
+          Operation(element, value, first, second, true);
         }
         else {
           second = value.PopTop();
           first = value.PopTop();
-          if (element == "/" && second == 0.0)
-              throw(EqExcepion(EqExcepion::zero_division, "Division by zero"));
-          MakeOperation(element, value, first, second, true);
+          Operation(element, value, first, second, true);
         }
       }
       else{
         first = value.PopTop();
-        MakeOperation(element, value, first, 0.0, false);
+        Operation(element, value, first, 0.0, false);
       }
     }
   }

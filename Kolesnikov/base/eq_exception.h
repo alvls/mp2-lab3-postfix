@@ -11,6 +11,7 @@ class EqExcepion {
             incorrect_expression,
             zero_division,
             calculate_empty_postfix,
+            scope_of_the_function_is_broken
         } error;
         EqExcepion(error_code _error, const std::string& _comment = "")
         : error(_error), comment(_comment) {}
