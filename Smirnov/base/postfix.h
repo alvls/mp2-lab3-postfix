@@ -33,8 +33,8 @@ enum ConstsNames
 };
 
 const int countOperation = 11;
-const Operation operation[countOperation] = { {"+", 1, plusOp}, {"-", 1,minusOp }, {"*", 2 ,multiplyOp}, {"/", 2, divideOp} ,
-    {"(", 0, bracketOp} , {"^", 2, powOp}, {"sin", 3, sinOp}, {"cos", 3, cosOp} , {"ln", 3, lnOp} ,{"lg", 3, lgOp} , {"sqrt", 3, sqrtOp} };
+const Operation operation[countOperation] = { {"+", 1, 2}, {"-", 1, 2}, {"*", 2, 2}, {"/", 2, 2} ,
+    {"(", 0, 1} , {"^", 2, 2}, {"sin", 3, 1}, {"cos", 3, 1} , {"ln", 3, 1} ,{"lg", 3, 1} , {"sqrt", 3, 1} };
 
 const int countConstants = 2;
 const double constants[countConstants] = { M_PI, M_E };
@@ -46,7 +46,7 @@ private:
   vector<string> lexemes;
   vector <string> postfix;
   bool CheckBrackets();
-  bool IsOperation(const string& str, Operation& op);
+  bool IsOperation(const string& str, Operation& op, int& indexOperation);
   bool IsConstant(const string& str, int& constIndex);
   vector<string> Split();
 public:

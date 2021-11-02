@@ -16,64 +16,75 @@ bool TPostfix::CheckBrackets()
 			bracketsStack.Pop();
 		}	
 	}
-	return true;
+	return bracketsStack.isEmpty();
 }
 
-bool TPostfix::IsOperation(const string& str, Operation& op)
+bool TPostfix::IsOperation(const string& str, Operation& op, int& operationIndex)
 {
 	if (str == "+")
 	{
 		op = operation[plusOp];
+		operationIndex = plusOp;
 		return true;
 	}
 	else if (str == "-")
 	{
 		op = operation[minusOp];
+		operationIndex = minusOp;
 		return true;
 	}
 	else if (str == "*")
 	{
 		op = operation[multiplyOp];
+		operationIndex = multiplyOp;
 		return true;
 	}
 	else if (str == "/")
 	{
 		op = operation[divideOp];
+		operationIndex = divideOp;
 		return true;
 	}
 	else if (str == "(")
 	{
 		op = operation[bracketOp];
+		operationIndex = bracketOp;
 		return true;
 	}
 	else if (str == "sin")
 	{
 		op = operation[sinOp];
+		operationIndex = sinOp;
 		return true;
 	}
 	else if (str == "cos")
 	{
 		op = operation[cosOp];
+		operationIndex = cosOp;
 		return true;
 	}
 	else if (str.find("^") != string::npos)
 	{
 		op = operation[powOp];
+		operationIndex = powOp;
 		return true;
 	}
 	else if (str == "ln")
 	{
 		op = operation[lnOp];
+		operationIndex = lnOp;
 		return true;
 	}
 	else if (str == "lg")
 	{
 		op = operation[lgOp];
+		operationIndex = lgOp;
 		return true;
 	}
 	else if (str == "sqrt")
 	{
 		op = operation[sqrtOp];
+		operationIndex = sqrtOp;
 		return true;
 	}
 	else
@@ -112,7 +123,10 @@ void TPostfix::ToPostfix()
 {
 	if (!CheckBrackets())
 		throw string("Количество открывающих скобок не равно количеству закрывающих");
+	if (!postfix.empty())
+		postfix.clear();
 	Operation op;
+	int indexOperation = -1;
 	TStack<Operation> stack(lexemes.size() + reserve);
 	for (size_t i = 0; i < lexemes.size(); i++)
 	{
@@ -130,7 +144,7 @@ void TPostfix::ToPostfix()
 			stack.Pop();
 			continue;
 		}
-		if (IsOperation(lexemes[i], op))
+		if (IsOperation(lexemes[i], op, indexOperation))
 		{
 			if (stack.isEmpty() || op > stack.GetTopElem())
 				stack.Push(op);
@@ -170,12 +184,16 @@ double TPostfix::Calculate()
 	Operation op;
 	TStack<double> result;
 	double temp;
-	int index = -1;
+	int indexOperation = -1;
+	int indexConst = -1;
+
 	for (size_t i = 0; i < postfix.size(); i++)
 	{
-		if (IsOperation(postfix[i], op))
+		if (IsOperation(postfix[i], op,indexOperation))
 		{
-			switch (op.GetIndex())
+			if(op.GetArity() == 2 && result.GetTopIndex() < 1)
+				throw string("Недостаточно операндов для вычисления операции: " + op.GetName());
+			switch (indexOperation)
 			{
 			case plusOp:
 				result.Push(result.Pop() + result.Pop());
@@ -225,9 +243,9 @@ double TPostfix::Calculate()
 			result.Push(stod(postfix[i])); 
 			continue;
 		}
-		if (IsConstant(postfix[i], index))
+		if (IsConstant(postfix[i], indexConst))
 		{
-			result.Push(constants[index]);
+			result.Push(constants[indexConst]);
 			continue;
 		}
 		string value;
