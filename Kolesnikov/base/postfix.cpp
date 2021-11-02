@@ -16,7 +16,7 @@ void TPostfix::Operation(const string& str, TStack<T>& stack,
      "Negative number under the root"));
   if((str == "ln" || str == "log") && first <= 0)
     throw(EqExcepion(EqExcepion::scope_of_the_function_is_broken,
-     "Вomain of the logarithm definition is violated"));
+     "Domain of the logarithm definition is violated"));
   if (str == "/" && second == 0.0)
     throw(EqExcepion(EqExcepion::zero_division, "Division by zero"));
   //Do
