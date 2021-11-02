@@ -1,4 +1,7 @@
 #include <gtest.h>
+#include <iostream>
+#include <stack.h>
+#include <postfix.h>
 
 int main(int argc, char **argv)
 {
