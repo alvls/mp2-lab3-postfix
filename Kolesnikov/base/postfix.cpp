@@ -203,8 +203,12 @@ string TPostfix::ToPostfix()
         }
       }
     }
-    else
+    else {
+      if(IfDoubleNum(string(1,tmp[0])))
+        throw EqExcepion(EqExcepion::incorrect_expression,
+        "Expression include variable started with number");
       postfix.push_back(tmp);
+    }
   }
 while (!OpStack.IsEmpty()) {
 	postfix.push_back(OpStack.PopTop());

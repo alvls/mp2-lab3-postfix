@@ -10,7 +10,7 @@ class EqExcepion {
         {
             incorrect_expression,
             zero_division,
-            calculate_empty_postfix
+            calculate_empty_postfix,
         } error;
         EqExcepion(error_code _error, const std::string& _comment = "")
         : error(_error), comment(_comment) {}

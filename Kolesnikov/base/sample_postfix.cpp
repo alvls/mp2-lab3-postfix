@@ -11,7 +11,7 @@ int main()
   string expression;
   double res;
   cout << "Введите арифметическое выражение: ";
-  cin >> expression;
+  getline(cin, expression);
   cout << expression << endl;
   TPostfix postfix(expression);
   postfix_calc:
