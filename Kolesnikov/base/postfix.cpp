@@ -216,17 +216,17 @@ string TPostfix::ToPostfix()
       }
     }
     else {
-      if(tmp.size() > 1) {
-        if(!(tmp[1]== '.' || tmp[1] == ',')) {
-          if(IfDoubleNum(string(1,tmp[0])) && !IfDoubleNum(string(1,tmp[1])))
-            throw EqExcepion(EqExcepion::incorrect_expression,
-            "Expression include variable started with number");
-        }
-        else {
-          if(tmp.size() > 2) {
-            if(!IfDoubleNum(string(1,tmp[2]))) {
-              throw EqExcepion(EqExcepion::incorrect_expression,
-              "Expression include variable started with number");
+      if(IfDoubleNum(string(1,tmp[0])) && tmp.size() > 1) {
+        bool dot = false;
+        for(int i = 1; i < tmp.size(); i++){
+          if(!IfDoubleNum(string(1,tmp[i]))){
+            if(tmp[i] == '.' || tmp[i] == ','){
+              if(dot)
+                throw(EqExcepion(EqExcepion::incorrect_expression, "Include literal with two dots"));
+              dot = true;
+            }
+            else{
+              throw(EqExcepion(EqExcepion::incorrect_expression, "Include variable started with number"));
             }
           }
         }
