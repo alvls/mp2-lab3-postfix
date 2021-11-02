@@ -75,6 +75,12 @@ TEST(TStack, can_put_element)
 	EXPECT_EQ(t.getsize(), 1);
 	EXPECT_EQ(t[0], 15);
 }
+TEST(TStack, can_get_top_of_stack)
+{
+	TStack<int> t;
+	t.put(2024);
+	EXPECT_EQ(2024, t.top_of_stack());
+}
 TEST(TStack, can_get_element)
 {
 	TStack<int> t(0);

@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <map>
+#include <locale>
 #include "stack.h"
 
 using namespace std;
@@ -12,7 +12,6 @@ enum class wrong
 {
     brackets_quantity,
     operation_placement,
-    undefined_value,
 };
 enum class priority
 {
@@ -33,10 +32,10 @@ public:
         const char operations[size_of_op] = { '+','-','*','/','^' };
         int left_bracket = 0;
         int right_bracket = 0;
-        string copy = _infix;
+        string copy;
         for (int i = 0; i < _infix.size(); i++)
-            if (_infix[i] == ' ')
-                copy.erase(i);
+            if (_infix[i] != ' ')
+                copy.push_back(_infix[i]);
         for (int i = 0; i < size_of_op; i++)
             if (copy[0] == operations[i])
                 throw wrong::operation_placement;
@@ -46,6 +45,7 @@ public:
         for (int i = 0; i < copy.size(); i++)
             if (copy[i] == '(')
             {
+                cout << "leftbracket = " << left_bracket << "\n";
                 left_bracket++;
                 i++;
                 if (i == copy.size())
@@ -72,7 +72,12 @@ public:
                     }
                 }
         if (left_bracket != right_bracket)
+        {
+            cout << left_bracket << "\n";
+            cout << right_bracket << "\n";
+            cout << "copy = " << copy << "\n";
             throw wrong::brackets_quantity;
+        }
         infix = copy;
     }
     void ToPostfix();
@@ -82,6 +87,7 @@ public:
     vector<double> GetValues();// Получение значений операндов
     bool is_current_bigger_or_eq(string current, string next) const;
 };
+double getdb(string s);
 double addition(double one, double two);
 double subtraction(double one, double two);
 double multiplication(double one, double two);

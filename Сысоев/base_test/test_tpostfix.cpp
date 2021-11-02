@@ -7,7 +7,7 @@ TEST(TPostfix, can_create_postfix)
 }
 TEST(TPostfix, can_create_postfix_with_correct_expression)
 {
-	ASSERT_NO_THROW(TPostfix p("a/b+c*(a+2*b-c^3)"));
+	ASSERT_NO_THROW(TPostfix p("a/b+C*a+2*b-c^3"));
 }
 TEST(TPostfix, can_create_postfix_with_long_operands)
 {
@@ -32,5 +32,11 @@ TEST(TPostfix, can_get_infix)
 TEST(TPostfix, can_get_postfix)
 {
 	TPostfix p("a+b-c");
+	p.ToPostfix();
 	EXPECT_EQ("ab+c-", p.GetPostfix());
+}
+TEST(TPostfix, can_calculate)
+{
+	TPostfix p("3^2-2*84/3+7");
+	EXPECT_EQ(3 ^ 2 - 2 * 84 / 3 + 7, int(p.Calculate()));
 }

@@ -1,6 +1,7 @@
 ﻿#ifndef __STACK_H__
 #define __STACK_H__
 #include <iostream>
+#include <locale>
 const int MaxStackSize = 100;
 enum class ans
 {
@@ -63,7 +64,11 @@ void TStack<T>::del()
         size--;
     }
     else
+    {
         delete[] pMem;
+        pMem = new T[0];
+        size = 0;
+    }
 }
 template<class T> 
 void TStack<T>::put(const T& obj)
@@ -91,7 +96,7 @@ const T& TStack<T>::operator[](int pos) const
 {
     if (pos < 0)
         throw ans::negative;
-    if (pos > size)
+    if (pos >= size)
         throw ans::too_large;
     return pMem[pos];
 }

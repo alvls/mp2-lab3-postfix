@@ -78,13 +78,19 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\gtest\release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\base\postfix.cpp" />
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="test_tpostfix.cpp" />
     <ClCompile Include="test_tstack.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\postfix.h" />
+    <ClInclude Include="..\base\stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
