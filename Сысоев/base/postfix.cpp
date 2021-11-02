@@ -159,11 +159,17 @@ sw:		switch (c)
 				break;
 		}
 	}
+	TStack<string>op_st_2;//для переворота стека
 	while (!operation_stack.is_empty())
-		expression.push_back(operation_stack.get());
+		op_st_2.put(operation_stack.get());
+	while (!op_st_2.is_empty())
+		expression.push_back(op_st_2.get());
 	postfix = emptystring;
 	for (int i = 0; i < expression.size(); i++)
+	{
+		//cout << expression[i] << "\n";
 		postfix += expression[i];
+	}
 }
 vector<double> TPostfix::GetValues()
 {
@@ -181,7 +187,7 @@ vector<double> TPostfix::GetValues()
 	vector<int> used;//показывает, что значение с данным индексом уже заполнено
 	for (int i = 0; i < operands.size(); i++)
 	{
-		for(int j='0';j<'9';j++)
+		/*for(int j='0';j<'9';j++)
 			if (operands[i].first[0] == i)
 			{
 				operands[i].second = getdb(operands[i].first);
@@ -192,10 +198,11 @@ vector<double> TPostfix::GetValues()
 		{
 			operands[i].second = getdb(operands[i].first);
 			used.push_back(i);
-		}
+		}*/
 		try
 		{
-			operands[i].second = stof(operands[i].first);//если сработает, то это будет бомба
+			operands[i].second = stod(operands[i].first);
+			//cout << operands[i].second << "\n";//если сработает, то это будет бомба
 			used.push_back(i);
 		}
 		catch (...)
@@ -203,6 +210,7 @@ vector<double> TPostfix::GetValues()
 			continue;
 		}
 	}
+	string str_tmp;
 	for (int i = 0; i < operands.size(); i++)
 	{
 		vector<int> eq;//индексы операндов, одинаковых для i-ого
@@ -216,10 +224,12 @@ vector<double> TPostfix::GetValues()
 				used.push_back(j);
 			}
 		cout << "Введите значение для " << operands[i].first << ' ';
-		cin >> operands[i].second;
+		cin >> str_tmp;
+		operands[i].second = stod(str_tmp);
 	cont:		for (int j = 0; j < eq.size(); j++)
 		operands[eq[j]].second = operands[i].second;
 	}
+	cout << "\n";
 	vector<double> values;
 	for (int i = 0; i < operands.size(); i++)
 		values.push_back(operands[i].second);
@@ -244,7 +254,8 @@ double TPostfix::Calculate()
 		for (; j < max; j++)
 			if (expression[i] == signes_of_operations[j])
 			{
-				variables[0] = (funk[j](variables[0], variables[1]));
+				variables[variables.size() - 2] = (funk[j](variables[variables.size() - 2], variables[variables.size() - 1]));
+				cout << "var[0] = " << variables[0] << "\n";
 				variables.pop_back();
 				break;
 			}

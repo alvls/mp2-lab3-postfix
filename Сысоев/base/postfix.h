@@ -45,7 +45,6 @@ public:
         for (int i = 0; i < copy.size(); i++)
             if (copy[i] == '(')
             {
-                cout << "leftbracket = " << left_bracket << "\n";
                 left_bracket++;
                 i++;
                 if (i == copy.size())
@@ -73,9 +72,9 @@ public:
                 }
         if (left_bracket != right_bracket)
         {
-            cout << left_bracket << "\n";
+            /*cout << left_bracket << "\n";
             cout << right_bracket << "\n";
-            cout << "copy = " << copy << "\n";
+            cout << "copy = " << copy << "\n";*/
             throw wrong::brackets_quantity;
         }
         infix = copy;

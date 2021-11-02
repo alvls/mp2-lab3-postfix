@@ -7,7 +7,7 @@ TEST(TPostfix, can_create_postfix)
 }
 TEST(TPostfix, can_create_postfix_with_correct_expression)
 {
-	ASSERT_NO_THROW(TPostfix p("a/b+C*a+2*b-c^3"));
+	ASSERT_NO_THROW(TPostfix p("a/b+ñ*a+2*b-c^3"));
 }
 TEST(TPostfix, can_create_postfix_with_long_operands)
 {

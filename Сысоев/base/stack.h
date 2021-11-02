@@ -50,24 +50,23 @@ TStack<T>::TStack(TStack& stack) :size(stack.size)
 template<class T>
 TStack<T>::~TStack()
 {
-    delete[] pMem;
+    if (!is_empty())
+        delete[] pMem;
 }
 template<class T> 
 void TStack<T>::del()
 {
-    if (size > 1)
+    size--;
+    if (size > 0)
     {
-        T* tmp_p = new T[size - 1];
+        T* tmp_p = new T[size];
         std::copy(pMem, pMem + size, tmp_p);
         delete[] pMem;
         pMem = tmp_p;
-        size--;
     }
     else
     {
         delete[] pMem;
-        pMem = new T[0];
-        size = 0;
     }
 }
 template<class T> 
@@ -87,7 +86,7 @@ T TStack<T>::get()
 {
     if (is_empty())
         throw ans::empty;
-    T tmp = pMem[size - 1];
+    T tmp = top_of_stack();
     del();
     return tmp;
 }
