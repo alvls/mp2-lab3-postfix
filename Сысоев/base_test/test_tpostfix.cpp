@@ -15,7 +15,7 @@ TEST(TPostfix, can_create_postfix_with_long_operands)
 }
 TEST(TPostfix, cant_create_postfix_with_too_many_brackets)
 {
-	ASSERT_ANY_THROW(TPostfix p("((3+a)"));
+	ASSERT_ANY_THROW(TPostfix p("(3+a))"));
 }
 TEST(TPostfix, cant_create_postfix_with_wrong_operation_placement)
 {
@@ -37,6 +37,8 @@ TEST(TPostfix, can_get_postfix)
 }
 TEST(TPostfix, can_calculate)
 {
-	TPostfix p("3^2-2*84/3+7");
-	EXPECT_EQ(3 ^ 2 - 2 * 84 / 3 + 7, int(p.Calculate()));
+	TPostfix p("14-3*5+18^2");
+	p.ToPostfix();
+	int f = 14 - 3 * 5 + pow(18,2);
+	EXPECT_EQ(f, int(p.Calculate()));
 }

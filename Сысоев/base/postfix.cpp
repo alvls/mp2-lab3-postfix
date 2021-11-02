@@ -151,6 +151,13 @@ sw:		switch (c)
 				i++;
 				c = infix[i];
 			}
+			if(operation_stack.getsize()>1&&operation_stack[operation_stack.getsize()-2]!="(")
+				if (is_current_bigger_or_eq(operation_stack[operation_stack.getsize() - 2], operation_stack[operation_stack.getsize() - 1]))
+				{
+					string tmp_str = operation_stack.get();
+					expression.push_back(operation_stack.get());
+					operation_stack.put(tmp_str);
+				}
 			expression.push_back(operand);
 			operand = emptystring;
 			if (i < infix.size())
@@ -159,15 +166,11 @@ sw:		switch (c)
 				break;
 		}
 	}
-	TStack<string>op_st_2;//для переворота стека
 	while (!operation_stack.is_empty())
-		op_st_2.put(operation_stack.get());
-	while (!op_st_2.is_empty())
-		expression.push_back(op_st_2.get());
+		expression.push_back(operation_stack.get());
 	postfix = emptystring;
 	for (int i = 0; i < expression.size(); i++)
 	{
-		//cout << expression[i] << "\n";
 		postfix += expression[i];
 	}
 }
@@ -187,18 +190,6 @@ vector<double> TPostfix::GetValues()
 	vector<int> used;//показывает, что значение с данным индексом уже заполнено
 	for (int i = 0; i < operands.size(); i++)
 	{
-		/*for(int j='0';j<'9';j++)
-			if (operands[i].first[0] == i)
-			{
-				operands[i].second = getdb(operands[i].first);
-				used.push_back(i);
-				break;
-			}
-		if (operands[i].first[0] == '-')
-		{
-			operands[i].second = getdb(operands[i].first);
-			used.push_back(i);
-		}*/
 		try
 		{
 			operands[i].second = stod(operands[i].first);
@@ -223,7 +214,7 @@ vector<double> TPostfix::GetValues()
 				eq.push_back(j);
 				used.push_back(j);
 			}
-		cout << "Введите значение для " << operands[i].first << ' ';
+		cout << "Введите значение для " << operands[i].first << ": ";
 		cin >> str_tmp;
 		operands[i].second = stod(str_tmp);
 	cont:		for (int j = 0; j < eq.size(); j++)
@@ -255,7 +246,6 @@ double TPostfix::Calculate()
 			if (expression[i] == signes_of_operations[j])
 			{
 				variables[variables.size() - 2] = (funk[j](variables[variables.size() - 2], variables[variables.size() - 1]));
-				cout << "var[0] = " << variables[0] << "\n";
 				variables.pop_back();
 				break;
 			}
