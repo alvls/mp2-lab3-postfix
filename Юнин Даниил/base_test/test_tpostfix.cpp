@@ -54,27 +54,16 @@ TEST(TPostfix, find_unary_minus_and_change_it_on_binary)
 	EXPECT_EQ("0-4+2", postf.GetInfix());
 }
 
-TEST(TPostfix, can_calculate_expression)
+TEST(TPostfix, can_calculate_sum_expression)
 {
 	TPostfix postf("4+5");
 	postf.ChangeInfixToPostfix();
 	EXPECT_EQ(9, postf.Calculate());
 }
 
-TEST(TPostfix, can_calculate_expression_with_variable)
+TEST(TPostfix, can_calculate_expression_with_unary_minus)
 {
-	setlocale(LC_ALL, "Rus");
-	cout << "d вводите равным 1" << endl;
-	TPostfix postf("4+5+d");
+	TPostfix postf("-4+5+3");
 	postf.ChangeInfixToPostfix();
-	EXPECT_EQ(10, postf.Calculate());
-}
-
-TEST(TPostfix, can_calculate_expression_with_variable_with_name_more_then_one_word)
-{
-	setlocale(LC_ALL, "Rus");
-	cout << "number вводите равным 6" << endl;
-	TPostfix postf("4,3+5,7+number");
-	postf.ChangeInfixToPostfix();
-	EXPECT_EQ(16, postf.Calculate());
+	EXPECT_EQ(4, postf.Calculate());
 }
