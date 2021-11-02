@@ -1,12 +1,12 @@
 ﻿#include "postfix.h"
-#define DEBUG(x) cout << "Debug: " << x << endl;
+#define DEBUG(x) std::cout << "Debug: " << x << std::endl;
 
 
-string TPostfix::ToPostfix(){
-	string word, pf; int i; bool last_is_func = true;
+std::string TPostfix::ToPostfix(){
+	std::string word, pf; int i; bool last_is_func = true;
 	TStack<operation> ops;
 
-	for (istringstream is("( " + infix + " )"); is >> word;) {
+	for (std::istringstream is("( " + infix + " )"); is >> word;) {
 		if (word == "(") {	// (
 			if (!last_is_func)
 				throw -1; // err	5(
@@ -40,7 +40,7 @@ string TPostfix::ToPostfix(){
 		if (!last_is_func)
 			throw -1; // err	operand operand
 		try {	// operand number
-			stof(word); 
+			stod(word); 
 		}
 		catch (...) { // operand variable 
 			if (!(word.size() < 3 &&
@@ -55,13 +55,13 @@ string TPostfix::ToPostfix(){
 }
 
 double TPostfix::Calculate(){// Ввод переменных, вычисление по постфиксной форме
-	TStack<double> st; map<string, double> var;
-	string word; int i = 0; double tmp;
+	TStack<double> st; std::map<std::string, double> var;
+	std::string word; int i = 0; double tmp;
 
 	if (postfix == "")
 		return 0;
 
-	for (istringstream is(postfix); is >> word;) {
+	for (std::istringstream is(postfix); is >> word;) {
 		for (i = 1; i < F_Size; i++)
 			if (word == funcs[i].name)
 				break;
@@ -98,12 +98,12 @@ double TPostfix::Calculate(){// Ввод переменных, вычислен�
 			break;
 		default:
 			try {	// number
-				st.push(stof(word));
+				st.push(stod(word));
 			}
 			catch (...) { // variable 
 				if (var.find(word) == var.end()) { // new var
-					cout << "Введите значение ( 1.4 ): " << word << " = ";
-					cin >> tmp;
+					std::cout << "Введите значение ( 1.4 ): " << word << " = ";
+					std::cin >> tmp;
 					var[word] = tmp;
 					st.push(tmp);
 				}

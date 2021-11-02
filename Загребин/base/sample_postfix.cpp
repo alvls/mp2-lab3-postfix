@@ -1,46 +1,43 @@
-﻿#include <iostream>
-#include "postfix.h"
-
-using namespace std;
+﻿#include "postfix.h"
 
 int main(){
     setlocale(LC_ALL, "Russian");
-    TPostfix postfix; string expression; int choice = 0;
+    TPostfix postfix; std::string expression; int choice = 0;
     try {
     post:
-        cout << "Введите арифметическое выражение (ввод: 1,4 ): "; // expression
-        getline(cin, expression);
+        std::cout << "Введите арифметическое выражение (ввод: 1,4 ): "; // expression
+        std::getline(std::cin, expression);
         postfix.SetInfix(expression);
         try {
-            cout << "Постфиксная форма: " << postfix.ToPostfix() << endl;;
+            std::cout << "Постфиксная форма: " << postfix.ToPostfix() << '.' << std::endl;;
         }
         catch (...) {
-            cout << "Ошибка! " << endl;
+            std::cout << "Ошибка! " << std::endl;
             goto post;
         }
 
-        cout << "Вычислить? Нет-0, Да-1: ";
-        cin >> choice;
+        std::cout << "Вычислить? Нет-0, Да-1: ";
+        std::cin >> choice;
         if (choice) {
         calc:
-            cout << "Ответ: " << postfix.Calculate() << endl;
-            cout << "Снова посчитать? Нет-0, Да-1: ";
-            cin >> choice;
+            std::cout << "Ответ: " << postfix.Calculate() << std::endl;
+            std::cout << "Снова посчитать? Нет-0, Да-1: ";
+            std::cin >> choice;
             if (choice) {
-                getline(cin, expression);
+                std::getline(std::cin, expression);
                 goto calc;
             }
         }
 
-        cout << "Сначала? Нет-0, Да-1: ";
-        cin >> choice;
+        std::cout << "Сначала? Нет-0, Да-1: ";
+        std::cin >> choice;
         if (choice) {
-            getline(cin, expression);
+            std::getline(std::cin, expression);
             goto post;
         }
     }
     catch (...) {
-        cout << endl <<  "!!Fatal ERROR!!";
+        std::cout << std::endl <<  "!!Fatal ERROR!!";
     }
 
   return 0;
