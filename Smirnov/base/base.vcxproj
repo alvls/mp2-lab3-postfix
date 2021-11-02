@@ -81,12 +81,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Operation.cpp" />
     <ClCompile Include="postfix.cpp" />
     <ClCompile Include="sample_postfix.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Operation.h" />
+    <ClInclude Include="operation.h" />
     <ClInclude Include="postfix.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>

@@ -40,7 +40,6 @@ public:
   bool isFull();
   void Push(const T& value);
   T Pop();
-  void ExpandSize(int _size);
   T GetTopElem();
   int GetSize();
   int GetTopIndex();
@@ -128,31 +127,6 @@ inline T TStack<T>::Pop()
     if (isEmpty())
         throw stackIsEmpty;
     return pMem[top--];
-}
-//??
-template<class T>
-inline void TStack<T>::ExpandSize(int _size)
-{
-    if (_size > MaxStackSize)
-        throw stackOverFlow;
-    if (MaxStackSize > _size * 2)
-    {
-        T* tmpMem = new T[_size * 2];
-        size = _size;
-        TStack oldData(*this);
-        delete[] pMem;
-        pMem = tmpMem;
-        std::memcpy(pMem, oldData.pMem);
-    }
-    else
-    {
-        T* tmpMem = new T[MaxStackSize];
-        size = _size;
-        TStack oldData(*this);
-        delete[] pMem;
-        pMem = tmpMem;
-        std::memcpy(pMem, oldData.pMem);
-    }   
 }
 
 template<class T>

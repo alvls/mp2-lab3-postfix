@@ -20,6 +20,6 @@ public:
 	bool operator<(const Operation& otherOp) const { return _cost < otherOp._cost ? true : false; };
 	bool operator>=(const Operation& otherOp) const { return _cost >= otherOp._cost ? true : false; };
 	bool operator<=(const Operation& otherOp) const { return _cost <= otherOp._cost ? true : false; };
-	bool operator==(const Operation& otherOp) const { return _name == otherOp._name; };
+	bool operator==(const Operation& otherOp) const { return (_name == otherOp._name) && (_cost == otherOp._cost); };
 };
 

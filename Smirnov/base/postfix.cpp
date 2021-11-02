@@ -4,15 +4,19 @@
 bool TPostfix::CheckBrackets()
 {
 	TStack<string> bracketsStack;
-	vector<string> words = Split();
-	for (string word : words)
+	lexemes = Split();
+	for (string word : lexemes)
 	{
 		if (word == "(")
 			bracketsStack.Push("(");
 		else if (word == ")")
+		{
+			if (bracketsStack.isEmpty())
+				return false;
 			bracketsStack.Pop();
+		}	
 	}
-	return bracketsStack.isEmpty();
+	return true;
 }
 
 bool TPostfix::IsOperation(const string& str, Operation& op)
@@ -39,7 +43,7 @@ bool TPostfix::IsOperation(const string& str, Operation& op)
 	}
 	else if (str == "(")
 	{
-		op = operation[4];
+		op = operation[bracketOp];
 		return true;
 	}
 	else if (str == "sin")
@@ -76,25 +80,25 @@ bool TPostfix::IsOperation(const string& str, Operation& op)
 		return false;
 }
 
-bool TPostfix::IsConstant(const string& str, int& index)
+bool TPostfix::IsConstant(const string& str, int& constIndex)
 {
 	for (size_t i = 0; i < countConstants; i++)
 	{
 		if (str == "pi")
 		{
-			index = pi;
+			constIndex = pi;
 			return true;
 		}
 		else if (str == "e")
 		{
-			index = e;
+			constIndex = e;
 			return true;
 		}
 	}
 	return false;
 }
 
-bool isNumber(const string& str)
+bool IsNumber(const string& str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 	{
@@ -107,10 +111,9 @@ bool isNumber(const string& str)
 void TPostfix::ToPostfix()
 {
 	if (!CheckBrackets())
-		throw "bad";
-	vector<string> lexemes = Split();
+		throw string("Количество открывающих скобок не равно количеству закрывающих");
 	Operation op;
-	TStack<Operation> stack(lexemes.size() + offset);
+	TStack<Operation> stack(lexemes.size() + reserve);
 	for (size_t i = 0; i < lexemes.size(); i++)
 	{
 		if (lexemes[i] == "(")
@@ -141,7 +144,7 @@ void TPostfix::ToPostfix()
 			}
 			continue;
 		}
-		if (isNumber(lexemes[i]))
+		if (IsNumber(lexemes[i]))
 		{
 			postfix.push_back(lexemes[i]);
 			continue;
@@ -187,7 +190,7 @@ double TPostfix::Calculate()
 			case divideOp:
 				temp = result.Pop();
 				if (temp == 0)
-					throw string("Divided By Zero");
+					throw string("Деление на 0");
 				result.Push(result.Pop() / temp);
 				break;
 			case powOp:
@@ -207,6 +210,9 @@ double TPostfix::Calculate()
 				result.Push(log10(result.Pop()));
 				break;
 			case sqrtOp:
+				temp = result.GetTopElem();
+				if (temp < 0)
+					throw string("Отрицательное число под квадратным корнем");
 				result.Push(sqrt(result.Pop()));
 				break;
 			default:
@@ -214,7 +220,7 @@ double TPostfix::Calculate()
 			}
 			continue;
 		}
-		if (isNumber(postfix[i]))
+		if (IsNumber(postfix[i]))
 		{
 			result.Push(stod(postfix[i])); 
 			continue;
@@ -242,4 +248,15 @@ vector<string> TPostfix::Split()
 		result.push_back(word);
 	}
 	return result;
+}
+
+void TPostfix::PrintPostfix()
+{
+	if (!postfix.empty())
+		for (size_t i = 0; i < postfix.size(); i++)
+		{
+			cout << postfix[i] << " ";
+		}
+	else
+		cout << "Не произведен перевод в постфиксную форму!";
 }
