@@ -85,6 +85,7 @@ public:
     double Calculate(); // Ввод переменных, вычисление по постфиксной форме
     vector<double> GetValues();// Получение значений операндов
     bool is_current_bigger_or_eq(string current, string next) const;
+    bool is_next_more_important(string current, string next) const;
 };
 double getdb(string s);
 double addition(double one, double two);

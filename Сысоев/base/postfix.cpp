@@ -28,7 +28,7 @@ double exponentation(double one, double two)
 	return (pow(one, two));
 }
 
-//Содержит неточности из-за проблем перевода. Автоматический вариант не работает
+//Содержит неточности из-за проблем перевода
 double getdb(string str)
 {
 	int line = str.size();
@@ -98,14 +98,37 @@ bool TPostfix::is_current_bigger_or_eq(string current, string next) const
 		if (next == "*" || next == "/")
 			next_pr = priority::multiplication_and_division;
 		else
-			if (next == "(")
-				next_pr = priority::leftbracket;
-		else
 			next_pr = priority::exponentation;
 	if (cur_pr < next_pr)
 		return false;
 	else 
 		return true;
+}
+bool TPostfix::is_next_more_important(string current, string next)const
+{
+	const int max = 5;
+	const string oper[max] = { "+","-","*","/","^" };
+	int cur_num, next_num;
+	for (int i = 0; i < max; i++)
+	{
+		if (current == oper[i])
+		{
+			cur_num = i;
+			break;
+		}
+	}
+	for (int i = 0; i < max; i++)
+	{
+		if (next == oper[i])
+		{
+			next_num = i;
+			break;
+		}
+	}
+	if (next_num > cur_num)
+		return true;
+	else
+		return false;
 }
 void TPostfix::ToPostfix()
 {
@@ -115,7 +138,8 @@ void TPostfix::ToPostfix()
 	char c;
 	string top = emptystring;
 	string fake_string = emptystring;
-	int tos;
+	int j;
+	TStack<string> inverted_stack;
 	for (int i=0;i<infix.size();i++)
 	{
 		c = infix[i];
@@ -125,14 +149,10 @@ sw:		switch (c)
 			operation_stack.put(string(1, c));
 			break;
 		case ')':
-			tos = operation_stack.getsize();
-			while (operation_stack[--tos] != "(")
-				;
-			while (tos < operation_stack.getsize())
-			{
-				expression.push_back(operation_stack[tos]);
-				tos++;
-			}
+			while (operation_stack.top_of_stack() != "(")
+				inverted_stack.put(operation_stack.get());
+			while (!inverted_stack.is_empty())
+				expression.push_back(inverted_stack.get());
 			break;
 		case '+':case '-':case'*':case'/': case '^':
 			fake_string = string(1, c);
@@ -166,8 +186,27 @@ sw:		switch (c)
 				break;
 		}
 	}
+	string next_string, current_string;
 	while (!operation_stack.is_empty())
-		expression.push_back(operation_stack.get());
+	{
+		next_string = operation_stack.get();
+		if (!operation_stack.is_empty())
+		{
+			current_string = operation_stack.top_of_stack();
+			if (is_next_more_important(current_string, next_string))
+				expression.push_back(next_string);
+			else
+			{
+				expression.push_back(operation_stack.get());
+				operation_stack.put(next_string);
+			}
+		}
+		else
+		{
+			expression.push_back(next_string);
+			break;
+		}
+	}
 	postfix = emptystring;
 	for (int i = 0; i < expression.size(); i++)
 	{
