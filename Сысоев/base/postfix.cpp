@@ -171,13 +171,15 @@ sw:		switch (c)
 				i++;
 				c = infix[i];
 			}
-			if(operation_stack.getsize()>1&&operation_stack[operation_stack.getsize()-2]!="(")
+			while (operation_stack.getsize() > 1 && operation_stack[operation_stack.getsize() - 2] != "(")
 				if (is_current_bigger_or_eq(operation_stack[operation_stack.getsize() - 2], operation_stack[operation_stack.getsize() - 1]))
 				{
 					string tmp_str = operation_stack.get();
 					expression.push_back(operation_stack.get());
 					operation_stack.put(tmp_str);
 				}
+				else
+					break;
 			expression.push_back(operand);
 			operand = emptystring;
 			if (i < infix.size())
