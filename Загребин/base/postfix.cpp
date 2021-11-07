@@ -9,15 +9,19 @@ std::string TPostfix::ToPostfix(){
 	for (std::istringstream is("( " + infix + " )"); is >> word;) {
 		if (word == "(") {	// (
 			if (!last_is_func)
-				throw -1; // err	5(
+				throw std::string("Operand ("); // err	5(
 			ops.push(funcs[0]);
 			continue;
 		}
 		if(word == ")") {	// )
 			if (last_is_func)
-				throw -1; // err	()  +)
-			while (ops.Top().name != "(")
-				pf += ops.pop().name + " ";
+				throw std::string("( ), operation )"); // err	()  +)
+			try {
+				while (ops.Top().name != "(")
+					pf += ops.pop().name + " ";
+			}catch (...) {
+				throw std::string("Too many ) ");
+			}
 			ops.pop();
 			continue;
 		}
@@ -38,15 +42,14 @@ std::string TPostfix::ToPostfix(){
 		}
 		
 		if (!last_is_func)
-			throw -1; // err	operand operand
+			throw std::string("Operand Operand"); // err	operand operand
 		try {	// operand number
-			stod(word); 
-		}
-		catch (...) { // operand variable 
+			stod(word);
+		}catch (...) { // operand variable 
 			if (!(word.size() < 3 &&
 				((word[0] >= 'a' && word[0] <= 'z')
 					|| (word[0] >= 'A' && word[0] <= 'Z'))))
-				throw -1; // err	wrong name 
+				throw std::string("Wrong name"); // err	wrong name 
 		}
 		pf += word + " ";
 		last_is_func = false;
@@ -56,7 +59,7 @@ std::string TPostfix::ToPostfix(){
 
 double TPostfix::Calculate(){// Ввод переменных, вычисление по постфиксной форме
 	TStack<double> st; std::map<std::string, double> var;
-	std::string word; int i = 0; double tmp;
+	std::string word; int i = 0; double tmp; std::string s;
 
 	if (postfix == "")
 		return 0;
@@ -99,15 +102,16 @@ double TPostfix::Calculate(){// Ввод переменных, вычислен�
 		default:
 			try {	// number
 				st.push(stod(word));
-			}
-			catch (...) { // variable 
+			}catch (...) { // variable 
 				if (var.find(word) == var.end()) { // new var
-					std::cout << "Введите значение ( 1.4 ): " << word << " = ";
-					std::cin >> tmp;
-					var[word] = tmp;
-					st.push(tmp);
-				}
-				else
+					std::cout << "Enter the value of: " << word << " = ";
+					std::cin >> s;
+					try { 
+						st.push(var[word] = stod(s));
+					}catch (...) {
+						throw std::string("Wrong value");
+					}
+				}else
 					st.push(var[word]);
 			}
 		}
