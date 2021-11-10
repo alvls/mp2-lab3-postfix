@@ -107,7 +107,10 @@ void TPostfix::ChangeInfixToPostfix() {
 					}
 					top_of_stack = st.Get();
 					top_of_stack_priority = DetermineOperation(v_operations, v_priority, top_of_stack);
-				}						
+				}	
+				if (top_of_stack_priority < infix_i_priority) {
+					st.Put(top_of_stack);
+				}
 				if (top_of_stack_priority == 0) {
 					st.Put(top_of_stack);
 				}

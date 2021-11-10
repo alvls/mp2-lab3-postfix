@@ -1,0 +1,4 @@
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Сысоев\gtest\Debug\gtest.lib
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Сысоев\gtest\Debug\gtest.pdb
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\gtest\Debug\gtest.lib
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\gtest\Debug\gtest.pdb

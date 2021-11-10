@@ -1,0 +1,10 @@
+﻿  postfix.cpp
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\stack.h(41): warning C5037: "TStack<ValType>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(9,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(24,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(72,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(134,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(143,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(208,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\base\postfix.cpp(139): warning C4715: TPostfix::DetermineOperation: значение возвращается не при всех путях выполнения
+  base.vcxproj -> D:\Yunin D.D. AuSD\mp2-lab3-postfix\Юнин Даниил\Debug\base.exe
