@@ -111,8 +111,9 @@ TStack<T>& TStack<T>::operator=(const TStack& object) {
   if (this == &object)
     return *this;
   size = object.size;
+  T* ptr = new T[size];
   delete[] pMem;
-  pMem = new T[size];
+  pMem = ptr;
   std::copy (object.pMem, object.pMem + object.size, pMem);
   return *this;
 }
