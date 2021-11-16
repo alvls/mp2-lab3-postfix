@@ -140,6 +140,7 @@ void TPostfix::ToPostfix()
 	string fake_string = emptystring;
 	int j;
 	TStack<string> inverted_stack;
+	TStack<string> operations_before_bracket;
 	for (int i=0;i<infix.size();i++)
 	{
 		c = infix[i];
@@ -151,18 +152,39 @@ sw:		switch (c)
 		case ')':
 			while (operation_stack.top_of_stack() != "(")
 				inverted_stack.put(operation_stack.get());
+			operation_stack.get();
 			while (!inverted_stack.is_empty())
-				expression.push_back(inverted_stack.get());
+				if (inverted_stack.getsize() > 1)
+				{
+					if (is_current_bigger_or_eq(inverted_stack.top_of_stack(), inverted_stack[inverted_stack.getsize() - 2]))
+						expression.push_back(inverted_stack.get());
+					else
+					{
+						string tmp_stack_elem = inverted_stack.get();
+						expression.push_back(inverted_stack.get());
+						inverted_stack.put(tmp_stack_elem);
+					}
+				}
+				else
+					expression.push_back(inverted_stack.get());
+			if (!operations_before_bracket.is_empty())
+				operation_stack.put(operations_before_bracket.get());
 			break;
 		case '+':case '-':case'*':case'/': case '^':
 			fake_string = string(1, c);
-			if (!operation_stack.is_empty())
+			j = i + 1;
+			if (infix[j] == '(')
+				operations_before_bracket.put(fake_string);
+			else
 			{
-				top = operation_stack.top_of_stack();
-				if (is_current_bigger_or_eq(top, fake_string))
-					expression.push_back(operation_stack.get());
+				if (!operation_stack.is_empty())
+				{
+					top = operation_stack.top_of_stack();
+					if (is_current_bigger_or_eq(top, fake_string))
+						expression.push_back(operation_stack.get());
+				}
+				operation_stack.put(fake_string);
 			}
-			operation_stack.put(fake_string);
 			break;
 		default:
 			while (c != '+' && c != '-' && c != '*' && c != '/' && c != '^' && c != ')' && c != '('&&i<infix.size())
@@ -181,7 +203,7 @@ sw:		switch (c)
 				else
 					break;
 			expression.push_back(operand);
-			operand = emptystring;
+			operand.clear();
 			if (i < infix.size())
 				goto sw;
 			else
@@ -213,6 +235,7 @@ sw:		switch (c)
 	for (int i = 0; i < expression.size(); i++)
 	{
 		postfix += expression[i];
+		postfix += ' ';
 	}
 }
 vector<double> TPostfix::GetValues()
@@ -275,9 +298,6 @@ double TPostfix::Calculate()
 	double first_operand = 13.3, second_operand = 0;
 	typedef double(*change)(double, double);
 	change funk[max] = { addition, subtraction, multiplication, division, exponentation };
-	//TStack<double> operands; Нихатю со стеком, он злюка
-
-	//вектор - сила!
 	vector<double> variables;//////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	for (int i = 0; i < expression.size(); i++)
