@@ -47,8 +47,6 @@ public:
             {
                 left_bracket++;
                 i++;
-                if (right_bracket != left_bracket)
-                    throw wrong::brackets_quantity;
                 if (i == copy.size())
                     throw wrong::brackets_quantity;
                 for (int j = 0; j < size_of_op; j++)
@@ -57,7 +55,11 @@ public:
             }
             else
                 if (copy[i] == ')')
+                {
                     right_bracket++;
+                    if (right_bracket != left_bracket)
+                        throw wrong::brackets_quantity;
+                }
                 else
                 {
                     int j = 0;
