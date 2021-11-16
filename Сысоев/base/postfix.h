@@ -72,9 +72,6 @@ public:
                 }
         if (left_bracket != right_bracket)
         {
-            /*cout << left_bracket << "\n";
-            cout << right_bracket << "\n";
-            cout << "copy = " << copy << "\n";*/
             throw wrong::brackets_quantity;
         }
         infix = copy;

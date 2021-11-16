@@ -15,7 +15,6 @@ class TStack
 protected:
     T* pMem;
     int size;
-    void del();
     TStack& operator=(const TStack& stack);
 public:
     TStack(int _size = 0);
@@ -39,7 +38,7 @@ TStack<T>::TStack(int _size)
     if (_size > MaxStackSize)
         throw ans::too_large;
     size = _size;
-    pMem = new T[size];
+    pMem = new T[MaxStackSize];
 }
 template<class T> 
 TStack<T>::TStack(TStack& stack) :size(stack.size)
@@ -50,34 +49,14 @@ TStack<T>::TStack(TStack& stack) :size(stack.size)
 template<class T>
 TStack<T>::~TStack()
 {
-    if (!is_empty())
+    //if (!is_empty())
         delete[] pMem;
-}
-template<class T> 
-void TStack<T>::del()
-{
-    size--;
-    if (size > 0)
-    {
-        T* tmp_p = new T[size];
-        std::copy(pMem, pMem + size, tmp_p);
-        delete[] pMem;
-        pMem = tmp_p;
-    }
-    else
-    {
-        delete[] pMem;
-    }
 }
 template<class T> 
 void TStack<T>::put(const T& obj)
 {
     if (is_full())
         throw ans::too_large;
-    int tmp_size = size + 1;
-    T* tmp_p = new T[tmp_size];
-    std::copy(pMem, pMem + size, tmp_p);
-    pMem = tmp_p;
     pMem[size] = obj;
     size++;
 }
@@ -87,7 +66,7 @@ T TStack<T>::get()
     if (is_empty())
         throw ans::empty;
     T tmp = top_of_stack();
-    del();
+    size--;
     return tmp;
 }
 template <class T> 
