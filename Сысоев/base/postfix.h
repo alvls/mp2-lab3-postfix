@@ -43,10 +43,12 @@ public:
             if (copy[copy.size() - 1] == operations[i])
                 throw wrong::operation_placement;
         for (int i = 0; i < copy.size(); i++)
-            if (copy[i] == '(')
+            if (copy[i] == '(' || copy[i] == 40)
             {
                 left_bracket++;
                 i++;
+                if (right_bracket != left_bracket)
+                    throw wrong::brackets_quantity;
                 if (i == copy.size())
                     throw wrong::brackets_quantity;
                 for (int j = 0; j < size_of_op; j++)

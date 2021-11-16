@@ -15,10 +15,10 @@ class TStack
 protected:
     T* pMem;
     int size;
-    TStack& operator=(const TStack& stack);
 public:
+    TStack& operator=(const TStack& stack);
     TStack(int _size = 0);
-    TStack(TStack& stack); //:size(stack.size);
+    TStack(TStack& stack);
     ~TStack();
     int getsize() { return size; }
     void put(const T& obj);
@@ -29,7 +29,14 @@ public:
     const T& operator[](int pos) const;
 };
 
-
+template<class T>
+TStack<T>& TStack<T>::operator=(const TStack& stack)
+{
+    size = stack.size;
+    for (int i = 0; i < size; i++)
+        pMem[i] = stack[i];
+    return *this;
+}
 template<class T> 
 TStack<T>::TStack(int _size)
 {
