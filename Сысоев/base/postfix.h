@@ -43,7 +43,8 @@ public:
             if (copy[copy.size() - 1] == operations[i])
                 throw wrong::operation_placement;
         for (int i = 0; i < copy.size(); i++)
-            if (copy[i] == '(' || copy[i] == 40)
+        {
+            if (copy[i] == '(')
             {
                 left_bracket++;
                 i++;
@@ -55,25 +56,24 @@ public:
             }
             else
                 if (copy[i] == ')')
-                {
                     right_bracket++;
-                    if (right_bracket != left_bracket)
-                        throw wrong::brackets_quantity;
-                }
                 else
                 {
                     int j = 0;
                     for (; j < size_of_op; j++)
                         if (copy[i] == operations[j])
                             break;
-                    if (j<size_of_op)
+                    if (j < size_of_op)
                     {
                         i++;
                         for (int j = 0; j < size_of_op; j++)
                             if (copy[i] == operations[j])
                                 throw wrong::operation_placement;
+                        if (copy[i] == '(')
+                            i--;
                     }
                 }
+        }
         if (left_bracket != right_bracket)
         {
             throw wrong::brackets_quantity;
