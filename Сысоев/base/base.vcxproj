@@ -82,12 +82,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="postfix.cpp" />
-    <ClCompile Include="sample_postfix.cpp" />
+    <ClCompile Include="Cluster.cpp" />
+    <ClCompile Include="emulation.cpp" />
+    <ClCompile Include="sample_cluster.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="postfix.h" />
-    <ClInclude Include="stack.h" />
+    <ClInclude Include="all.h" />
+    <ClInclude Include="Cluster.h" />
+    <ClInclude Include="emulation.h" />
+    <ClInclude Include="task.h" />
+    <ClInclude Include="queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,6 @@
+﻿  cluster.cpp
+  sample_cluster.cpp
+C:\Users\Андрей\mp2-lab4-cluster\source\base\sample_cluster.cpp(36,24): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\Андрей\mp2-lab4-cluster\source\base\sample_cluster.cpp(83,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  base.vcxproj -> C:\Users\Андрей\mp2-lab4-cluster\source\Debug\base.exe

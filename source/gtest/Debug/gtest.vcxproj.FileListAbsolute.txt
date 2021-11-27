@@ -1,0 +1,4 @@
+C:\Users\Андрей\mp2-lab3-postfix\Сысоев\gtest\Debug\gtest.lib
+C:\Users\Андрей\mp2-lab3-postfix\Сысоев\gtest\Debug\gtest.pdb
+C:\Users\Андрей\mp2-lab4-cluster\source\gtest\Debug\gtest.lib
+C:\Users\Андрей\mp2-lab4-cluster\source\gtest\Debug\gtest.pdb
