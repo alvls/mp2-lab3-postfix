@@ -20,7 +20,7 @@ pair<vector<int>,double> emulation(bool predetermined,double _q, int _max_cycle)
 	{
 		cout << "¬ведите число от нул€ до единицы. ќно будет обратно веро€тности по€влени€ нового задани€. ƒробную часть отдел€йте точкой\n";
 		cin >> q;
-		cout << "¬ведите номер последнего цикла\n";
+		cout << "¬ведите количество тактовых циклов\n";
 		cin >> max_cycle;
 	}
 	Tqueue<Task> queue;//очередь заданий
