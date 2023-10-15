@@ -1,6 +1,14 @@
 ﻿#include "postfix.h"
 
 
+TPostfix::TPostfix() : isFormula(0) {}
+
+TPostfix::TPostfix(string str) : infix(str), postfix(ToPostfix(infix)) {}
+
+string TPostfix::GetInfix() const { return infix; }
+
+string TPostfix::GetPostfix() const { return postfix; }
+
 inline short TPostfix::priority(const char ch)
 {
 	switch (ch)
@@ -79,7 +87,7 @@ string TPostfix::ToPostfix(string s)
 			}
 			else
 			{
-				while (priority(ch) <= priority(stack.getTop()) && stack.top > 0) 
+				while (stack.top > 0 && priority(ch) <= priority(stack.getTop()))
 				{
 					out += stack.pop();
 					out += ' ';

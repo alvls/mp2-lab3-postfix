@@ -18,12 +18,12 @@ class TPostfix
   inline bool isOperator(const char c);  // является ли оператором
   int countOperators(string s);          // количество операторов в строке
 public:
-  TPostfix() : isFormula(0) {}                                    // конструктор по умолчанию 
-  TPostfix(string str) : infix(str), postfix(ToPostfix(infix)) {} // конструктор-инициализатор
-  string GetInfix() const { return infix; }                       // входная строка
-  string GetPostfix() const { return postfix; }                   // постфиксная форма
-  string ToPostfix(string s);                                     // преобразование в постфиксную форму
-  double Calculate();                                             // вычисление по постфиксной форме
+  TPostfix();                            // конструктор по умолчанию 
+  TPostfix(string str);                  // конструктор-инициализатор
+  string GetInfix() const;               // входная строка
+  string GetPostfix() const;             // постфиксная форма
+  string ToPostfix(string s);            // преобразование в постфиксную форму
+  double Calculate();                    // вычисление по постфиксной форме
 };
 
 #endif

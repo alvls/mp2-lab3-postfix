@@ -35,7 +35,7 @@ TEST(TStack, can_push_element)
 	ASSERT_NO_THROW(st.push(34));
 }
 
-TEST(TStack, cant_push_element_with_full_stack)
+TEST(TStack, cant_push_element_to_full_stack)
 {
 	TStack<int> st(1);
 	st.push(33);
@@ -49,13 +49,13 @@ TEST(TStack, can_pop_element)
 	ASSERT_NO_THROW(st.pop());
 }
 
-TEST(TStack, cant_pop_element_with_empty_stack)
+TEST(TStack, cant_pop_element_from_empty_stack)
 {
 	TStack<int> st(1);
 	ASSERT_ANY_THROW(st.pop());
 }
 
-TEST(TStack, cant_get_top_element_with_empty_stack)
+TEST(TStack, cant_get_top_element_from_empty_stack)
 {
 	TStack<int> st(1);
 	ASSERT_ANY_THROW(st.getTop());
@@ -75,3 +75,21 @@ TEST(TStack, operator_pop_element)
 	EXPECT_EQ(st.pop(), 33);
 }
 
+TEST(TStack, double_operator_pop_and_push)
+{
+	TStack<int> st(3);
+	st.push(33);
+	st.push(32);
+	st.pop();
+	EXPECT_EQ(st.pop(), 33);
+}
+
+TEST(TStack, double_operator_pop_create_stack_empry)
+{
+	TStack<int> st(3);
+	st.push(33);
+	st.push(32);
+	st.pop();
+	st.pop();
+	ASSERT_ANY_THROW(st.getTop());
+}
