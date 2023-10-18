@@ -1,13 +1,13 @@
 ﻿#include "postfix.h"
 
 
-TPostfix::TPostfix() : isFormula(0) {}
+TPostfix::TPostfix() :infix("1+2-3*5"), isFormula(0) {}
 
-TPostfix::TPostfix(string str) : infix(str), postfix(ToPostfix(infix)) {}
+TPostfix::TPostfix(string str) : infix(str), postfix(this->toPostfix()) {}
 
-string TPostfix::GetInfix() const { return infix; }
+string TPostfix::getInfix() const { return infix; }
 
-string TPostfix::GetPostfix() const { return postfix; }
+string TPostfix::getPostfix() const { return postfix; }
 
 inline short TPostfix::priority(const char ch)
 {
@@ -16,6 +16,7 @@ inline short TPostfix::priority(const char ch)
 	case '(': return 1;
 	case '+': case '-': return 2;
 	case '*': case '/': return 3;
+	case '^': return 4;
 	default: return 0;
 	}
 }
@@ -32,10 +33,10 @@ inline bool TPostfix::isVariable(const char ch)
 
 bool TPostfix::isOperator(const char c)
 {
-	return (c == '+' || c == '-' || c == '*' || c == '/');
+	return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
 }
 
-int TPostfix::countOperators(string s)
+unsigned int TPostfix::countOperators(string s)
 {
 	int res = 0;
 	for (char& i : s)
@@ -43,15 +44,17 @@ int TPostfix::countOperators(string s)
 	return res;
 }
 
-string TPostfix::ToPostfix(string s)
+string TPostfix::toPostfix()
 {
-	unsigned int id = 0, openBraackets = 0;
+	unsigned int id = 0, openBraackets = 0, size = countOperators(infix) * 2;
 	char ch;
-	TStack<char> stack(countOperators(s) * 2); //max value of operands and open brackets  ((1+3)-2)
+	if (size == 0)
+		throw invalid_argument("invalid expression");
+	TStack<char> stack(size); //max value of operators and open brackets  ((1+3)-2)
 	string out = "";
-	while (s[id] != '\0')
+	while (infix[id] != '\0')
 	{
-		ch = s[id];
+		ch = infix[id];
 		if (ch == ' ')
 		{
 			id++;
@@ -78,7 +81,7 @@ string TPostfix::ToPostfix(string s)
 			stack.push(ch);
 			id++;
 			break;
-		case'+':case'-':case'*':case'/':
+		case'+':case'-':case'*':case'/':case'^':
 			if (stack.top == 0 || priority(ch) > priority(stack.getTop()))
 			{
 				stack.push(ch);
@@ -118,7 +121,7 @@ string TPostfix::ToPostfix(string s)
 	return out;
 }
 
-double TPostfix::Calculate()
+double TPostfix::calculate()
 {
 	unsigned int id = 0;
 	TStack<string> stack(countOperators(postfix) + 1); // max value of operands
@@ -157,6 +160,10 @@ double TPostfix::Calculate()
 			break;
 		case'/':
 			stack.push(to_string(1 / stod(stack.pop()) * stod(stack.pop())));
+			break;
+		case'^':
+			double degree = stod(stack.pop()), foot = stod(stack.pop());
+			stack.push(to_string(pow(foot, degree)));
 			break;
 		}
 		id++;

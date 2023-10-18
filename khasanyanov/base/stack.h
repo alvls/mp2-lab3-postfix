@@ -7,47 +7,61 @@ const int MaxStackSize = 100;
 template <class T>
 class TStack
 {
-  T *pMem;     // стек
-  size_t size; // размер стека
-  size_t top;     // вершина стека
+  T *pMem;                // стек
+  size_t size;            // размер стека
+  size_t top;             // вершина стека
 public:
-    friend class TPostfix;
-  TStack(size_t _size) // конструктор-инициализатор
-  {
+  friend class TPostfix;
+  TStack(size_t _size);   // конструктор-инициализатор
+  ~TStack();              // деструктор
+  size_t getSize() const; // получить размер стека
+  T getTop() const;       // получить верхний элемент
+  void push(T val);       // поместить в стек
+  T pop();                // извлечь из стека
+  
+};
+
+template <class T>
+TStack<T>::~TStack()
+{
+    delete[] pMem;
+}
+
+template <class T>
+TStack<T>::TStack(size_t _size)
+{
     size = _size;
     top = 0;
     if ((size < 1) || (size > MaxStackSize))
         throw invalid_argument("invalid size");
     pMem = new T[size]();
-  }
+}
 
-  ~TStack() // деструктор
-  {
-    delete [] pMem;
-  }
+template <class T>
+size_t TStack<T>:: getSize() const { return size; }
 
-  size_t getSize() const { return size; } // получить размер стека
+template <class T>
+T TStack<T>:: getTop() const
+{
+    if (top <= 0)
+        throw exception("stack is empty");
+    return(pMem[top - 1]);
+}
 
-  T getTop() const // получить верхний элемент
-  {
-      if (top <= 0)
-          throw exception("stack is empty");
-      return(pMem[top - 1]);
-  }
+template <class T>
+void TStack<T>::push(T val)
+{
+    if (top >= size)
+        throw exception("stack is full");
+    pMem[top++] = val;
+}
 
-  void push(T val) // поместить в стек
-  {
-      if (top >= size)
-          throw exception("stack is full");
-      pMem[top++] = val;
-  }
-
-  T pop() // извлечь из стека
-  {
-      if (top <= 0)
-          throw exception("stack is empty");
-      return pMem[--top];
-  }
-};
+template <class T>
+T TStack<T>::pop()
+{
+    if (top <= 0)
+        throw exception("stack is empty");
+    return pMem[--top];
+}
 
 #endif

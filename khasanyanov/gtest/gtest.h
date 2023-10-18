@@ -10185,7 +10185,7 @@ class RangeGenerator : public ParamGeneratorInterface<T> {
  public:
   RangeGenerator(T begin, T end, IncrementT step)
       : begin_(begin), end_(end),
-        step_(step), end_index_(CalculateEndIndex(begin, end, step)) {}
+        step_(step), end_index_(calculateEndIndex(begin, end, step)) {}
   virtual ~RangeGenerator() {}
 
   virtual ParamIteratorInterface<T>* Begin() const {
@@ -10240,7 +10240,7 @@ class RangeGenerator : public ParamGeneratorInterface<T> {
     const IncrementT step_;
   };  // class RangeGenerator::Iterator
 
-  static int CalculateEndIndex(const T& begin,
+  static int calculateEndIndex(const T& begin,
                                const T& end,
                                const IncrementT& step) {
     int end_index = 0;
