@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{a206736c-b17f-4d16-8fff-928833d03e80}</ProjectGuid>
-    <RootNamespace>Project1</RootNamespace>
+    <RootNamespace>sample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>run_sample_postfix</ProjectName>
   </PropertyGroup>
