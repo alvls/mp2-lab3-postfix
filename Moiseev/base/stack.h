@@ -22,7 +22,7 @@ public:
 
     T Pop() {
 
-        if (top < 0) { throw exception("Stack is empty"); }
+        if (top < 0) { throw logic_error("Stack is empty"); }
 
         return pMem[top--];
     }
@@ -31,11 +31,11 @@ public:
 
         if (top == memSize - 1)
         {
-            T* tmpMem = new T[memSize * 2];
-            copy(pMem, pMem + memSize, tmpMem);
-            delete[] pMem;
-            pMem = tmpMem;
             memSize *= 2;
+            T* newMem = new T[memSize];
+            copy(pMem, pMem + top + 1, newMem);
+            delete[] pMem;
+            pMem = newMem;
         }
 
         pMem[++top] = val;

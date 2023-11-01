@@ -2,11 +2,9 @@
 #include "stack.h"
 
 
-TPostfix::TPostfix(string infx) :infix(infx) {
+map<char, int>TPostfix::priority = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
 
-	priority = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
-	ToPostfix();
-}
+TPostfix::TPostfix(string infx) :infix(infx) { ToPostfix(); }
 
 string TPostfix::GetInfix() const { return infix; }
 
@@ -14,9 +12,10 @@ string TPostfix::GetPostfix() const { return postfix; }
 
 vector<char> TPostfix::GetOperands() const {
 
-	vector<char> op;
-	for (const auto& item : operands) { op.push_back(item.first); }
+	size_t i = 0;
+	vector<char> op(operands.size());
 
+	for (const auto& item : operands) { op[i++] = item.first; }
 	return op;
 }
 
@@ -57,6 +56,7 @@ void TPostfix::ToPostfix() {
 		default:
 			operands.insert({ item, 0.0 });
 			postfix += item;
+			break;
 		}
 	}
 	while (!st.IsEmpty()) { stackItem = st.Pop(); postfix += stackItem; }
@@ -102,6 +102,7 @@ double TPostfix::Calculate(const map<char, double>& values) {
 
 		default:
 			st.Push(operands[lexem]);
+			break;
 		}
 	}
 	return st.Pop();

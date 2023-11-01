@@ -15,8 +15,8 @@ class TPostfix {
 	string infix;
 	string postfix;
 	vector<char> lexems;
-	map<char, int> priority;
 	map<char, double> operands;
+	static map<char, int> priority;
 
 	void Parse();
 	void ToPostfix();

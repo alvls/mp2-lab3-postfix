@@ -82,7 +82,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="postfix.cpp" />
-    <ClCompile Include="sample_postfix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="postfix.h" />
