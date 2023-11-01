@@ -15,8 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\base\sample_postfix.cpp">
-      <Filter>Файлы ресурсов</Filter>
+    <ClCompile Include="sample_postfix.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
