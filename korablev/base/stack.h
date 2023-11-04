@@ -43,23 +43,6 @@ public:
 		pMem[++top] = val;
 	}
 
-	TStack(const TStack& other) : top(other.top), memSize(other.memSize), pMem(new T[other.memSize])
-	{
-		copy(other.pMem, other.pMem + top + 1, pMem);
-	}
-	TStack& operator=(TStack other)
-	{
-		swap(*this, other);
-		return *this;
-	}
-	friend void swap(TStack& first, TStack& second)
-	{
-		swap(first.top, second.top);
-		swap(first.memSize, second.memSize);
-		swap(first.pMem, second.pMem);
-	}
-
-
 	~TStack() { delete[] pMem; }
 
 	size_t getSize() const { return top + 1; }
