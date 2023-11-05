@@ -37,6 +37,7 @@ class TPostfix
 		Lexem(string s, Type t) : data(s), type(t) {}
 		Lexem (const Lexem&) {}
 	};*/
+
 	map<string, function<double(double, double)> > binarOperations = {
 	{"+", [](double a, double b) {return a + b; }},
 	{"-", [](double a, double b) {return a - b; }},
