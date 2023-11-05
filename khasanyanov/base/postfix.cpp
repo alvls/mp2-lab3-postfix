@@ -16,7 +16,7 @@ string TPostfix::getPostfix() const { return postfix; }
 
 inline bool TPostfix::isOperator(const string s)
 {
-	map<string, unsigned int> ::iterator end = priority.end();
+	auto& end = priority.end();
 	return (priority.find(s) != end || s == ")");
 }
 
@@ -203,7 +203,7 @@ void TPostfix::split()
 				lexems.push_back(elem);
 				elem = "";
 			}
-			map<string, unsigned int> :: iterator it = priority.find(&cur);
+			auto& it = priority.find(&cur);
 			if (isOperator(it->first))
 				lexems.push_back(to_string(cur));
 		}
@@ -217,7 +217,7 @@ void TPostfix::toPostfix()
 	unsigned int id = 0, stackSize = (operators + 1) * 2, sz = lexems.size(); 
 	TStack<string> stack(stackSize); // max value of operators and brackets
 	vector<string> tmp;
-	map<string, unsigned int> ::iterator end = priority.end();
+	auto& end = priority.end();
 	for (auto& l : lexems)
 	{
 		if (!(isOperator(l)))
@@ -274,8 +274,8 @@ double TPostfix::calculate()
 {
 	double a, b;
 	TStack<double> stack(operators + 1); // max value of operands
-	map<string, double> ::iterator end = operands.end();
-	map<string, function<double(double)> >::iterator _end = unarOperations.end();
+	auto& end = operands.end();
+	auto& _end = unarOperations.end();
 	for (auto& l : lexems)
 	{
 		if (operands.find(l) == end)
