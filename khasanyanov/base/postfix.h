@@ -5,16 +5,18 @@
 #include <stdexcept>
 #include "stack.h"
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <vector>
 #include <map>
 #include <algorithm>
 #include <iterator>
+#include <cctype>
+#include <functional>
 using namespace std;
 
 class TPostfix
 {
-	class Lexem
+	/*class Lexem
 	{
 		
 		enum class Type
@@ -34,16 +36,28 @@ class TPostfix
 		Lexem() {}
 		Lexem(string s, Type t) : data(s), type(t) {}
 		Lexem (const Lexem&) {}
+	};*/
+	map<string, function<double(double, double)> > binarOperations = {
+	{"+", [](double a, double b) {return a + b; }},
+	{"-", [](double a, double b) {return a - b; }},
+	{"/", [](double a, double b) {return a / b; }},
+	{"*", [](double a, double b) {return a * b; }},
+	{"^", [](double a, double b) {return pow(a,b); }},
+	};
+	map<string, function<double(double)>> unarOperations = {
+	{"~", [](double a) {return -1 * a; }},
+	{"sin", [](double a) {return sin(a); }},
+	{"cos", [](double a) {return cos(a); }},
+	{"exp", [](double a) {return exp(a); }},
+	{"tg", [](double a) {return sin(a) / cos(a); }},
 	};
 	string infix = "";                          // входная строка
-	string postfix = "";                   // постфиксная форма
+	string postfix = "";                  // постфиксная форма
+	unsigned int operators = 0;
 	map<string, unsigned int> priority;
-	map<string, double> values;
-	vector<Lexem> lexems;
-	inline bool isDigit(const char ch);    // является ли числом
-	inline bool isVariable(const char ch); // является ли переменной
-	inline bool isOperator(const char ch); // является ли оператором
-	inline bool isFunction(const string s);
+	map<string, double> operands;
+	vector<string> lexems;
+	inline bool isOperator(const string s); // является ли оператором
 	unsigned int countOperators(string s); // количество операторов в строке
 	void split();
 	

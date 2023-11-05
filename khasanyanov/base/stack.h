@@ -14,7 +14,7 @@ public:
   friend class TPostfix;
   TStack(size_t _size);   // конструктор-инициализатор
   ~TStack();              // деструктор
-  void empty();           // нет элементов
+  inline bool empty();    // нет элементов
   size_t getSize() const; // получить размер стека
   T getTop() const;       // получить верхний элемент
   void push(T val);       // поместить в стек
@@ -39,7 +39,7 @@ TStack<T>::TStack(size_t _size)
 }
 
 template <class T>
-void TStack<T>::empty() { return top == 0; }
+inline bool TStack<T>::empty() { return top == 0; }
 
 template <class T>
 size_t TStack<T>:: getSize() const { return size; }
