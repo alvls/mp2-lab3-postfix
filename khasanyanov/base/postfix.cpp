@@ -76,8 +76,7 @@ void TPostfix::toPostfix()
 {
 	TStack<string> stack(lexems.size()); 
 	vector<string> tmp;
-	string prev = "";
-	unsigned int  brackets = 0;
+	unsigned int  brackets = 0, i = 0;
 	for (auto& l : lexems)
 	{
 		if (!isOperator(l))
@@ -111,8 +110,8 @@ void TPostfix::toPostfix()
 				stack.pop();
 				break;
 			case '-':
-				if (tmp.empty() || (!stack.empty() && stack.getTop() == "(" && stack.count("(") != stack.getSize() && prev != ")")) // bad but necessary
-					l = '~';
+				if (i == 0 || lexems[i-1] == "(")
+					l = "~";
 			default:
 				while(!stack.empty() && priority[l] <= priority[stack.getTop()])
 				{
@@ -123,7 +122,7 @@ void TPostfix::toPostfix()
 				stack.push(l);
 				break;
 			}
-			prev = l;
+			i++;
 		}
 	}
 	if (brackets % 2 != 0)
