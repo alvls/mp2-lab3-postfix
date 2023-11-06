@@ -95,6 +95,5 @@ TEST(TPostfix, calculate_test2)
 TEST(TPostfix, calculate_test3)
 {
 	TPostfix p("(((54/65)-543)+900)/3");
-	cout << p.calculate(p.getOperands());
-	EXPECT_EQ((((54 / 65) - 543) + 900) / 3, p.calculate(p.getOperands()));
+	EXPECT_EQ(p.calculate(p.getOperands()), (((54. / 65) - 543) + 900) / 3.);
 }

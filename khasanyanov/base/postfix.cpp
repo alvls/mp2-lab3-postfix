@@ -137,8 +137,6 @@ void TPostfix::toPostfix()
 	lexems = tmp;
 }
 
-
-
 double TPostfix::calculate(map<string, double> values)
 {
 	double a, b;
