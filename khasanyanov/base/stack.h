@@ -19,6 +19,7 @@ public:
   T getTop() const;       // получить верхний элемент
   void push(T val);       // поместить в стек
   T pop();                // извлечь из стека
+  size_t count(const T& t);
   
 };
 
@@ -42,7 +43,7 @@ template <class T>
 inline bool TStack<T>::empty() { return top == 0; }
 
 template <class T>
-size_t TStack<T>:: getSize() const { return size; }
+size_t TStack<T>:: getSize() const { return top; }
 
 template <class T>
 T TStack<T>:: getTop() const
@@ -68,4 +69,13 @@ T TStack<T>::pop()
     return pMem[--top];
 }
 
+template <class T>
+size_t TStack<T> ::count(const T& t)
+{
+    size_t res = 0;
+    for (size_t i = 0; i < size; i++)
+        if (pMem[i] == t)
+            res++;
+    return res;
+}
 #endif

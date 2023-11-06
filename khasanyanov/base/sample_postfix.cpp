@@ -15,7 +15,7 @@ int main()
   cout << "Введите арифметическое выражение: ";
   getline(cin, expression);
   try {
-	  TPostfix p(expression);
+	  TPostfix {expression};
   }
   catch (invalid_argument) {
 	  SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_RED | 0);
@@ -35,7 +35,7 @@ int main()
 	  }
   }
   cout << "Арифметическое выражение: " << postfix.getInfix() << endl;
-  cout << "Постфиксная форма: " << postfix.getPostfix() << endl;
+  cout << "Постфиксная форма:" << postfix.getPostfix() << endl;
   cout << "Рассчитанное значение: " << postfix.calculate(m) << endl;
   return 0;
 }

@@ -1,6 +1,8 @@
 ﻿#ifndef __POSTFIX_H__
 #define __POSTFIX_H__
 
+#define PI 3.14159265358979323846
+
 #include <string>
 #include <stdexcept>
 #include "stack.h"

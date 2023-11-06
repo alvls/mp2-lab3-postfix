@@ -111,7 +111,7 @@ void TPostfix::toPostfix()
 				stack.pop();
 				break;
 			case '-':
-				if (tmp.empty() || ((!stack.empty() && stack.getTop() == "(") && prev != ")")) // bad but necessary
+				if (tmp.empty() || (!stack.empty() && stack.getTop() == "(" && stack.count("(") != stack.getSize() && prev != ")")) // bad but necessary
 					l = '~';
 			default:
 				while(!stack.empty() && priority[l] <= priority[stack.getTop()])
