@@ -14,6 +14,19 @@ class TStack {
 public:
     TStack() : top(-1), memSize(1), pMem(new T[memSize]) {}
 
+    TStack(const TStack& other) : top(other.top), memSize(other.memSize), pMem(new T[memSize]) {
+
+        copy(other.pMem, other.pMem + memSize, pMem);
+    }
+
+    TStack& operator=(TStack other) {
+
+        swap(top, other.top);
+        swap(memSize, other.memSize);
+        swap(pMem, other.pMem);
+        return *this;
+    }
+
     ~TStack() { delete[] pMem; }
 
     size_t getSize() const { return top + 1; }

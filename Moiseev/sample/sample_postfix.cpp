@@ -24,9 +24,18 @@ int main() {
 
 	for (const auto& op : operands)
 	{
-		cout << "Введите значение '" << op << "': ";
-		cin >> val;
-		values[op] = val;
+		try
+		{
+			string str(1, op);
+			double tmp = stod(str);
+			values[op] = tmp;
+		}
+		catch (const std::exception&)
+		{
+			cout << "Введите значение '" << op << "': ";
+			cin >> val;
+			values[op] = val;
+		}
 	}
 	cout << "Результат: " << expr.Calculate(values) << endl;
 
