@@ -6,13 +6,36 @@ TPostfix::TPostfix() : infix("1+2-3*5") {}
 TPostfix::TPostfix(string str) : infix(str) 
 { 
 	operators = countOperators(infix);
-	priority = { {"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},{"~", 4}, {"^", 5}, {"sin", 6}, {"cos", 6}, {"exp", 6}, {"tg", 6}};
 	split(); toPostfix();
 }
 
 string TPostfix::getInfix() const { return infix; }
 
 string TPostfix::getPostfix() const { return postfix; }
+
+double factorial(size_t n) { return (n == 1 || n == 0) ? 1 : factorial(n - 1) * n; }
+
+map<string, double> TPostfix :: getOperands() const {return operands;}
+
+map<string, unsigned int> TPostfix::priority = { 
+	{"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},{"~", 4}, {"^", 5}, {"!", 5}, {"sin", 6}, {"cos", 6}, {"exp", 6}, {"tg", 6}};
+
+map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
+	{"+", [](double a, double b) {return a + b; }},
+	{"-", [](double a, double b) {return a - b; }},
+	{"/", [](double a, double b) {return a / b; }},
+	{"*", [](double a, double b) {return a * b; }},
+	{"^", [](double a, double b) {return pow(a,b); }},
+};
+
+map<string, function<double(double)>> TPostfix :: unaryOperations = {
+	{"~", [](double a) {return -a; }},
+	{"!", [](double a) {return factorial(size_t(a)); }},
+	{"sin", [](double a) {return sin(a); }},
+	{"cos", [](double a) {return cos(a); }},
+	{"exp", [](double a) {return exp(a); }},
+	{"tg", [](double a) {return sin(a) / cos(a); }},
+};
 
 inline bool TPostfix::isOperator(const string s)
 {
@@ -30,21 +53,19 @@ unsigned int TPostfix::countOperators(string s)
 
 void TPostfix::split()
 {
-	size_t len = infix.length();
 	string elem = "";
 	for (const char& cur : infix)
 	{
 		if (isalnum(cur))
 			elem += cur;
-		else
+		else if(isOperator(string{ cur }))
 		{
 			if (!elem.empty())
 			{
 				lexems.push_back(elem);
 				elem = "";
 			}
-			if (isOperator(string{cur}))
-				lexems.push_back(string{ cur });
+			lexems.push_back(string{ cur });
 		}
 	}
 	if (!elem.empty())
@@ -53,15 +74,21 @@ void TPostfix::split()
 
 void TPostfix::toPostfix()
 {
-	unsigned int id = 0, stackSize = (operators + 1) * 2, sz = lexems.size(); 
-	TStack<string> stack(stackSize); // max value of operators and brackets
+	TStack<string> stack(lexems.size()); 
 	vector<string> tmp;
-	auto& end = priority.end();
+	string prev = "";
+	unsigned int  brackets = 0;
 	for (auto& l : lexems)
 	{
 		if (!isOperator(l))
 		{
-			operands.emplace(l, stod(l));
+			try
+			{
+				operands.emplace(l, stod(l));
+			}
+			catch (...) {
+				operands.emplace(l, 0);
+			}
 			tmp.push_back(l);
 			postfix += (" " + l);
 		}
@@ -71,64 +98,68 @@ void TPostfix::toPostfix()
 			{
 			case'(':
 				stack.push(l);
+				brackets++;
 				break;
 			case')':
+				brackets++;
 				while (stack.getTop() != "(")
 				{
 					string t = stack.pop();
 					tmp.push_back(t);
-					postfix += t;
+					postfix += (t == "~" ? "-" : t);
 				}
 				stack.pop();
 				break;
-			/*case '-':
-				if ((isOperator(stack.getTop()) || stack.empty()) && stack.getTop() != ")")
-					l = '~';*/
+			case '-':
+				if (tmp.empty() || ((!stack.empty() && stack.getTop() == "(") && prev != ")")) // bad but necessary
+					l = '~';
 			default:
-				if (stack.empty() || priority[l] > priority[stack.getTop()])
-					stack.push(l);
-				else
+				while(!stack.empty() && priority[l] <= priority[stack.getTop()])
 				{
 					string t = stack.pop();
 					tmp.push_back(t);
-					t != "~" ? postfix += t : postfix += "-";
+					postfix += (t == "~" ? "-" : t);
 				}
+				stack.push(l);
 				break;
 			}
+			prev = l;
 		}
 	}
+	if (brackets % 2 != 0)
+		throw invalid_argument("syntax error");
 	while (!stack.empty())
 	{
 		string t = stack.pop();
 		tmp.push_back(t);
-		postfix += t;
+		postfix += (t == "~" ? "-" : t);
 	}
 	lexems = tmp;
 }
 
 
 
-double TPostfix::calculate()
+double TPostfix::calculate(map<string, double> values)
 {
 	double a, b;
-	TStack<double> stack(60); // max value of operands
-	auto& end = operands.end();
-	auto& _end = unarOperations.end();
+	TStack<double> stack(lexems.size()); 
+	auto& end = values.end();
+	auto& _end = unaryOperations.end();
 	for (auto& l : lexems)
 	{
-		if (operands.find(l) != end)
-			stack.push(operands[l]);
+		if (values.find(l) != end)
+			stack.push(values[l]);
 		else
 		{
-			if (unarOperations.find(l) != _end)
+			if (unaryOperations.find(l) != _end)
 			{
 				a = stack.pop();
-				stack.push(unarOperations[l](a));
+				stack.push(unaryOperations[l](a));
 			}
 			else
 			{
 				b = stack.pop(), a = stack.pop();
-				stack.push(binarOperations[l](a, b));
+				stack.push(binaryOperations[l](a, b));
 			}
 		}
 	}

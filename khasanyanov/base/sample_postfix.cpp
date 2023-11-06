@@ -10,13 +10,32 @@ int main()
   HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
   SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_GREEN | 0);
   string expression;
-  setlocale(LC_ALL, "Russian");
+  setlocale(LC_ALL, "ru");
   system("title Калькулятор Обратной Польской Записи");
   cout << "Введите арифметическое выражение: ";
-  cin >> expression;
+  getline(cin, expression);
+  try {
+	  TPostfix p(expression);
+  }
+  catch (invalid_argument) {
+	  SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_RED | 0);
+	  cout << "Неверное выражение" << endl;
+	  exit(0);
+  }
   TPostfix postfix(expression);
+  auto m = postfix.getOperands();
+  for (auto& op : m)
+  {
+	  if (isalpha(op.first[0]))
+	  {
+		  string val;
+		  cout << "Введите значение для " << op.first << ": ";
+		  cin >> val;
+		  op.second = stod(val);
+	  }
+  }
   cout << "Арифметическое выражение: " << postfix.getInfix() << endl;
   cout << "Постфиксная форма: " << postfix.getPostfix() << endl;
-  cout << "Рассчитанное значение: " << postfix.calculate() << endl;
+  cout << "Рассчитанное значение: " << postfix.calculate(m) << endl;
   return 0;
 }
