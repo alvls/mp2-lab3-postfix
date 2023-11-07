@@ -18,14 +18,15 @@ double factorial(size_t n) { return (n == 1 || n == 0) ? 1 : factorial(n - 1) * 
 map<string, double> TPostfix :: getOperands() const {return operands;}
 
 map<string, unsigned int> TPostfix::priority = { 
-	{"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},{"~", 4}, {"^", 5}, {"!", 5}, {"sin", 6}, {"cos", 6}, {"exp", 6}, {"tg", 6}};
+	{"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},{"~", 4}, {"^", 5}, {"!", 5}, {"sin", 6}, {"cos", 6}, 
+	{"exp", 6}, {"tg", 6}, {"abs", 6}, {"sqrt", 6}, {"ln", 6}, {"lg", 6}, {"inc", 6}, {"dec", 6}, {"ceil", 6}, {"floor", 6}};
 
 map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
 	{"+", [](double a, double b) {return a + b; }},
 	{"-", [](double a, double b) {return a - b; }},
 	{"/", [](double a, double b) {return a / b; }},
 	{"*", [](double a, double b) {return a * b; }},
-	{"^", [](double a, double b) {return pow(a,b); }},
+	{"^", [](double a, double b) {return pow(a,b); }}
 };
 
 map<string, function<double(double)>> TPostfix :: unaryOperations = {
@@ -35,6 +36,14 @@ map<string, function<double(double)>> TPostfix :: unaryOperations = {
 	{"cos", [](double a) {return cos(a); }},
 	{"exp", [](double a) {return exp(a); }},
 	{"tg", [](double a) {return sin(a) / cos(a); }},
+	{"abs", [](double a) {return a < 0 ? -a : a; }},
+	{"sqrt", [](double a) {return sqrt(a); }},
+	{"ln", [](double a) {return log(a); }},
+	{"lg", [](double a) {return log10(a); }},
+	{"inc", [](double a) {return ++a; }},
+	{"dec", [](double a) {return --a; }},
+	{"ceil", [](double a) {return ceil(a); }},
+	{"floor", [](double a) {return floor(a); }}
 };
 
 inline bool TPostfix::isOperator(const string s)
@@ -56,9 +65,9 @@ void TPostfix::split()
 	string elem = "";
 	for (const char& cur : infix)
 	{
-		if (isalnum(cur))
+		if (isalnum(cur) || cur == '.')
 			elem += cur;
-		else if(isOperator(string{ cur }))
+		else if (isOperator(string{ cur }))
 		{
 			if (!elem.empty())
 			{
@@ -67,6 +76,8 @@ void TPostfix::split()
 			}
 			lexems.push_back(string{ cur });
 		}
+		else if (cur != ' ')
+			throw invalid_argument("syntax error");
 	}
 	if (!elem.empty())
 		lexems.push_back(elem);
@@ -74,9 +85,10 @@ void TPostfix::split()
 
 void TPostfix::toPostfix()
 {
-	TStack<string> stack(lexems.size()); 
+	TStack<string> stack/*(lexems.size())*/; 
 	vector<string> tmp;
-	unsigned int  brackets = 0, i = 0;
+	string prev = "";
+	unsigned int  brackets = 0;
 	for (auto& l : lexems)
 	{
 		if (!isOperator(l))
@@ -110,7 +122,7 @@ void TPostfix::toPostfix()
 				stack.pop();
 				break;
 			case '-':
-				if (i == 0 || lexems[i-1] == "(")
+				if (prev == "" || prev == "(")
 					l = "~";
 			default:
 				while(!stack.empty() && priority[l] <= priority[stack.getTop()])
@@ -122,8 +134,9 @@ void TPostfix::toPostfix()
 				stack.push(l);
 				break;
 			}
-			i++;
+			
 		}
+		prev = l;
 	}
 	if (brackets % 2 != 0)
 		throw invalid_argument("syntax error");
@@ -141,22 +154,23 @@ double TPostfix::calculate(map<string, double> values)
 	double a, b;
 	TStack<double> stack(lexems.size()); 
 	auto& end = values.end();
-	auto& _end = unaryOperations.end();
+	auto& _end = binaryOperations.end();
 	for (auto& l : lexems)
 	{
 		if (values.find(l) != end)
 			stack.push(values[l]);
 		else
 		{
-			if (unaryOperations.find(l) != _end)
-			{
-				a = stack.pop();
-				stack.push(unaryOperations[l](a));
-			}
-			else
+			if (binaryOperations.find(l) != _end)
 			{
 				b = stack.pop(), a = stack.pop();
 				stack.push(binaryOperations[l](a, b));
+			}
+			else
+			{
+				a = stack.pop();
+				stack.push(unaryOperations[l](a));
+				
 			}
 		}
 	}

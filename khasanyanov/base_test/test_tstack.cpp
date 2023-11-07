@@ -1,14 +1,24 @@
 #include "stack.h"
 #include <gtest.h>
 
+TEST(TStack, can_create_stack)
+{
+	ASSERT_NO_THROW(TStack<int> st);
+}
+
 TEST(TStack, can_create_stack_with_positive_length)
 {
   ASSERT_NO_THROW(TStack<int> st(5));
 }
 
-TEST(TStack, canå_create_stack_with_negative_length)
+TEST(TStack, can_create_stack_with_negative_length)
 {
 	ASSERT_ANY_THROW(TStack<int> st(-5));
+}
+
+TEST(TStack, can_create_copyed_stack)
+{
+	ASSERT_NO_THROW(TStack<int> st(TStack<int> s));
 }
 
 TEST(TStack, cant_create_too_large_stack)
@@ -35,13 +45,6 @@ TEST(TStack, can_push_element)
 	ASSERT_NO_THROW(st.push(34));
 }
 
-TEST(TStack, cant_push_element_to_full_stack)
-{
-	TStack<int> st(1);
-	st.push(33);
-	ASSERT_ANY_THROW(st.push(34));
-}
-
 TEST(TStack, can_pop_element)
 {
 	TStack<int> st(4);
@@ -59,6 +62,20 @@ TEST(TStack, cant_get_top_element_from_empty_stack)
 {
 	TStack<int> st(1);
 	ASSERT_ANY_THROW(st.getTop());
+}
+
+TEST(TStack, can_use_compare_operator)
+{
+	TStack<int> st, st2;
+	ASSERT_NO_THROW(st2 == st);
+}
+
+TEST(TStack, assign_operator)
+{
+	TStack<int> st, st2;
+	st.push(12);
+	st = st2;
+	EXPECT_EQ(st2, st);
 }
 
 TEST(TStack, operator_push_element)

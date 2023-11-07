@@ -11,6 +11,7 @@ int main()
   SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_GREEN | 0);
   string expression;
   setlocale(LC_ALL, "ru");
+  setlocale(LC_NUMERIC, "en");
   system("title Калькулятор Обратной Польской Записи");
   cout << "Введите арифметическое выражение: ";
   getline(cin, expression);
