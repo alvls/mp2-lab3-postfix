@@ -70,12 +70,34 @@ TEST(TStack, can_use_compare_operator)
 	ASSERT_NO_THROW(st2 == st);
 }
 
+TEST(TStack, can_use_assign_operator)
+{
+	TStack<int> st, st2(4);
+	ASSERT_NO_THROW(st = st2);
+}
+
 TEST(TStack, assign_operator)
 {
 	TStack<int> st, st2;
 	st.push(12);
 	st = st2;
 	EXPECT_EQ(st2, st);
+}
+
+TEST(TStack, assign_operator_change_stack_size)
+{
+	TStack<int> st, st2;
+	st2.push(12); st2.push(22);
+	st = st2;
+	EXPECT_EQ(st.getSize(), 2);
+}
+
+TEST(TStack, copy_create_equal_vector)
+{
+	TStack<int> st2;
+	st2.push(12); st2.push(22);
+	TStack<int> st(st2);
+	EXPECT_EQ(st, st2);
 }
 
 TEST(TStack, operator_push_element)

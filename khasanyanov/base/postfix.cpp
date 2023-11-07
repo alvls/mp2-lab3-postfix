@@ -9,13 +9,15 @@ TPostfix::TPostfix(string str) : infix(str)
 	split(); toPostfix();
 }
 
-string TPostfix::getInfix() const { return infix; }
+string TPostfix::getInfix() const noexcept { return infix; }
 
-string TPostfix::getPostfix() const { return postfix; }
+string TPostfix::getPostfix() const noexcept { return postfix; }
 
 double factorial(size_t n) { return (n == 1 || n == 0) ? 1 : factorial(n - 1) * n; }
 
-map<string, double> TPostfix :: getOperands() const {return operands;}
+map<string, double> TPostfix :: getOperands() const  noexcept {return operands;}
+
+inline void TPostfix::updatePostfix(const string s) noexcept { postfix += (s == "~" ? "-" : s); }
 
 map<string, unsigned int> TPostfix::priority = { 
 	{"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},{"~", 4}, {"^", 5}, {"!", 5}, {"sin", 6}, {"cos", 6}, 
@@ -85,7 +87,7 @@ void TPostfix::split()
 
 void TPostfix::toPostfix()
 {
-	TStack<string> stack/*(lexems.size())*/; 
+	TStack<string> stack; 
 	vector<string> tmp;
 	string prev = "";
 	unsigned int  brackets = 0;
@@ -101,7 +103,9 @@ void TPostfix::toPostfix()
 				operands.emplace(l, 0);
 			}
 			tmp.push_back(l);
-			postfix += (" " + l);
+			if (postfix != "")
+				postfix += " ";
+			updatePostfix(l);
 		}
 		else
 		{
@@ -117,7 +121,7 @@ void TPostfix::toPostfix()
 				{
 					string t = stack.pop();
 					tmp.push_back(t);
-					postfix += (t == "~" ? "-" : t);
+					updatePostfix(t);
 				}
 				stack.pop();
 				break;
@@ -129,7 +133,7 @@ void TPostfix::toPostfix()
 				{
 					string t = stack.pop();
 					tmp.push_back(t);
-					postfix += (t == "~" ? "-" : t);
+					updatePostfix(t);
 				}
 				stack.push(l);
 				break;
@@ -144,7 +148,7 @@ void TPostfix::toPostfix()
 	{
 		string t = stack.pop();
 		tmp.push_back(t);
-		postfix += (t == "~" ? "-" : t);
+		updatePostfix(t);
 	}
 	lexems = tmp;
 }
@@ -152,7 +156,7 @@ void TPostfix::toPostfix()
 double TPostfix::calculate(map<string, double> values)
 {
 	double a, b;
-	TStack<double> stack(lexems.size()); 
+	TStack<double> stack; 
 	auto& end = values.end();
 	auto& _end = binaryOperations.end();
 	for (auto& l : lexems)
@@ -169,8 +173,7 @@ double TPostfix::calculate(map<string, double> values)
 			else
 			{
 				a = stack.pop();
-				stack.push(unaryOperations[l](a));
-				
+				stack.push(unaryOperations[l](a));	
 			}
 		}
 	}

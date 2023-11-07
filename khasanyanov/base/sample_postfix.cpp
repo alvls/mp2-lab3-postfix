@@ -36,7 +36,7 @@ int main()
 	  }
   }
   cout << "Арифметическое выражение: " << postfix.getInfix() << endl;
-  cout << "Постфиксная форма:" << postfix.getPostfix() << endl;
+  cout << "Постфиксная форма: " << postfix.getPostfix() << endl;
   cout << "Рассчитанное значение: " << postfix.calculate(m) << endl;
   return 0;
 }

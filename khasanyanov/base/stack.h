@@ -91,23 +91,24 @@ const int MaxStackSize = 129;
 template <class T>
 class TStack
 {
-    T* pMem;                // стек
-    size_t size;            // размер стека
-    size_t top;             // вершина стека
-public:
-    friend class TPostfix;
-    TStack();               // конструктор-инициализатор
-    TStack(size_t _size);
-    TStack(const TStack<T>& st); //конструктор копирования
-    ~TStack();              // деструктор
-    inline bool empty();    // нет элементов
-    size_t getSize() const; // получить размер стека
-    T getTop() const;       // получить верхний элемент
-    void push(T val);       // поместить в стек
-    T pop();                // извлечь из стека
-    TStack<T>& operator=(const TStack<T>& st);
-    bool operator==(const TStack<T>& st);
-    bool operator!=(const TStack<T>& st);
+    T* pMem;                                    // стек
+    size_t size;                                // размер стека
+    size_t top;                                 // вершина стека
+public:                                         
+    friend class TPostfix;                      
+    TStack();                                   // конструктор-инициализатор
+    TStack(size_t _size);                       // конструктор-инициализатор
+    TStack(const TStack<T>& st);                // конструктор копирования
+    ~TStack();                                  // деструктор
+    inline bool empty();                        // нет элементов
+    size_t getSize() const noexcept;            // получить размер стека
+    T getTop() const noexcept;                  // получить верхний элемент
+    void push(T val);                           // поместить в стек
+    T pop();                                    // извлечь из стека
+    //------------------------------------------// операторы
+    TStack<T>& operator=(const TStack<T>& st);  
+    bool operator==(const TStack<T>& st) const;
+    bool operator!=(const TStack<T>& st) const;
 };
 
 template <class T>
@@ -132,7 +133,7 @@ TStack<T>::TStack(const TStack<T>& st) : top(st.top), size(st.top)
 }
 
 template <class T>
-bool TStack<T>::operator==(const TStack<T>& st) 
+bool TStack<T>::operator==(const TStack<T>& st) const
 {
     if (st.pMem == pMem)
         return true;
@@ -145,16 +146,16 @@ bool TStack<T>::operator==(const TStack<T>& st)
 }
 
 template <class T>
-bool TStack<T>::operator!=(const TStack<T>& st) { return !(*this == st); }
+bool TStack<T>::operator!=(const TStack<T>& st) const { return !(*this == st); }
 
 template <class T>
 inline bool TStack<T>::empty() { return top == 0; }
 
 template <class T>
-size_t TStack<T>::getSize() const { return top; }
+size_t TStack<T>::getSize() const noexcept { return top; }
 
 template <class T>
-T TStack<T>::getTop() const
+T TStack<T>::getTop() const  noexcept 
 {
     if (top <= 0)
         throw runtime_error("stack is empty");

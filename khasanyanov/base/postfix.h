@@ -29,14 +29,15 @@ class TPostfix
 	inline bool isOperator(const string s);                                 // является ли оператором
 	unsigned int countOperators(string s);                                  // количество операторов в строке
 	void split();                                                           // парсер строки
+	void toPostfix();                                                       // преобразование в постфиксную форму
+	inline void updatePostfix(const string s) noexcept;
 	
 public:
 	TPostfix();                                                             // конструктор по умолчанию 
 	TPostfix(string str);                                                   // конструктор-инициализатор
-	string getInfix() const;                                                // входная строка
-	string getPostfix() const;                                              // постфиксная форма
-	map<string, double> getOperands() const;                                // значения операндов
-	void toPostfix();                                                       // преобразование в постфиксную форму
+	string getInfix() const noexcept;                                       // входная строка
+	string getPostfix() const noexcept;                                     // постфиксная форма
+	map<string, double> getOperands() const noexcept;                       // значения операндов
 	double calculate(map<string, double> values);                           // вычисление по постфиксной форме
 };
 

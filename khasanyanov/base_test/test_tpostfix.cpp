@@ -53,19 +53,19 @@ TEST(TPostfix, can_get_postfix_from_expression_with_spaces)
 TEST(TPostfix, get_postfix_return_true_value)
 {
 	TPostfix p("1+2-3*5");
-	EXPECT_EQ(p.getPostfix(), " 1 2+ 3 5*-");
+	EXPECT_EQ(p.getPostfix(), "1 2+ 3 5*-");
 }
 
 TEST(TPostfix, get_postfix_from_expression_with_spaces_return_true_value)
 {
 	TPostfix p("1   +2- 3 * 5");
-	EXPECT_EQ(p.getPostfix(), " 1 2+ 3 5*-");
+	EXPECT_EQ(p.getPostfix(), "1 2+ 3 5*-");
 }
 
 TEST(TPostfix, convert_formula_to_postfix_form_return_true_value)
 {
 	TPostfix p("2*a+b-3*5");
-	EXPECT_EQ(p.getPostfix(), " 2 a* b+ 3 5*-");
+	EXPECT_EQ(p.getPostfix(), "2 a* b+ 3 5*-");
 }
 
 TEST(TPostfix, can_calculate_expression)
@@ -82,18 +82,18 @@ TEST(TPostfix, calculate_expression_return_true_value)
 
 TEST(TPostfix, calculate_test1)
 {
-	TPostfix p("56*23-6/12");
-	EXPECT_EQ(p.calculate(p.getOperands()), 1287.5);
+	TPostfix p("((sin(1))^2 + (cos(1))^2)");
+	EXPECT_EQ(p.calculate(p.getOperands()), 1);
 }
 
 TEST(TPostfix, calculate_test2)
 {
-	TPostfix p("12^3-(12*12*12)");
+	TPostfix p("-27+lg(10)*ceil(2.43)^3");
 	EXPECT_EQ(p.calculate(p.getOperands()), 0);
 }
 
 TEST(TPostfix, calculate_test3)
 {
-	TPostfix p("(((54/65)-543)+900)/3");
-	EXPECT_EQ(p.calculate(p.getOperands()), (((54. / 65) - 543) + 900) / 3.);
+	TPostfix p("(((54.65/65)-543)+900.23)*3");
+	EXPECT_EQ(p.calculate(p.getOperands()), (((54.65 / 65) - 543) + 900.23) * 3);
 }
