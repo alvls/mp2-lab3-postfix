@@ -20,7 +20,7 @@ map<string, double> TPostfix :: getOperands() const  noexcept {return operands;}
 inline void TPostfix::updatePostfix(const string s) noexcept { postfix += (s == "~" ? "-" : s); }
 
 map<string, unsigned int> TPostfix::priority = { 
-	{"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3},{"~", 4}, {"^", 5}, {"!", 5}, {"sin", 6}, {"cos", 6}, 
+	{"(", 1}, {"+", 2}, {"-", 2}, {"*", 3}, {"/", 3}, {"%", 3}, {"~", 4}, {"^", 5}, {"!", 5}, {"sin", 6}, {"cos", 6},
 	{"exp", 6}, {"tg", 6}, {"abs", 6}, {"sqrt", 6}, {"ln", 6}, {"lg", 6}, {"inc", 6}, {"dec", 6}, {"ceil", 6}, {"floor", 6}};
 
 map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
@@ -28,6 +28,7 @@ map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
 	{"-", [](double a, double b) {return a - b; }},
 	{"/", [](double a, double b) {if (b == 0) throw logic_error("cant be calculated"); return a / b; }},
 	{"*", [](double a, double b) {return a * b; }},
+	{"%", [](double a, double b) {if (b == 0) throw logic_error("cant be calculated"); return fmod(a,b); }},
 	{"^", [](double a, double b) {return pow(a,b); }}
 };
 

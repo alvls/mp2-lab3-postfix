@@ -15,7 +15,7 @@ enum class SymbolType {
 
 inline bool isOperator(const char c)
 {
-    return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '!');
+    return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '!' || c == '%');
 }
 
 SymbolType getType(const char c)
