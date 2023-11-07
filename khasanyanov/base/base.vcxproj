@@ -82,8 +82,10 @@
   <ItemGroup>
     <ClCompile Include="postfix.cpp" />
     <ClCompile Include="sample_postfix.cpp" />
+    <ClCompile Include="authentificator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="authentificator.h" />
     <ClInclude Include="postfix.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>

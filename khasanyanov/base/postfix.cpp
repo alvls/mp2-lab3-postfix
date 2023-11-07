@@ -6,7 +6,7 @@ TPostfix::TPostfix() : infix("1+2-3*5") {}
 TPostfix::TPostfix(string str) : infix(str) 
 { 
 	operators = countOperators(infix);
-	split(); toPostfix();
+	split(); autentificateInfix(infix); toPostfix();
 }
 
 string TPostfix::getInfix() const noexcept { return infix; }
@@ -33,7 +33,7 @@ map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
 
 map<string, function<double(double)>> TPostfix :: unaryOperations = {
 	{"~", [](double a) {return -a; }},
-	{"!", [](double a) {if (a < 0) throw logic_error("cant be calculated"); return factorial(size_t(a)); }},
+	{"!", [](double a) {if (a < 0 || fmod(a,1) != 0) throw logic_error("cant be calculated"); return factorial(size_t(a)); }},
 	{"sin", [](double a) {return sin(a); }},
 	{"cos", [](double a) {return cos(a); }},
 	{"exp", [](double a) {return exp(a); }},
@@ -80,8 +80,6 @@ void TPostfix::split()
 			}
 			lexems.push_back(string{ cur });
 		}
-		else if (cur != ' ')
-			throw invalid_argument("syntax error");
 	}
 	if (!elem.empty())
 		lexems.push_back(elem);
@@ -92,7 +90,6 @@ void TPostfix::toPostfix()
 	TStack<string> stack; 
 	vector<string> tmp;
 	string prev = "";
-	unsigned int  brackets = 0;
 	for (auto& l : lexems)
 	{
 		if (!isOperator(l))
@@ -115,10 +112,8 @@ void TPostfix::toPostfix()
 			{
 			case'(':
 				stack.push(l);
-				brackets++;
 				break;
 			case')':
-				brackets++;
 				while (stack.getTop() != "(")
 				{
 					string t = stack.pop();
@@ -144,8 +139,6 @@ void TPostfix::toPostfix()
 		}
 		prev = l;
 	}
-	if (brackets % 2 != 0)
-		throw invalid_argument("syntax error");
 	while (!stack.empty())
 	{
 		string t = stack.pop();

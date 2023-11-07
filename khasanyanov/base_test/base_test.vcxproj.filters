@@ -27,12 +27,18 @@
     <ClCompile Include="..\base\postfix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\base\authentificator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base\postfix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\base\stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\authentificator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

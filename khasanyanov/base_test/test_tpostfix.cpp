@@ -21,9 +21,24 @@ TEST(TPostfix, can_create_postfix_from_expression_without_operators)
 	ASSERT_NO_THROW(TPostfix p("123"));
 }
 
-TEST(TPostfix, cant_convert_wrong_expression)
+TEST(TPostfix, cant_create_postfix_from_wrong_expression_test1)
 {
 	ASSERT_ANY_THROW(TPostfix p("((1+2)-3)*5)"));
+}
+
+TEST(TPostfix, cant_create_postfix_from_wrong_expression_test2)
+{
+	ASSERT_ANY_THROW(TPostfix p("324+-*6"));
+}
+
+TEST(TPostfix, cant_create_postfix_from_wrong_expression_test3)
+{
+	ASSERT_ANY_THROW(TPostfix p("23.67-5.+4"));
+}
+
+TEST(TPostfix, cant_create_postfix_from_empty_expression)
+{
+	ASSERT_ANY_THROW(TPostfix p(""));
 }
 
 TEST(TPostfix, get_infix_return_true_value)

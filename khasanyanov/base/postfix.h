@@ -3,9 +3,10 @@
 
 #define PI 3.14159265358979323846
 
+#include "authentificator.h"
+#include "stack.h"
 #include <string>
 #include <stdexcept>
-#include "stack.h"
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -14,6 +15,7 @@
 #include <iterator>
 #include <cctype>
 #include <functional>
+
 using namespace std;
 
 class TPostfix

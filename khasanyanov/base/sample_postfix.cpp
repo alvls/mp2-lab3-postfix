@@ -13,15 +13,23 @@ int main()
   setlocale(LC_ALL, "ru");
   setlocale(LC_NUMERIC, "en");
   system("title Калькулятор Обратной Польской Записи");
-  cout << "Введите арифметическое выражение: ";
-  getline(cin, expression);
-  try {
-	  TPostfix {expression};
-  }
-  catch (invalid_argument) {
-	  SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_RED | 0);
-	  cout << "Неверное выражение" << endl;
-	  exit(0);
+  bool flag = 0;
+  while (!flag)
+  {
+      SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_GREEN | 0);
+	  cout << "Введите арифметическое выражение: ";
+	  getline(cin, expression);
+  
+      try {
+	      TPostfix{ expression };
+		  flag = true;
+	  }
+	  catch (invalid_argument) {
+	      SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_RED | 0);
+		  cout << "Неверное выражение" << endl;
+		  system("PAUSE");
+		  system("cls");
+	  }
   }
   TPostfix postfix(expression);
   auto m = postfix.getOperands();
