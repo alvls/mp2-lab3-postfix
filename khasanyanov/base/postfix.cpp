@@ -26,22 +26,22 @@ map<string, unsigned int> TPostfix::priority = {
 map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
 	{"+", [](double a, double b) {return a + b; }},
 	{"-", [](double a, double b) {return a - b; }},
-	{"/", [](double a, double b) {return a / b; }},
+	{"/", [](double a, double b) {if (b == 0) throw logic_error("cant be calculated"); return a / b; }},
 	{"*", [](double a, double b) {return a * b; }},
 	{"^", [](double a, double b) {return pow(a,b); }}
 };
 
 map<string, function<double(double)>> TPostfix :: unaryOperations = {
 	{"~", [](double a) {return -a; }},
-	{"!", [](double a) {return factorial(size_t(a)); }},
+	{"!", [](double a) {if (a < 0) throw logic_error("cant be calculated"); return factorial(size_t(a)); }},
 	{"sin", [](double a) {return sin(a); }},
 	{"cos", [](double a) {return cos(a); }},
 	{"exp", [](double a) {return exp(a); }},
-	{"tg", [](double a) {return sin(a) / cos(a); }},
+	{"tg", [](double a) {if (cos(a) == 0) throw logic_error("cant be calculated"); return sin(a) / cos(a); }},
 	{"abs", [](double a) {return a < 0 ? -a : a; }},
-	{"sqrt", [](double a) {return sqrt(a); }},
-	{"ln", [](double a) {return log(a); }},
-	{"lg", [](double a) {return log10(a); }},
+	{"sqrt", [](double a) {if (a < 0)  throw logic_error("cant be calculated"); return sqrt(a); }},
+	{"ln", [](double a) {if (a <= 0) throw logic_error("cant be calculated"); return log(a); }},
+	{"lg", [](double a) {if (a <= 0) throw logic_error("cant be calculated"); return log10(a); }},
 	{"inc", [](double a) {return ++a; }},
 	{"dec", [](double a) {return --a; }},
 	{"ceil", [](double a) {return ceil(a); }},
@@ -64,6 +64,8 @@ unsigned int TPostfix::countOperators(string s)
 
 void TPostfix::split()
 {
+	if(infix.empty())
+		throw invalid_argument("syntax error");
 	string elem = "";
 	for (const char& cur : infix)
 	{

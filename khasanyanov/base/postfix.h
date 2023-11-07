@@ -30,7 +30,7 @@ class TPostfix
 	unsigned int countOperators(string s);                                  // количество операторов в строке
 	void split();                                                           // парсер строки
 	void toPostfix();                                                       // преобразование в постфиксную форму
-	inline void updatePostfix(const string s) noexcept;
+	inline void updatePostfix(const string s) noexcept;                     // формирование выходной строки
 	
 public:
 	TPostfix();                                                             // конструктор по умолчанию 

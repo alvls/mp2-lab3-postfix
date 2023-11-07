@@ -37,6 +37,13 @@ int main()
   }
   cout << "Арифметическое выражение: " << postfix.getInfix() << endl;
   cout << "Постфиксная форма: " << postfix.getPostfix() << endl;
-  cout << "Рассчитанное значение: " << postfix.calculate(m) << endl;
+  try {
+	  cout << "Рассчитанное значение: " << postfix.calculate(m) << endl;
+  }
+  catch (logic_error) {
+	  SetConsoleTextAttribute(hConsoleHandle, FOREGROUND_RED | 0);
+	  cout << "Неверное выражение" << endl;
+	  exit(0);
+  }
   return 0;
 }

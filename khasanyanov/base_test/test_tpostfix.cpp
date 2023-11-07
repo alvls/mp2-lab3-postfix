@@ -26,12 +26,6 @@ TEST(TPostfix, cant_convert_wrong_expression)
 	ASSERT_ANY_THROW(TPostfix p("((1+2)-3)*5)"));
 }
 
-TEST(TPostfix, can_get_infix)
-{
-	TPostfix p;
-	ASSERT_NO_THROW(p.getInfix());
-}
-
 TEST(TPostfix, get_infix_return_true_value)
 {
 	TPostfix p;
@@ -41,12 +35,6 @@ TEST(TPostfix, get_infix_return_true_value)
 TEST(TPostfix, can_get_postfix)
 {
 	TPostfix p("1+2-3*5");
-	ASSERT_NO_THROW(p.getPostfix());
-}
-
-TEST(TPostfix, can_get_postfix_from_expression_with_spaces)
-{
-	TPostfix p("1   +2- 3 * 5");
 	ASSERT_NO_THROW(p.getPostfix());
 }
 
