@@ -25,7 +25,9 @@ vector<string> TPostfix::GetOperands() const
 	vector<string> op;
 	for (const auto& item : operands)
 	{
-		if (item.first.empty()) 
+		if (item.first.empty())
+			continue;
+		if (parsed_operands.count(item.first))
 			continue;
 		op.push_back(item.first);
 	}
@@ -38,6 +40,8 @@ void TPostfix::Parse()
 	string buf = "";
 	for (char ch : infix)
 	{
+
+		if (ch == ' ') continue;
 		if (ch == ')' || (priority.find(ch) != priority.end()))
 		{
 			if (!buf.empty())
@@ -76,8 +80,7 @@ void TPostfix::ToPostfix()
 			}
 			break;
 		case '-': case '+': case '*': case '/':
-			if (item[0] == '-' && (postfix.empty() ||
-				(!stack.is_empty() && stack.top() == "(") && lexems[i - 1] != ")"))
+			if (item[0] == '-' && (i == 0 || lexems[i - 1] == "("))
 			{
 				postfix.push_back("");
 			}
@@ -97,7 +100,13 @@ void TPostfix::ToPostfix()
 			stack.push(item);
 			break;
 		default:
-			operands.insert({ item, 0.0 });
+			double value;
+			try {
+				value = stod(item);
+				parsed_operands.insert(item);
+			}
+			catch (invalid_argument) {}
+			operands.insert({ item, value });
 			postfix.push_back(item);
 		}
 		i++;

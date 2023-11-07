@@ -16,7 +16,8 @@ private:
 	T* pMem;
 
 public:
-	TDynamicList() : length(0), memSize(1), pMem(new T[memSize]) { }
+	//TDynamicList() : length(0), memSize(1), pMem(new T[memSize]) { }
+	TDynamicList(size_t capacity = 5) : memSize(capacity > 0 ? capacity : throw invalid_argument("List capacity must be positive")), length(0), pMem(new T[capacity]) { }
 	~TDynamicList() { delete[] pMem; }
 
 	size_t size() const { return length; }
@@ -81,6 +82,8 @@ private:
 	TDynamicList<T> list;
 
 public:
+	TStack(size_t capacity = 6) : list(capacity <= MAX_STACK_SIZE ? capacity : throw out_of_range("Stack size must not exceed the allowed value")) { }
+
 	void push(const T& element)
 	{
 		if (size() == MAX_STACK_SIZE)

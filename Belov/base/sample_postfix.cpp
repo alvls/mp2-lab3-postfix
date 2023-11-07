@@ -5,22 +5,6 @@
 
 using namespace std;
 
-bool parse_double(string in, double& res)
-{
-	try
-	{
-		size_t read = 0;
-		res = stod(in, &read);
-		if (in.size() != read) 
-			return false;
-	}
-	catch (invalid_argument)
-	{
-		return false;
-	}
-	return true;
-}
-
 int main()
 {
 	system("title Calculation of arithmetic expressions using Reverse Polish notation");
@@ -28,7 +12,7 @@ int main()
 	string expression;
 
 	cout << "Enter arithmetic expression: ";
-	cin >> expression;
+	getline(cin, expression);
 	cout << endl;
 
 	TPostfix expr(expression);
@@ -37,11 +21,11 @@ int main()
 
 	cout << "Postfix form: "; // << expr.GetPostfix() << endl;
 	const auto& postfix = expr.GetPostfix();
-	for (auto& p : postfix)
+	for (auto& symbol : postfix)
 	{
-		if (p.empty()) 
+		if (symbol.empty())
 			continue;
-		cout << p << ' ';
+		cout << symbol << ' ';
 	}
 	cout << endl << endl;
 
@@ -51,16 +35,11 @@ int main()
 	double num;
 	for (const auto& op : operands)
 	{
-		if (!parse_double(op, num))
-		{
-			cout << "Enter value of " << op << ": ";
-			cin >> num;
-			cout << endl;
-		}
+		cout << "Enter value of " << op << ": ";
+		cin >> num;
+		cout << endl;
+
 		values[op] = num;
-		//cout << "Enter value of " << op << ": ";
-		//cin >> value;
-		//values[op] = value;
 	}
 
 	cout << "The result of calculation is: " << expr.Calculate(values) << endl;
