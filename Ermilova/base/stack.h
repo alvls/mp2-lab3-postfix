@@ -17,6 +17,29 @@ public:
         pMem = new T[size];
     }
 
+    TStack(const TStack& s)
+    {
+        size = s.size;
+        top = s.top;
+        pMem = new T[s.size]
+        copy(s.pMem, s.pMem + top + 1, pMem);
+    }
+
+    TStack& operator=(const TStack& s) {
+        if (this != &s) {
+            T* tmp = new T[s.size];
+            size = s.size;
+            top = s.top;
+            delete[] pMem;
+            pMem = tmp;
+            for (size_t i = 0; i < size; i++)
+            {
+                pMem[i] = otherStack.pMem[i];
+            }
+        }
+        return *this;
+    }
+
     ~TStack() { 
         delete[] pMem; 
     }

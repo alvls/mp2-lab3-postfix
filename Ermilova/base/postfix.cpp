@@ -13,13 +13,13 @@ string TPostfix::GetInfix(){
 	return infix; 
 }
 
-string TPostfix::GetPostfix(){
+vector<string> TPostfix::GetPostfix(){
 	return postfix; 
 }
 
-vector<char> TPostfix::GetOperands(){
+vector<string> TPostfix::GetOperands(){
 
-	vector<char> op(operands.size());
+	vector<string> op(operands.size());
 	size_t i = 0;
 
 	for (const auto& item : operands){
@@ -29,34 +29,46 @@ vector<char> TPostfix::GetOperands(){
 }
 
 void TPostfix::Parse() { 
-	for (char c : infix){ 
-		lexems.push_back(c); 
-	} 
+	string tmp = "";
+	for (char c : infix) {
+		if (c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')') {
+			if (!tmp.empty()) {
+				lexems.push_back(tmp);
+			}
+			lexems.push_back(string{ c });
+			tmp = "";
+			continue;
+		}
+		tmp += c;
+	}
+	if (!tmp.empty()) {
+		lexems.push_back(tmp);
+	}
 }
 
 map<char, int>TPostfix::priority = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
 
 void TPostfix::ToPostfix() {
 	Parse();
-	TStack<char> st;
-	char stackItem;
-	for (char item : lexems){
-		switch (item){
+	TStack<string> st;
+	string stackItem;
+	for (auto& item : lexems){
+		switch (item[0]) {
 		case '(':
 			st.Push(item);
 			break;
 		case ')':
 			stackItem = st.Pop();
-			while (stackItem != '(') { 
-				postfix += stackItem;
+			while (stackItem != "(") {
+				postfix.push_back(stackItem);
 				stackItem = st.Pop();
 			}
 			break;
 		case '+': case '-': case '*': case '/':
 			while (!st.IsEmpty()){
 				stackItem = st.Pop();
-				if (priority[item] <= priority[stackItem]){
-					postfix += stackItem;
+				if (priority[item[0]] <= priority[stackItem[0]]){
+					postfix.push_back(stackItem);
 				}
 				else {
 					st.Push(stackItem);
@@ -67,17 +79,17 @@ void TPostfix::ToPostfix() {
 			break;
 		default:
 			operands.insert({ item, 0.0 });
-			postfix += item;
+			postfix.push_back(item);
 			break;
 		}
 	}
 	while (!st.IsEmpty()) {
 		stackItem = st.Pop();
-		postfix += stackItem;
+		postfix.push_back(stackItem);
 	}
 }
 
-double TPostfix::Calculate(const map<char, double>& values) {
+double TPostfix::Calculate(const map<string, double>& values) {
 	for (auto& val : values)
 	{
 		try
@@ -88,9 +100,10 @@ double TPostfix::Calculate(const map<char, double>& values) {
 	}
 	TStack<double> st;
 	double leftOperand, rightOperand;
-	for (char lexem : postfix)
+	for (const string& lexem : postfix)
 	{
-		switch (lexem)
+		const char c = lexem[0];
+		switch (c)
 		{
 		case '+':
 			rightOperand = st.Pop();
