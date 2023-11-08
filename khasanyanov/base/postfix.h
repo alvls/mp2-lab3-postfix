@@ -1,8 +1,6 @@
 ﻿#ifndef __POSTFIX_H__
 #define __POSTFIX_H__
 
-#define PI 3.14159265358979323846
-
 #include "authentificator.h"
 #include "stack.h"
 #include <string>
@@ -40,5 +38,4 @@ public:
 	map<string, double> getOperands() const noexcept;                       // значения операндов
 	double calculate(map<string, double> values);                           // вычисление по постфиксной форме
 };
-
 #endif

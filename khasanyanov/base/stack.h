@@ -11,15 +11,14 @@ class TStack
     T* pMem;                                    // стек
     size_t size;                                // размер стека
     size_t top;                                 // вершина стека
-public:                                         
-    friend class TPostfix;                      
+public:                                                             
     TStack();                                   // конструктор-инициализатор
     TStack(size_t _size);                       // конструктор-инициализатор
     TStack(const TStack<T>& st);                // конструктор копирования
     ~TStack();                                  // деструктор
     inline bool empty();                        // нет элементов
     size_t getSize() const noexcept;            // получить размер стека
-    T getTop() const;                  // получить верхний элемент
+    T getTop() const;                           // получить верхний элемент
     void push(T val);                           // поместить в стек
     T pop();                                    // извлечь из стека
     //------------------------------------------// операторы
@@ -125,5 +124,4 @@ TStack<T>& TStack<T>::operator=(const TStack<T>& st)
     }
     return *this;
 }
-
 #endif
