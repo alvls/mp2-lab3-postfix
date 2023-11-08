@@ -92,7 +92,7 @@ void autentificateInfix(const string& infix)
         }
         case SymbolType::Operator:
         {
-            if ((current == SymbolType::RightBracket || (current == SymbolType::Operator) && infix[i-2] != '!'))
+            if ((current == SymbolType::RightBracket || current == SymbolType::Operator) && infix[i-2] != '!')
                 throw invalid_argument("malformed operator");
             break;
         case SymbolType::LeftBracket:
