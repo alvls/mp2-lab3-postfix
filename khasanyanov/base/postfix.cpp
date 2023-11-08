@@ -34,7 +34,7 @@ map<string, function<double(double, double)> > TPostfix:: binaryOperations = {
 
 map<string, function<double(double)>> TPostfix :: unaryOperations = {
 	{"~", [](double a) {return -a; }},
-	{"!", [](double a) {if (a < 0 || fmod(a,1) != 0) throw logic_error("cant be calculated"); return factorial(size_t(a)); }},
+	{"!", [](double a) {if (a < 0 || fmod(a,1.) != 0) throw logic_error("cant be calculated"); return factorial(size_t(a)); }},
 	{"sin", [](double a) {return sin(a); }},
 	{"cos", [](double a) {return cos(a); }},
 	{"exp", [](double a) {return exp(a); }},

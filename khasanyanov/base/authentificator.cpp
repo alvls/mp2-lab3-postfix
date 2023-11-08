@@ -88,7 +88,7 @@ void autentificateInfix(const string& infix)
         }
         case SymbolType::Operator:
         {
-            if (current == SymbolType::RightBracket || current == SymbolType::Operator)
+            if (current == SymbolType::RightBracket || (current == SymbolType::Operator && infix[i-2] != '!'))
                 throw invalid_argument("malformed operator");
             break;
         case SymbolType::LeftBracket:
@@ -99,7 +99,7 @@ void autentificateInfix(const string& infix)
         }
         prev = current;
     }
-    if(prev == SymbolType::Operator)
+    if(prev == SymbolType::Operator && infix[i - 1] != '!')
         throw invalid_argument("useless operator");
     if (!brackets.empty())
         throw invalid_argument("missing closing bracket");
