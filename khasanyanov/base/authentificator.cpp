@@ -95,6 +95,8 @@ void autentificateInfix(const string& infix)
         }
         prev = current;
     }
+    if(prev == SymbolType::Operator)
+        throw invalid_argument("useless operator");
     if (!brackets.empty())
         throw invalid_argument("missing closing bracket");
 }
