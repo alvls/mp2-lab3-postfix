@@ -3,7 +3,6 @@
 #include <string>
 
 enum class SymbolType {
-    Space,
     Digit,
     Dot,
     Letter,
@@ -13,6 +12,15 @@ enum class SymbolType {
     Unknown
 };
 
+string eraseSpaces(const string& s)
+{
+    string res = "";
+    for (auto& c : s)
+        if (c != ' ')
+            res += c;
+    return res;
+}
+
 inline bool isOperator(const char c)
 {
     return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '!' || c == '%');
@@ -20,11 +28,7 @@ inline bool isOperator(const char c)
 
 SymbolType getType(const char c)
 {
-    if (isspace(c))
-    {
-        return SymbolType::Space;
-    }
-    else if (c == '(')
+    if (c == '(')
     {
         return SymbolType::LeftBracket;
     }
@@ -53,7 +57,7 @@ SymbolType getType(const char c)
 
 void autentificateInfix(const string& infix)
 {
-    SymbolType prev = SymbolType::Space;
+    SymbolType prev = SymbolType::Unknown;
     TStack<size_t> brackets;
     size_t i = 0;
     for (const char c : infix)
@@ -67,7 +71,7 @@ void autentificateInfix(const string& infix)
         else if (current == SymbolType::RightBracket)
         {
             if (brackets.empty())
-                throw invalid_argument("missing opening bracket");
+                throw invalid_argument("missing left bracket");
             brackets.pop();
         }
         if (i - 1 == 0 && (isOperator(c) && c != '-' || current == SymbolType::Dot))
@@ -76,7 +80,7 @@ void autentificateInfix(const string& infix)
         {
         case SymbolType::Digit:
         {
-            if (current != SymbolType::Digit && current != SymbolType::Dot && current != SymbolType::Operator && current != SymbolType::Space && c != ')')
+            if (current != SymbolType::Digit && current != SymbolType::Dot && current != SymbolType::Operator && c != ')')
                 throw invalid_argument("malformed number");
             break;
         }
@@ -88,7 +92,7 @@ void autentificateInfix(const string& infix)
         }
         case SymbolType::Operator:
         {
-            if (current == SymbolType::RightBracket || (current == SymbolType::Operator && infix[i-2] != '!'))
+            if ((current == SymbolType::RightBracket || (current == SymbolType::Operator) && infix[i-2] != '!'))
                 throw invalid_argument("malformed operator");
             break;
         case SymbolType::LeftBracket:
@@ -102,5 +106,5 @@ void autentificateInfix(const string& infix)
     if(prev == SymbolType::Operator && infix[i - 1] != '!')
         throw invalid_argument("useless operator");
     if (!brackets.empty())
-        throw invalid_argument("missing closing bracket");
+        throw invalid_argument("missing right bracket");
 }

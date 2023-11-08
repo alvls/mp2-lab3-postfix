@@ -5,5 +5,5 @@
 #include"stack.h"
 
 void autentificateInfix(const string& infix);
-
+string eraseSpaces(const string& s);
 #endif

@@ -6,7 +6,7 @@ TPostfix::TPostfix() : infix("1+2-3*5") {}
 TPostfix::TPostfix(string str) : infix(str) 
 { 
 	operators = countOperators(infix);
-	split(); autentificateInfix(infix); toPostfix();
+	split(); autentificateInfix(eraseSpaces(infix)); toPostfix();
 }
 
 string TPostfix::getInfix() const noexcept { return infix; }
