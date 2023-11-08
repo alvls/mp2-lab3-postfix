@@ -1,6 +1,6 @@
 ﻿#include <iostream>
-#include <string>
 #include "postfix.h"
+#include <string>;
 
 using namespace std;
 
@@ -8,19 +8,21 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string expression;
-	map<char, double> values;
-	double val;
 	cout << "Введите выражение(c переменными или константами): ";
 	cin >> expression;
 	TPostfix postfix(expression);
 	cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
 	cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
-	vector<char> operands = postfix.GetOperands();
-	for (const auto& op : operands)
+	map<char, double> values = postfix.getOperands();
+	for (auto& op : values)
 	{
-		cout << "Введите значение переменных или подтвердите значение констант '" << op << "': ";
-		cin >> val;
-		values[op] = val;
+		if (isalpha(op.first))
+		{
+			string val;
+			cout << "Введите значение для " << op.first << ": ";
+			cin >> val;
+			op.second = stod({val });
+		}
 	}
 	cout << "Реузльтат: " << postfix.Calculate(values) << endl;
 	return 0;

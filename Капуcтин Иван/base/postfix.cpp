@@ -1,6 +1,7 @@
 ﻿#include "postfix.h"
 #include "stack.h"
-
+#include <iostream>
+#include <string>
 TPostfix::TPostfix(string infx)
 {
 	if (infx.empty())
@@ -8,13 +9,8 @@ TPostfix::TPostfix(string infx)
 	infix = infx;
 	ToPostfix();
 }
-vector<char> TPostfix::GetOperands() const {
-
-	vector<char> op;
-	for (const auto& item : operands) { op.push_back(item.first); }
-
-	return op;
-}
+map<char, double> TPostfix::getOperands()
+{ return operands; }
 void TPostfix::ToPostfix() {
 
 	Parse();
@@ -50,10 +46,10 @@ void TPostfix::ToPostfix() {
 		default:
 			try
 			{
-				operands.emplace(item, (double)item);
+				operands.emplace(item, stod(string{ item }));
 			}
 			catch (...) {
-				operands.emplace(item, 0);
+				operands.emplace(item, 0.0);
 			}
 			postfix += item;
 		}
@@ -61,53 +57,47 @@ void TPostfix::ToPostfix() {
 	while (!st.IsEmpty()) { stackItem = st.Pop(); postfix += stackItem; }
 }
 
-double TPostfix::Calculate(const map<char, double>& values)
+double TPostfix::Calculate(map<char, double> values)
 {
-        for (const auto& val : values) {
-            if (operands.find(val.first) != operands.end())
-            {
-                operands[val.first] = val.second;
-            }
-        }
+	double rightOperand, leftOperand;
 	TStack<double> st;
-	double leftOperand, rightOperand;
-	for (char lexem : postfix)
+	for (auto& l : postfix)
 	{
-		switch (lexem)
-		{
-		case '+':
-			rightOperand = st.Pop();
-			leftOperand = st.Pop();
-			st.Push(leftOperand + rightOperand);
-			break;
+			switch (l)
+			{
+			case '+':
+				rightOperand = st.Pop();
+				leftOperand = st.Pop();
+				st.Push(leftOperand + rightOperand);
+				break;
 
-		case '-':
-			rightOperand = st.Pop();
-			leftOperand = st.Pop();
-			st.Push(leftOperand - rightOperand);
-			break;
+			case '-':
+				rightOperand = st.Pop();
+				leftOperand = st.Pop();
+				st.Push(leftOperand - rightOperand);
+				break;
 
-		case '*':
-			rightOperand = st.Pop();
-			leftOperand = st.Pop();
-			st.Push(leftOperand * rightOperand);
-			break;
+			case '*':
+				rightOperand = st.Pop();
+				leftOperand = st.Pop();
+				st.Push(leftOperand * rightOperand);
+				break;
 
-		case '/':
-			rightOperand = st.Pop();
-			leftOperand = st.Pop();
-			st.Push(leftOperand / rightOperand);
-			break;
-		case '^':
-			rightOperand = st.Pop();
-			leftOperand = st.Pop();
-			st.Push(pow(leftOperand, rightOperand));
-			break;
-		default:
-			st.Push(operands[lexem]);
+			case '/':
+				rightOperand = st.Pop();
+				leftOperand = st.Pop();
+				st.Push(leftOperand / rightOperand);
+				break;
+			case '^':
+				rightOperand = st.Pop();
+				leftOperand = st.Pop();
+				st.Push(pow(leftOperand, rightOperand));
+				break;
+			default:
+				st.Push(values[l]);
+			}
 		}
-	}
-	return st.Pop();
+	return st.Peek();
 }
 map<char, int> TPostfix::priority = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2}, {'^', 3} };
 string TPostfix::GetInfix() const { return infix; }

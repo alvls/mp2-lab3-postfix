@@ -22,8 +22,8 @@ public:
 	TPostfix(string infx);
 	string GetInfix() const;
 	string GetPostfix() const;
-	vector<char> GetOperands() const;
-	double Calculate(const map<char, double>& values);
+	map<char, double> getOperands();
+	double Calculate( map<char, double> values);
 };
 
 #endif

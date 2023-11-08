@@ -1,26 +1,22 @@
 ﻿#ifndef __STACK_H__
 #define __STACK_H__
 
-const int MaxStackSize = 100;
-
+using namespace std;
 template <class T>
 class TStack
 {
-  T *pMem;
+  T* pMem;
   size_t memSize;
   int top;
 public:
-	TStack() : top(-1), memSize(10)
+	TStack()
 	{
+		top = -1;
+		memSize = 1;
 		pMem = new T[memSize];
 	}
     size_t getSize() const { return top + 1; }
     bool IsEmpty() const { return top == -1; }
-    bool isFull() const { return top == size - 1; }
-  ~TStack()
-  {
-    delete [] pMem;
-  }
   void Push(const T& val)
   {
 	  if (top == memSize - 1)
@@ -33,6 +29,7 @@ public:
 	  }
 	  pMem[++top] = val;
   }
+  ~TStack() { delete[] pMem; }
   T Pop() 
   {
 	  if (top < 0)
