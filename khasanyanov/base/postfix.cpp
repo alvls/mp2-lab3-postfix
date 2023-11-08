@@ -5,7 +5,6 @@ TPostfix::TPostfix() : infix("1+2-3*5") {}
 
 TPostfix::TPostfix(string str) : infix(str) 
 { 
-	operators = countOperators(infix);
 	split(); autentificateInfix(eraseSpaces(infix)); toPostfix();
 }
 
@@ -53,14 +52,6 @@ inline bool TPostfix::isOperator(const string s)
 {
 	auto& end = priority.end();
 	return (priority.find(s) != end || s == ")");
-}
-
-unsigned int TPostfix::countOperators(string s)
-{
-	int res = 0;
-	for (char& i : s)
-		res += isOperator(to_string(i));
-	return res;
 }
 
 void TPostfix::split()

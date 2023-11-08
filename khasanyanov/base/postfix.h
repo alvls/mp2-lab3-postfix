@@ -25,11 +25,9 @@ class TPostfix
 	static map<string, unsigned int> priority;                              // приоритет операций
 	string infix = "";                                                      // входная строка
 	string postfix = "";                                                    // постфиксная форма
-	unsigned int operators = 0;                                             // кол-во операторов
 	map<string, double> operands;                                           // операнды и значения
 	vector<string> lexems;                                                  // вектор лексем
 	inline bool isOperator(const string s);                                 // является ли оператором
-	unsigned int countOperators(string s);                                  // количество операторов в строке
 	void split();                                                           // парсер строки
 	void toPostfix();                                                       // преобразование в постфиксную форму
 	inline void updatePostfix(const string s) noexcept;                     // формирование выходной строки
