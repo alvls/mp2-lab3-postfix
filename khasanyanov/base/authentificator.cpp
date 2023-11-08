@@ -60,9 +60,7 @@ void autentificateInfix(const string& infix)
     {
         ++i;
         const SymbolType current = getType(c);
-        if(current == SymbolType::Unknown)
-            throw invalid_argument("syntax error");
-        else if (i - 1 == 0 && (isOperator(c) && c != '-' || current == SymbolType::Dot))
+        if (current == SymbolType::Unknown)
             throw invalid_argument("syntax error");
         else if (current == SymbolType::LeftBracket)
             brackets.push(i);
@@ -72,6 +70,8 @@ void autentificateInfix(const string& infix)
                 throw invalid_argument("missing opening bracket");
             brackets.pop();
         }
+        if (i - 1 == 0 && (isOperator(c) && c != '-' || current == SymbolType::Dot))
+            throw invalid_argument("syntax error");
         switch (prev)
         {
         case SymbolType::Digit:
@@ -89,6 +89,10 @@ void autentificateInfix(const string& infix)
         case SymbolType::Operator:
         {
             if (current == SymbolType::RightBracket || current == SymbolType::Operator)
+                throw invalid_argument("malformed operator");
+            break;
+        case SymbolType::LeftBracket:
+            if(current == SymbolType::Operator && c != '-')
                 throw invalid_argument("malformed operator");
             break;
         }
