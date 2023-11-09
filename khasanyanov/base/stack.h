@@ -11,7 +11,7 @@ class TStack
     T* pMem;                                    // стек
     size_t size;                                // размер стека
     size_t top;                                 // вершина стека
-public:                                                             
+public:                                                           
     TStack();                                   // конструктор-инициализатор
     TStack(size_t _size);                       // конструктор-инициализатор
     TStack(const TStack<T>& st);                // конструктор копирования
