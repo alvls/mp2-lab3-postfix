@@ -12,16 +12,12 @@ int main()
   char name;
   double values;
   setlocale(LC_ALL, "Russian");
-  cout << "Введите арифметическое выражение: ";
+  cout << "Enter arithmetic expression";
   cin >> expression;
   TPostfix postfix(expression);
-  cout << expression << endl;
-  cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
-  postfix.ToPostfix();
-  cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
-  cout << expression << endl;
+  cout << "Postfix form: " << postfix.GetPostfix() << endl;
   for (int i = 0; i < postfix.GetNumberOperands(); i++) {
-	  cout << "Введите название переменной и ее значение" << endl;
+	  cout << "Enter name and value" << endl;
 	  cin >> name;
 	  cin >> values;
 	  date.insert(std::pair<char, double > (name, values));
