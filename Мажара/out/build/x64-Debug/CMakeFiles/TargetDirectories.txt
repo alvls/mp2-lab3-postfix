@@ -1,0 +1,11 @@
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base/CMakeFiles/postfix.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base/CMakeFiles/edit_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base/CMakeFiles/rebuild_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base_test/CMakeFiles/postfix_test.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base_test/CMakeFiles/edit_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/base_test/CMakeFiles/rebuild_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/gtest/CMakeFiles/gtest.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/gtest/CMakeFiles/edit_cache.dir
+C:/Users/prive/Desktop/lab3/mp2-lab3-postfix/Сысоев/out/build/x64-Debug/gtest/CMakeFiles/rebuild_cache.dir
