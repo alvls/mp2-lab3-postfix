@@ -6,24 +6,47 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	string expression;
-	cout << "Введите арифметическое выражение: ";
-	cin >> expression;
+    setlocale(LC_ALL, "Russian");
 
-	TPostfix postfix(expression);
-	double res;
+    try
+    {
+        string expression;
+        cout << "Введите арифметическое выражение: ";
+        cin >> expression;
 
-	cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
-	cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
+        TPostfix postfix(expression);
+        double res;
 
-	map<char, double> variables;
-	variables['a'] = 5.0;
-	variables['b'] = 10.0;
+        cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
+        cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
 
-	postfix.SetVariables(variables); 
-	res = postfix.Calculate();
-	cout << "Результат: " << res << endl;
+        cout << "Установка значений переменных:" << endl;
+        map<char, double> variables;
 
-	return 0;
+        char variable;
+        double value;
+        while (true)
+        {
+            cout << "Введите переменную (или 'q' для завершения): ";
+            cin >> variable;
+
+            if (variable == 'q')
+                break;
+
+            cout << "Введите значение переменной " << variable << ": ";
+            cin >> value;
+
+            variables[variable] = value;
+        }
+
+        postfix.SetVariables(variables);
+        res = postfix.Calculate();
+        cout << "Результат: " << res << endl;
+    }
+    catch (const exception& e)
+    {
+        cerr << "Ошибка: " << e.what() << endl;
+    }
+
+    return 0;
 }
