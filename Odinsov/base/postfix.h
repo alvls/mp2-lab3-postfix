@@ -11,17 +11,27 @@ using namespace std;
 class TPostfix
 {
   string infix;
-  string postfix;
-  vector <char> lexems;
-  
-
-  map<char, double> operands;
-  map<char, int> priority = { {'^',1}, {'+',2},{'-',2},{'*',3},{'/',3} };
+  vector<string> postfix;
+  vector <string> lexems;
+  map<string, double> operands;
+  map<string, int> priority = { {"^",1}, {"+",2},{"-",2},{"*",3},{"/",3}};
   void Parse() {
+	  string tmp = "";
       for (char c : infix) {
-		  if (c != ' ') 
-			lexems.push_back(c);
+		  if (c != ' ') {
+			  if ((c != '+') && (c != '-') && (c != '*') && (c != '/') && (c != '^')&&(c!='(')&&(c!=')')) {
+				  tmp += c;
+			  }
+			  else {
+				  if (tmp != "")
+					lexems.push_back(tmp);
+				  tmp = c;
+				  lexems.push_back(tmp);
+				  tmp = "";
+			  }
+		  }  
       }
+	  lexems.push_back(tmp);
   }
 public:
   TPostfix(string tmp)
@@ -30,12 +40,28 @@ public:
 	  ToPostfix();
   
   }
-  vector<char>Getlexems() { return lexems; }
+  vector<string>GetOperands() {
+	  vector<string> tmp;
+	  for (int i = 0; i < lexems.size(); i++) {
+		  string c = lexems[i];
+		  if ((c != "+") && (c != "-") && (c != "*") && (c != "/") && (c != "^") && (c != "(") && (c != ")"))
+			  tmp.push_back(c);
+	  }
+	  return tmp;
+  }
+  vector<string>Getlexems() { return lexems; }
   string GetInfix() { return infix; }
-  string GetPostfix() { return postfix; }
+  string GetPostfix() {
+	  string tmp = "";
+	  for (int i = 0; i < postfix.size(); i++) {
+		  tmp += postfix[i];
+	  }
+	  return tmp; 
+  }
   int GetNumberOperands() { return operands.size(); }
-  string ToPostfix();
-  double Calculate(const map<char, double>& values);
+  vector<string> ToPostfix();
+  double Calculate( map<string, double>& values);
+
 };
 
 #endif

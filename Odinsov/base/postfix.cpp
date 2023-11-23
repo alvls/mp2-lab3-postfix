@@ -1,53 +1,53 @@
 #include "postfix.h"
 #include "stack.h"
 #include <stdexcept>
-
-string TPostfix::ToPostfix()
+vector<string> TPostfix::ToPostfix()
 {
 	Parse();
-	TStack<char> st(5);
-	char stackItem;
-	for (char item : lexems) {
-		switch (item)
-		{
-		case '(':
-			st.Push(item);
-			break;
-		case ')':
+	TStack<string> st(5);
+	string stackItem;
+	bool flag;
+	for (int i=0;i<lexems.size();i++){
+		flag = true;
+		if (lexems[i] == "(") {
+			flag = false;
+			st.Push(lexems[i]);
+		}
+		if (lexems[i] == ")") {
+			flag = false;
 			stackItem = st.Pop();
-			while (stackItem != '(')
+			while (stackItem != "(")
 			{
-				postfix += stackItem;
+				postfix.push_back(stackItem);
 				stackItem = st.Pop();
 			}
-			break;
-		case '+':case'-':case'*':case'/':case'^':
+		}
+		if ((lexems[i] == "+") || (lexems[i] == "-") || (lexems[i] == "*") || (lexems[i] == "/") || (lexems[i] == "^")) {
+			flag = false;
 			while (!st.isempty()) {
 				stackItem = st.Pop();
-				if (priority[item] <= priority[stackItem])
-					postfix += stackItem;
+				if (priority[lexems[i]] <= priority[stackItem])
+						postfix.push_back(stackItem);
 				else {
 					st.Push(stackItem);
 					break;
+					}
 				}
-			}
-			st.Push(item);
-			break;
-		default:
-			operands.insert({ item,0.0 });
-			postfix += item;
-			break;
+				st.Push(lexems[i]);
+		}
+		if (flag){
+			operands.insert({lexems[i],0.0});
+			postfix.push_back(lexems[i]);
 		}
 	}
 	while (!st.isempty()) {
 		stackItem = st.Pop();
-		postfix += stackItem;
+		postfix.push_back(stackItem);
 	}
-
 	return postfix;
 }
 
-double TPostfix::Calculate(const map<char, double>& values)
+double TPostfix::Calculate( map<string, double>& values)
 {
 	for (auto& val : values) {
 
@@ -56,35 +56,49 @@ double TPostfix::Calculate(const map<char, double>& values)
 	}
 	TStack<double> st;
 	double leftOperand, rightOperand;
-	for (char lexem : postfix) {
-		switch (lexem)
-		{
-		case'+':
+	for (int i=0;i<postfix.size();i++){
+		bool flag = true;
+		string lexem = postfix[i];
+		if (lexem == "+") {
+			flag = false;
 			rightOperand = st.Pop();
 			leftOperand = st.Pop();
 			st.Push(leftOperand + rightOperand);
-			break;
-		case'-':
+		}
+		if (lexem == "-") {
+			flag = false;
 			rightOperand = st.Pop();
 			leftOperand = st.Pop();
 			st.Push(leftOperand - rightOperand);
-			break;
-		case'*':
+		}
+		if (lexem == "*") {
+			flag = false;
 			rightOperand = st.Pop();
 			leftOperand = st.Pop();
 			st.Push(leftOperand * rightOperand);
-			break;
-		case'/':
+		}
+		if (lexem == "/") {
+			flag = false;
 			rightOperand = st.Pop();
 			leftOperand = st.Pop();
 			if (rightOperand == 0)
 				throw "Cant delete";
 			st.Push(leftOperand / rightOperand);
-			break;
-		default:
-			st.Push(operands[lexem]);
+		}
+		if (lexem == "^") {
+			flag = false;
+			rightOperand = st.Pop();
+			leftOperand = st.Pop();
+			st.Push(pow(leftOperand, rightOperand));
+		}
+		if (flag){
+			string tmp = "";
+			tmp += lexem;
+			st.Push(operands[tmp]);
 		}
 	}
 	return st.Pop();
 }
+
+
 

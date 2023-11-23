@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\user\source\repos\odincovm\mp2-lab3-postfix\Odinsov\build\CMakeFiles\bc9bc1ebd425582d5b6012a6c5accba0\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1628B362-D14E-32EC-9C21-4338C6BE98FA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

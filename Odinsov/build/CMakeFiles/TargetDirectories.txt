@@ -1,0 +1,5 @@
+C:/Users/user/source/repos/odincovm/mp2-lab3-postfix/Odinsov/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/user/source/repos/odincovm/mp2-lab3-postfix/Odinsov/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/user/source/repos/odincovm/mp2-lab3-postfix/Odinsov/build/base/CMakeFiles/postfix.dir
+C:/Users/user/source/repos/odincovm/mp2-lab3-postfix/Odinsov/build/base_test/CMakeFiles/postfix_test.dir
+C:/Users/user/source/repos/odincovm/mp2-lab3-postfix/Odinsov/build/gtest/CMakeFiles/gtest.dir
