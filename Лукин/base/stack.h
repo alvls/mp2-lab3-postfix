@@ -11,6 +11,7 @@ class TStack
     int top;
 public:
     TStack() :size(1), top(-1), pMem(new T[size]) {}
+
     TStack(size_t _size)
     {
         size = _size;
@@ -19,10 +20,12 @@ public:
             throw size;
         pMem = new T[size];
     }
+
     bool isEmpty()
     {
         return top == -1;
     }
+
     void push(const T& elem)
     {
         if (top == MaxStackSize - 1)
@@ -37,16 +40,19 @@ public:
         }
         pMem[++top] = elem;
     }
+
     T pop()
     {
         if (isEmpty())
             throw "Stack is Empty!";
         return pMem[top--];
     }
+
     size_t stack_size()
     {
         return size;
     }
+
     ~TStack()
     {
         delete [] pMem;
