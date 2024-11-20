@@ -176,4 +176,23 @@ TEST(TArithmeticExpression, can_calculate_expression_with_all_operand_values) {
     ASSERT_EQ(expr.Calculate(values), 5);
 }
 
+TEST(TArithmeticExpression, can_get_operands_from_expression_with_variables) {
+    TArithmeticExpression expr("-x + sqrt(y) * z^2 + y * cos(x) - z!");
+    vector<string> expectedOperands = { "x", "y", "z" };
+    ASSERT_EQ(expr.GetOperands(), expectedOperands);
+}
+
+TEST(TArithmeticExpression, ignores_numeric_constants_in_operands) {
+    TArithmeticExpression expr("2 + x + y + 0.5");
+    vector<string> expectedOperands = { "x", "y" }; 
+    ASSERT_EQ(expr.GetOperands(), expectedOperands);
+}
+
+TEST(TArithmeticExpression, returns_empty_if_only_numeric_constants) {
+    TArithmeticExpression expr("3 + 4.2 * 7");
+    vector<string> expectedOperands = {}; 
+    ASSERT_EQ(expr.GetOperands(), expectedOperands);
+}
+
+
 

@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_tpostfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|solutionrelative:base_test\\test_tpostfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\sample_postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\sample_postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\postfix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|solutionrelative:base_test\\test_main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_tstack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -21,14 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\sample_postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\sample_postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|solutionrelative:base_test\\test_main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "stack.h",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\stack.h",
               "RelativeDocumentMoniker": "base\\stack.h",
@@ -51,12 +51,11 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-07T13:04:41.457Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "test_tstack.cpp",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_tstack.cpp",
               "RelativeDocumentMoniker": "base_test\\test_tstack.cpp",
@@ -65,18 +64,17 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-07T13:05:25.929Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "postfix.h",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.h",
               "RelativeDocumentMoniker": "base\\postfix.h",
               "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.h",
               "RelativeToolTip": "base\\postfix.h",
-              "ViewState": "AQIAADQAAAAAAAAAAAAwwFIAAAAAAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAE0AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-07T13:05:35.322Z",
               "IsPinned": true,
@@ -84,13 +82,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "postfix.cpp",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.cpp",
               "RelativeDocumentMoniker": "base\\postfix.cpp",
               "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\postfix.cpp",
               "RelativeToolTip": "base\\postfix.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAPsAAAAkAAAA",
+              "ViewState": "AQIAAAEBAAAAZmZmZiYgwAYAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-07T13:11:38.14Z",
               "IsPinned": true,
@@ -98,13 +96,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "test_tpostfix.cpp",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_tpostfix.cpp",
               "RelativeDocumentMoniker": "base_test\\test_tpostfix.cpp",
               "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_tpostfix.cpp",
               "RelativeToolTip": "base_test\\test_tpostfix.cpp",
-              "ViewState": "AQIAAH0AAAAAAAAAAAAwwJ8AAAAAAAAA",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAAAKwAAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-07T13:05:39.911Z",
               "IsPinned": true,
@@ -112,13 +110,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "sample_postfix.cpp",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\sample_postfix.cpp",
               "RelativeDocumentMoniker": "base\\sample_postfix.cpp",
               "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base\\sample_postfix.cpp",
               "RelativeToolTip": "base\\sample_postfix.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-07T13:05:45.944Z",
               "IsPinned": true,
@@ -126,17 +124,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "test_main.cpp",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_main.cpp",
               "RelativeDocumentMoniker": "base_test\\test_main.cpp",
               "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\mp2-lab3-postfix\\Baldin\\base_test\\test_main.cpp",
               "RelativeToolTip": "base_test\\test_main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-07T13:05:49.976Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             }
           ]
         }

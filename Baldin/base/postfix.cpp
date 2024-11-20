@@ -256,6 +256,19 @@ TArithmeticExpression::TArithmeticExpression(const string& expr) : infix(expr) {
 string TArithmeticExpression::GetInfix() const { return infix; }
 string TArithmeticExpression::GetPostfix() const { return postfix; }
 
+vector<string> TArithmeticExpression::GetOperands() const {
+    vector<string> op_list;
+    for (const auto& op : operands) {
+        try {
+            double p = stod(op.first);
+        }
+        catch (invalid_argument& e) {
+            op_list.push_back(op.first);
+        }
+    }
+    return op_list;
+}
+
 double TArithmeticExpression::Calculate(const map<string, double>& values) {
     for (const auto& operand : operands) {
         try {

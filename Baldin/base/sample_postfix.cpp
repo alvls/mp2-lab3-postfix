@@ -11,6 +11,9 @@ int main() {
 
         cout << "Infix: " << arithExpr.GetInfix() << endl;
         cout << "Postfix: " << arithExpr.GetPostfix() << endl;
+        cout << "Operands of arithmetic expression: ";
+        for (string op : arithExpr.GetOperands()) cout << op << ' ';
+        cout << '\n';
 
         map<string, double> operandValues = {
             {"ab", 5.0},

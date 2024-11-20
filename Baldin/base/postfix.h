@@ -75,6 +75,7 @@ public:
     TArithmeticExpression(const string& expr = "");
     string GetInfix() const;
     string GetPostfix() const;
+    vector<string> GetOperands() const;
     double Calculate(const map<string, double>& values);
 };
 
