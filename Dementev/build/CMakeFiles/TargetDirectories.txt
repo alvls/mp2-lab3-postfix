@@ -1,0 +1,11 @@
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/CMakeFiles/edit_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/CMakeFiles/rebuild_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/base/CMakeFiles/postfix.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/base/CMakeFiles/edit_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/base/CMakeFiles/rebuild_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/base_test/CMakeFiles/postfix_test.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/base_test/CMakeFiles/edit_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/base_test/CMakeFiles/rebuild_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/gtest/CMakeFiles/gtest.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/gtest/CMakeFiles/edit_cache.dir
+/home/aleksey/Рабочий стол/Лобач/mp2-lab3-postfix/Dementev/build/gtest/CMakeFiles/rebuild_cache.dir
