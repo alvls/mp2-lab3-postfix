@@ -1,0 +1,172 @@
+﻿  gtest-all.cc
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9690,34): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9695,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9700,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9705,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9710,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9715,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9722,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9729,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9736,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9743,27): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9751,18): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(13778,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(13778,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(13777,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator2"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(13893,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(13893,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(13892,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator3"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14025,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14025,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14024,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator4"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14176,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14176,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14175,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator5"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14344,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14344,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14343,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator6"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14530,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14530,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14529,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator7"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14733,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14733,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14732,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator8"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14955,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14955,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(14954,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator9"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15194,46): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15194,46):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15193,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductGenerator10"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15459,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15459,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15454,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder2"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15481,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15481,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15475,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder3"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15506,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15506,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15500,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder4"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15533,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15533,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15527,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder5"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15564,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15564,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15556,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder6"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15597,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15597,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15589,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder7"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15635,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15635,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15626,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder8"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15676,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15676,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15666,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder9"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15720,35): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15720,35):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(15710,7):
+          при компиляции шаблона класса "testing::internal::CartesianProductHolder10"
+  
+E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(10020,30): warning C4996: 'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to suppress this warning.
+  (компиляция исходного файла "gtest-all.cc")
+      E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(10020,30):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Githab\mp2-lab3-postfix\Gusev_RM\gtest\gtest.h(9691,3):
+          выполняется компиляция ссылки на экземпляр шаблон функции "void testing::internal::PrintTupleTo<std::tuple<>>(const T &,std::ostream *)"
+          with
+          [
+              T=std::tuple<>
+          ]
+  
+  gtest.vcxproj -> E:\Githab\mp2-lab3-postfix\Gusev_RM\Release\gtest.lib

@@ -1,0 +1,3 @@
+﻿  postfix.cpp
+  sample_postfix.cpp
+LINK : fatal error LNK1181: не удается открыть входной файл "gtest.lib"
