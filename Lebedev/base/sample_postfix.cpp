@@ -6,19 +6,46 @@ using namespace std;
 
 int main()
 {
-  string expression;
-  TPostfix postfix;
-  double res;
-
   setlocale(LC_ALL, "Russian");
-  //cout << "Введите арифметическое выражение: ";
-  //cin >> expression;
-  //cout << expression << endl;
-  cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
-  postfix.ToPostfix();
-  cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
-  res = postfix.Calculate();
-  cout << res << endl;
+  cout << "Вычисление арифметических выражений" << endl;
+  cout << "Можно использовать числа, переменные, операции + - * / ^, скобки" << endl;
+  cout << "и функции sin, cos, sqrt, abs" << endl;
+  cout << "Для выхода введите пустую строку" << endl;
 
+  while (true)
+  {
+    string expression;
+    cout << endl << "Введите арифметическое выражение: ";
+    if (!getline(cin, expression) || expression.empty())
+      break;
+    try
+    {
+      TPostfix postfix(expression);
+      cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
+      vector<string> operands = postfix.GetOperands();
+      for (size_t i = 0; i < operands.size(); i++)
+      {
+        double val;
+        cout << operands[i] << " = ";
+        while (!(cin >> val))
+        {
+          if (cin.eof())
+            return 0;
+          cin.clear();
+          cin.ignore(10000, '\n');
+          cout << "Нужно ввести число. " << operands[i] << " = ";
+        }
+        postfix.SetValue(operands[i], val);
+      }
+      if (!operands.empty())
+        cin.ignore(10000, '\n');
+      double res = postfix.Calculate();
+      cout << "Результат: " << res << endl;
+    }
+    catch (exception &e)
+    {
+      cout << "Ошибка: " << e.what() << endl;
+    }
+  }
   return 0;
 }
