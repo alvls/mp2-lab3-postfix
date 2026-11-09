@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_tpostfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|solutionrelative:base_test\\test_tpostfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_tstack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|solutionrelative:base_test\\test_tstack.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F266A6B4-CBC2-41C0-9F55-056959ABA352}|base_test\\base_test.vcxproj|solutionrelative:base_test\\test_main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\sample_postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\sample_postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,16 +23,16 @@
       "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\postfix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\postfix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{60932AFC-7808-48B7-B3BF-F2BC151C0065}|gtest\\gtest.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\gtest\\gtest-all.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{60932AFC-7808-48B7-B3BF-F2BC151C0065}|gtest\\gtest.vcxproj|solutionrelative:gtest\\gtest-all.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4854D7B0-72B7-4276-BE33-BFADBC979165}|base\\base.vcxproj|solutionrelative:base\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{60932AFC-7808-48B7-B3BF-F2BC151C0065}|gtest\\gtest.vcxproj|C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\gtest\\gtest.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{60932AFC-7808-48B7-B3BF-F2BC151C0065}|gtest\\gtest.vcxproj|solutionrelative:gtest\\gtest.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,33 +46,84 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "postfix.cpp",
-              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.cpp",
-              "RelativeDocumentMoniker": "base\\postfix.cpp",
-              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.cpp",
-              "RelativeToolTip": "base\\postfix.cpp",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFEAAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "test_tstack.cpp",
+              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_tstack.cpp",
+              "RelativeDocumentMoniker": "base_test\\test_tstack.cpp",
+              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_tstack.cpp",
+              "RelativeToolTip": "base_test\\test_tstack.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-10-31T19:32:56.129Z",
+              "WhenOpened": "2026-11-09T14:26:29.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "test_tpostfix.cpp",
+              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_tpostfix.cpp",
+              "RelativeDocumentMoniker": "base_test\\test_tpostfix.cpp",
+              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_tpostfix.cpp",
+              "RelativeToolTip": "base_test\\test_tpostfix.cpp",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-11-09T14:26:25.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "test_main.cpp",
+              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_main.cpp",
+              "RelativeDocumentMoniker": "base_test\\test_main.cpp",
+              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base_test\\test_main.cpp",
+              "RelativeToolTip": "base_test\\test_main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-11-09T14:26:22.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "postfix.h",
+              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.h",
+              "RelativeDocumentMoniker": "base\\postfix.h",
+              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.h",
+              "RelativeToolTip": "base\\postfix.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-10-31T00:04:15.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "gtest.h",
+              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\gtest\\gtest.h",
+              "RelativeDocumentMoniker": "gtest\\gtest.h",
+              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\gtest\\gtest.h",
+              "RelativeToolTip": "gtest\\gtest.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-11-09T14:21:42.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "sample_postfix.cpp",
               "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\sample_postfix.cpp",
               "RelativeDocumentMoniker": "base\\sample_postfix.cpp",
               "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\sample_postfix.cpp",
               "RelativeToolTip": "base\\sample_postfix.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-10-31T19:32:32.937Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "gtest-all.cc",
               "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\gtest\\gtest-all.cc",
               "RelativeDocumentMoniker": "gtest\\gtest-all.cc",
@@ -68,25 +131,11 @@
               "RelativeToolTip": "gtest\\gtest-all.cc",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-10-31T19:24:19.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-31T19:24:19.286Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "postfix.h",
-              "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.h",
-              "RelativeDocumentMoniker": "base\\postfix.h",
-              "ToolTip": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\postfix.h",
-              "RelativeToolTip": "base\\postfix.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-10-31T00:04:15.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "stack.h",
               "DocumentMoniker": "C:\\Users\\rodio\\Desktop\\Rodionova\\Rodionova\\base\\stack.h",
               "RelativeDocumentMoniker": "base\\stack.h",

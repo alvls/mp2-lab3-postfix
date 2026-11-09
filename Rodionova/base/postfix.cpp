@@ -1,6 +1,7 @@
 ﻿#include "postfix.h"
 #include "stack.h"
 #include <iostream>
+#include <stdexcept>
 #include <cctype>
 
 using namespace std;
@@ -43,7 +44,6 @@ string TPostfix::ToPostfix()
     while (!stack.IsEmpty()) {
         result += stack.Pop();
     }
-
     postfix = result;
     return postfix;
 }
@@ -68,15 +68,21 @@ double TPostfix::Calculate()
             stack.Push(val);
         }
         else {
+            if (stack.IsEmpty()) throw std::invalid_argument("Invalid expression");
             double b = stack.Pop();
+
+            if (stack.IsEmpty()) throw std::invalid_argument("Invalid expression");
             double a = stack.Pop();
+
             double res = 0;
             if (c == '+') res = a + b;
             else if (c == '-') res = a - b;
             else if (c == '*') res = a * b;
             else if (c == '/') res = a / b;
+            
             stack.Push(res);
         }
+
     }
     return stack.Pop();
 }

@@ -86,6 +86,11 @@
     <ClCompile Include="test_tpostfix.cpp" />
     <ClCompile Include="test_tstack.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\base\base.vcxproj">
+      <Project>{4854d7b0-72b7-4276-be33-bfadbc979165}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
