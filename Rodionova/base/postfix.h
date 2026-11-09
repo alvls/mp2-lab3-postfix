@@ -15,6 +15,10 @@ public:
   {
     infix = "a + b";
   }
+  TPostfix(string expr)
+  {
+      infix = expr;
+  }
   string GetInfix() { return infix; }
   string GetPostfix() { return postfix; }
   string ToPostfix();
