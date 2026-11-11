@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
+#include <map>
 #include "postfix.h"
 
 using namespace std;
@@ -11,11 +13,10 @@ int main()
 
     setlocale(LC_ALL, "Russian");
 
-    cout << "Введите арифметическое выражение (например, (2+3)*4 или 10.5-2.5): ";
+    cout << "Введите арифметическое выражение (например, (a + b) * 2.5): ";
     getline(cin, expression);
 
     try {
-
         TPostfix postfix(expression);
 
         cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
@@ -23,7 +24,15 @@ int main()
         postfix.ToPostfix();
         cout << "Постфиксная форма: " << postfix.GetPostfix() << endl;
 
-        res = postfix.Calculate();
+        vector<string> operands = postfix.GetOperands();
+        map<string, double> values;
+
+        for (const string& op : operands) {
+            cout << "Введите значение переменной " << op << ": ";
+            cin >> values[op];
+        }
+
+        res = postfix.Calculate(values);
         cout << "Результат: " << res << endl;
     }
     catch (const exception& e) {

@@ -1,6 +1,7 @@
 ﻿#include "postfix.h"
 #include <cctype>
 #include <stdexcept>
+#include <algorithm>
 
 string TPostfix::ToPostfix()
 {
@@ -12,8 +13,16 @@ string TPostfix::ToPostfix()
 
         if (c == ' ') continue;
 
-        if (isdigit(c) || isalpha(c) || c == '.') {
-            while (i < infix.length() && (isdigit(infix[i]) || isalpha(infix[i]) || infix[i] == '.')) {
+        if (isdigit(c) || c == '.') {
+            while (i < infix.length() && (isdigit(infix[i]) || infix[i] == '.')) {
+                postfix += infix[i];
+                i++;
+            }
+            postfix += ' ';
+            i--;
+        }
+        else if (isalpha(c)) {
+            while (i < infix.length() && isalnum(infix[i])) {
                 postfix += infix[i];
                 i++;
             }
@@ -52,7 +61,35 @@ string TPostfix::ToPostfix()
     return postfix;
 }
 
-double TPostfix::Calculate()
+vector<string> TPostfix::GetOperands()
+{
+    if (postfix.empty()) {
+        ToPostfix();
+    }
+
+    vector<string> operands;
+
+    for (size_t i = 0; i < postfix.length(); i++) {
+        char c = postfix[i];
+
+        if (isalpha(c)) {
+            string varName = "";
+            while (i < postfix.length() && isalnum(postfix[i])) {
+                varName += postfix[i];
+                i++;
+            }
+            i--;
+
+            if (find(operands.begin(), operands.end(), varName) == operands.end()) {
+                operands.push_back(varName);
+            }
+        }
+    }
+
+    return operands;
+}
+
+double TPostfix::Calculate(const map<string, double>& values)
 {
     if (postfix.empty()) {
         ToPostfix();
@@ -71,15 +108,29 @@ double TPostfix::Calculate()
                 numStr += postfix[i];
                 i++;
             }
-            resStack.Push(stod(numStr)); 
+            resStack.Push(stod(numStr));
             i--;
+        }
+        else if (isalpha(c)) {
+            string varName = "";
+            while (i < postfix.length() && isalnum(postfix[i])) {
+                varName += postfix[i];
+                i++;
+            }
+            i--;
+
+            auto it = values.find(varName);
+            if (it == values.end()) {
+                throw invalid_argument("Ошибка: не задано значение переменной " + varName);
+            }
+            resStack.Push(it->second);
         }
         else if (c == '+' || c == '-' || c == '*' || c == '/') {
             if (resStack.IsEmpty()) throw invalid_argument("Ошибка в выражении");
-            double op2 = resStack.Pop(); 
+            double op2 = resStack.Pop();
 
             if (resStack.IsEmpty()) throw invalid_argument("Ошибка в выражении");
-            double op1 = resStack.Pop(); 
+            double op1 = resStack.Pop();
 
             double res = 0;
             switch (c) {
@@ -88,8 +139,7 @@ double TPostfix::Calculate()
             case '*': res = op1 * op2; break;
             case '/':
                 if (op2 == 0.0) throw runtime_error("Ошибка: деление на ноль!");
-                res = op1 / op2;
-                break;
+                res = op1 / op2; break;
             }
             resStack.Push(res);
         }

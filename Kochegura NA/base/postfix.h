@@ -2,6 +2,8 @@
 #define __POSTFIX_H__
 
 #include <string>
+#include <vector>
+#include <map>
 #include "stack.h"
 
 using namespace std;
@@ -15,8 +17,9 @@ class TPostfix
     {
         if (op == '+' || op == '-') return 1;
         if (op == '*' || op == '/') return 2;
-        return 0; 
+        return 0;
     }
+
 public:
     TPostfix(string expr = "")
     {
@@ -28,7 +31,10 @@ public:
     string GetPostfix() { return postfix; }
 
     string ToPostfix();
-    double Calculate(); 
+
+    vector<string> GetOperands();
+
+    double Calculate(const map<string, double>& values = {});
 };
 
 #endif
