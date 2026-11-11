@@ -28,3 +28,12 @@
 *.out
 *.app
 /Студенты/
+**/.vs/
+**/Debug/
+**/Release/
+**/x64/
+*.ipch
+*.obj
+*.exe
+*.pdb
+*.user
