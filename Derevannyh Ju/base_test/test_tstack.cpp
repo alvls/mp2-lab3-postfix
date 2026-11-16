@@ -73,7 +73,7 @@ TEST(TStack, can_create_copy_of_stack)
     st.Push(1);
     st.Push(2);
     st.Push(3);
-    TStack\<int> copy(st);
+    TStack<int> copy(st);
 
     EXPECT_EQ(3, copy.Pop());
     EXPECT_EQ(2, copy.Pop());
