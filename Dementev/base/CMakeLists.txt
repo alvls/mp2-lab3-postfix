@@ -4,3 +4,5 @@ file(GLOB srcs "*.cpp")
 #include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty")
 
 add_executable(postfix ${srcs} ${hdrs})
+
+add_executable(sample_postfix sample_postfix.cpp postfix.cpp)

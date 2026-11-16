@@ -1,91 +1,109 @@
 ﻿#include "postfix.h"
-#include "stack.h"
+#include <stack>
 #include <stdexcept>
+#include <cctype>
+#include <sstream>
 
-int GetPriority(char op)
-{
+TPostfix::TPostfix(const std::string& expr) : infix(expr) {}
+
+std::string TPostfix::GetInfix() const { return infix; }
+std::string TPostfix::GetPostfix() const { return postfix; }
+
+bool TPostfix::IsOperator(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
+}
+
+int TPostfix::GetPriority(char op) {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;
 }
 
-string TPostfix::ToPostfix()
-{
-    postfix = "";
-    TStack<char> stack(MaxStackSize);
-
-    for (size_t i = 0; i < infix.length(); ++i)
-    {
-        char c = infix[i];
-
-        if (c == ' ') 
-            continue;
-
-        if (c >= '0' && c <= '9')
-        {
-            postfix += c;
+void TPostfix::ToPostfix() {
+    std::stack<char> opStack;
+    std::string result;
+    
+    for (size_t i = 0; i < infix.length(); ++i) {
+        char ch = infix[i];
+        
+        if (isspace(ch)) continue;
+        
+        if (isdigit(ch) || isalpha(ch)) {
+            result += ch;
+            result += " ";
         }
-        else if (c == '(')
-        {
-            stack.Push(c);
+        else if (ch == '(') {
+            opStack.push(ch);
         }
-        else if (c == ')')
-        {
-            while (stack.Top() != '(')
-            {
-                postfix += stack.Pop();
+        else if (ch == ')') {
+            while (!opStack.empty() && opStack.top() != '(') {
+                result += opStack.top();
+                result += " ";
+                opStack.pop();
             }
-            stack.Pop();
+            if (!opStack.empty()) opStack.pop();
         }
-        else if (c == '+' || c == '-' || c == '*' || c == '/')
-        {
-            while (!stack.IsEmpty() && GetPriority(stack.Top()) >= GetPriority(c))
-            {
-                postfix += stack.Pop();
+        else if (IsOperator(ch)) {
+            while (!opStack.empty() && GetPriority(opStack.top()) >= GetPriority(ch)) {
+                result += opStack.top();
+                result += " ";
+                opStack.pop();
             }
-            stack.Push(c);
+            opStack.push(ch);
         }
     }
-
-    while (!stack.IsEmpty())
-    {
-        postfix += stack.Pop();
+    
+    while (!opStack.empty()) {
+        result += opStack.top();
+        result += " ";
+        opStack.pop();
     }
-
-    return postfix;
+    
+    if (!result.empty() && result.back() == ' ') {
+        result.pop_back();
+    }
+    
+    postfix = result;
 }
 
-double TPostfix::Calculate()
-{
-    TStack<double> stack(MaxStackSize);
+double TPostfix::Calculate(const std::map<char, double>& vars) {
+    std::stack<double> st;
+    std::stringstream ss(postfix);
+    std::string token;
 
-    for (size_t i = 0; i < postfix.length(); ++i)
-    {
-        char c = postfix[i];
-
-        if (c >= '0' && c <= '9')
-        {
-            stack.Push(c - '0');
-        }
-        else if (c == '+' || c == '-' || c == '*' || c == '/')
-        {
-            double b = stack.Pop();
-            double a = stack.Pop();
+    while (ss >> token) {
+        char ch = token[0];
+        
+        if (token.size() == 1 && IsOperator(ch)) {
+            if (st.size() < 2) throw std::runtime_error("Ошибка: неверное выражение");
+            double right = st.top(); st.pop();
+            double left = st.top(); st.pop();
             double res = 0;
-
-            if (c == '+') res = a + b;
-            else if (c == '-') res = a - b;
-            else if (c == '*') res = a * b;
-            else if (c == '/')
-            {
-                if (b == 0)
-                    throw std::domain_error("Division by zero");
-                res = a / b;
+            switch (ch) {
+                case '+': res = left + right; break;
+                case '-': res = left - right; break;
+                case '*': res = left * right; break;
+                case '/': 
+                    if (right == 0) throw std::runtime_error("Деление на ноль");
+                    res = left / right; 
+                    break;
             }
-
-            stack.Push(res);
+            st.push(res);
+        }
+        else if (isalpha(ch)) {
+            if (vars.find(ch) == vars.end()) {
+                throw std::runtime_error("Нет значения для переменной");
+            }
+            st.push(vars.at(ch));
+        }
+        else if (isdigit(ch)) {
+            st.push(ch - '0'); 
+        }
+        else {
+            throw std::runtime_error("Неизвестный символ");
         }
     }
 
-    return stack.Pop();
+    if (st.size() != 1) throw std::runtime_error("Ошибка: неверное выражение");
+    return st.top();
 }

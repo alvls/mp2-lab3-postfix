@@ -1,28 +1,22 @@
-﻿#ifndef __POSTFIX_H__
-#define __POSTFIX_H__
-
+﻿#pragma once
 #include <string>
-#include "stack.h"
+#include <vector>
+#include <map>
 
-using namespace std;
+class TPostfix {
+private:
+    std::string infix;
+    std::string postfix;
+    std::vector<std::string> tokens;
 
-class TPostfix
-{
-  string infix;
-  string postfix;
+    bool IsOperator(char c);
+    bool IsOperand(const std::string& token);
+    int GetPriority(char op);
+
 public:
-  TPostfix()
-  {
-    infix = "a + b";
-  }
-  TPostfix(string _infix)
-  {
-    infix = _infix;
-  }
-  string GetInfix() { return infix; }
-  string GetPostfix() { return postfix; }
-  string ToPostfix();
-  double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+    TPostfix(const std::string& expr);
+    std::string GetInfix() const;
+    std::string GetPostfix() const;
+    void ToPostfix();
+    double Calculate(const std::map<char, double>& vars);
 };
-
-#endif
