@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/postfix_test.dir/link.d CMakeFiles/postfix_test.dir/__/base/postfix.cpp.o CMakeFiles/postfix_test.dir/test_main.cpp.o CMakeFiles/postfix_test.dir/test_tpostfix.cpp.o CMakeFiles/postfix_test.dir/test_tstack.cpp.o -o postfix_test  ../gtest/libgtest.a -pthread

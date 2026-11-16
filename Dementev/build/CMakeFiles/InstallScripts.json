@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/aleksey/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/\u041b\u043e\u0431\u0430\u0447/mp2-lab3-postfix/Dementev/build/cmake_install.cmake",
+		"/home/aleksey/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/\u041b\u043e\u0431\u0430\u0447/mp2-lab3-postfix/Dementev/build/base/cmake_install.cmake",
+		"/home/aleksey/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/\u041b\u043e\u0431\u0430\u0447/mp2-lab3-postfix/Dementev/build/base_test/cmake_install.cmake",
+		"/home/aleksey/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/\u041b\u043e\u0431\u0430\u0447/mp2-lab3-postfix/Dementev/build/gtest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

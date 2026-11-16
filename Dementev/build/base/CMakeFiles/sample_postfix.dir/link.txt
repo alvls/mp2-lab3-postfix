@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/sample_postfix.dir/link.d CMakeFiles/sample_postfix.dir/sample_postfix.cpp.o CMakeFiles/sample_postfix.dir/postfix.cpp.o -o sample_postfix
