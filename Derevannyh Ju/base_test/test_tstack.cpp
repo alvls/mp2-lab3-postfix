@@ -79,6 +79,5 @@ TEST(TStack, can_create_copy_of_stack)
     EXPECT_EQ(2, copy.Pop());
     EXPECT_EQ(1, copy.Pop());
     EXPECT_TRUE(copy.IsEmpty());
-
     EXPECT_EQ(3, st.Pop());
 }

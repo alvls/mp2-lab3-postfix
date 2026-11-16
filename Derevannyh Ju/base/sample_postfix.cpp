@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <string>
+#include <set>
+#include <cctype>
 #include "postfix.h"
 
 using namespace std;
@@ -9,21 +11,42 @@ int main()
     setlocale(LC_ALL, "Russian");
 
     try {
-        // Выражение, где встречаются разные переменные
-        string expression = "a + b * c - D";
+        cout << "Введите арифметическое выражение (например, a + b * c - D): ";
+        string expression;
+        getline(cin, expression);
+
+        if (expression.empty()) {
+            cerr << "Выражение не может быть пустым!" << endl;
+            return 1;
+        }
+
         TPostfix postfix(expression);
 
-        // Задаём значения переменных ДО активации программы
-        postfix.SetVariable('a', 5);
-        postfix.SetVariable('b', 10);
-        postfix.SetVariable('c', 15);
-        postfix.SetVariable('D', 20);
+        set<char> variables;
+        for (char c : expression) {
+            if (isalpha(c)) {
+                variables.insert(c);
+            }
+        }
 
-        cout << "Арифметическое выражение: " << postfix.GetInfix() << endl;
-        cout << "Постфиксная форма: " << postfix.ToPostfix() << endl;
+        if (!variables.empty()) {
+            cout << "\nВ выражении найдены переменные. Задайте их значения:\n";
+            for (char var : variables) {
+                double value;
+                cout << "  " << var << " = ";
+                cin >> value;
+                postfix.SetVariable(var, value);
+            }
+        }
+        else {
+            cout << "\nПеременных не найдено, выражение состоит только из чисел.\n";
+        }
+
+        cout << "\nАрифметическое выражение: " << postfix.GetInfix() << endl;
+        cout << "Постфиксная форма:        " << postfix.ToPostfix() << endl;
 
         double res = postfix.Calculate();
-        cout << "Результат: " << res << endl;
+        cout << "Результат:                " << res << endl;
     }
     catch (const std::exception& e) {
         cerr << "Ошибка: " << e.what() << endl;
