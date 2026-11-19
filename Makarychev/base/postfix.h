@@ -1,4 +1,4 @@
-﻿#ifndef __POSTFIX_H__
+#ifndef __POSTFIX_H__
 #define __POSTFIX_H__
 
 #include <string>
@@ -11,14 +11,14 @@ class TPostfix
   string infix;
   string postfix;
 public:
-  TPostfix()
-  {
-    infix = "a + b";
-  }
+  TPostfix() : infix("a + b") {}
+  explicit TPostfix(const string& expression) : infix(expression) {}
+
   string GetInfix() { return infix; }
   string GetPostfix() { return postfix; }
+  void SetInfix(const string& expression) { infix = expression; postfix.clear(); }
   string ToPostfix();
-  double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+  double Calculate();
 };
 
 #endif
